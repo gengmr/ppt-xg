@@ -1,0 +1,1073 @@
+{
+  "meta": {
+    "course": "Web应用开发技术",
+    "chapter": "第10章",
+    "title": "综合项目实践：从零构建“游戏天地”网站",
+    "subtitle": "Comprehensive Project Practice: Building 'Game World' from Scratch",
+    "instructor": "主讲教师",
+    "department": "信息工程学院",
+    "school": "石家庄信息工程技术学院",
+    "semester": "2026年春季学期",
+    "duration": 90,
+    "version": "1.0.0",
+    "lastModified": "2026-03-12"
+  },
+  "theme": {
+    "primaryColor": "#1a237e",
+    "accentColor": "#00e5ff",
+    "backgroundColor": "#080f1e"
+  },
+  "slides": [
+    {
+      "id": "s01",
+      "type": "cover",
+      "content": {
+        "courseTitle": "Web应用开发技术",
+        "chapterTitle": "第10章 · Chapter 10",
+        "title": "综合项目实践",
+        "subtitle": "从零构建“游戏天地”大型综合网站",
+        "instructor": "主讲教师",
+        "school": "石家庄信息工程技术学院",
+        "semester": "2026年春季学期",
+        "tags": [
+          "项目管理",
+          "规划设计",
+          "代码实现",
+          "全流程实战"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "type": "agenda",
+      "content": {
+        "title": "本章实战大纲",
+        "items": [
+          {
+            "index": "01",
+            "title": "网站开发的项目管理",
+            "subtitle": "如何专业地控制开发流程"
+          },
+          {
+            "index": "02",
+            "title": "“游戏天地”网站规划",
+            "subtitle": "在写代码之前，我们要想清楚什么"
+          },
+          {
+            "index": "03",
+            "title": "“游戏天地”网站设计",
+            "subtitle": "视觉与交互的艺术"
+          },
+          {
+            "index": "04",
+            "title": "“游戏天地”网站实现",
+            "subtitle": "从HTML/CSS到成品网页"
+          },
+          {
+            "index": "05",
+            "title": "测试与部署发布",
+            "subtitle": "让全世界看到你的作品"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "type": "section",
+      "content": {
+        "section": "01",
+        "icon": "📅",
+        "title": "网站开发的项目管理",
+        "subtitle": "像专业人士一样思考开发流程"
+      }
+    },
+    {
+      "id": "s04",
+      "type": "content",
+      "content": {
+        "title": "为什么需要项目管理？",
+        "subtitle": "Avoid Chaos in Development",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "很多初学者拿到任务直接就开始写代码，这会导致以下后果：\n\n❌ 边写边改，最后代码一团糟（面条代码）\n❌ 漏掉核心功能，临近交工才发现\n❌ 样式不统一，首页和内页像两个网站\n❌ 无法多人协作，互相覆盖进度"
+          },
+          {
+            "type": "highlight",
+            "text": "✅ 项目管理的作用：\n将庞大的工程拆解为可控的任务，确保在规定时间内、高质量地交付网站。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 记住：一个好的Web开发者，50%的时间在思考和规划，30%的时间在调试，只有20%的时间在敲键盘。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "type": "timeline",
+      "content": {
+        "title": "网站开发的标准化流程",
+        "subtitle": "Standard Web Development Life Cycle",
+        "items": [
+          {
+            "year": "阶段1",
+            "event": "需求分析",
+            "detail": "明确网站要做给谁看，解决什么问题，包含哪些功能。"
+          },
+          {
+            "year": "阶段2",
+            "event": "规划设计",
+            "detail": "制定站点地图，画草图（原型），确定视觉风格（UI）。",
+            "highlight": true
+          },
+          {
+            "year": "阶段3",
+            "event": "开发制作",
+            "detail": "编写代码。先打HTML骨架，再写CSS外衣，最后加JS灵魂。"
+          },
+          {
+            "year": "阶段4",
+            "event": "测试优化",
+            "detail": "找Bug。检查不同浏览器显示是否正常，手机打开快不快。"
+          },
+          {
+            "year": "阶段5",
+            "event": "发布维护",
+            "detail": "购买域名空间，上传代码，上线后根据反馈持续更新。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "type": "bullets",
+      "content": {
+        "title": "核心团队成员与分工",
+        "subtitle": "Roles in a Development Team",
+        "layout": "grid",
+        "items": [
+          {
+            "icon": "👔",
+            "title": "项目经理 (PM)",
+            "detail": "负责控制进度。确保大家不走弯路，协调客户需求与技术实现。"
+          },
+          {
+            "icon": "🎨",
+            "title": "UI/UX设计师",
+            "detail": "负责“美”。用PS或Figma画出网页长什么样，设计用户交互路径。"
+          },
+          {
+            "icon": "💻",
+            "title": "前端工程师",
+            "detail": "负责“动”。把设计稿转化为浏览器能运行的HTML/CSS/JS。"
+          },
+          {
+            "icon": "⚙️",
+            "title": "后端工程师",
+            "detail": "负责“数”。管理数据库，编写逻辑处理用户登录、评论、搜索等请求。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "type": "content",
+      "content": {
+        "title": "什么是“网站策划书”？",
+        "subtitle": "The Project Proposal",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "策划书是网站的“施工图纸”。它不仅是写给老板/客户看的，更是开发者的指南。"
+          },
+          {
+            "type": "definition",
+            "text": "一份合格的策划书应包含：\n1. 网站目标：为什么要做这个站？（如：展示游戏动态）\n2. 受众分析：谁会来看？（如：18-35岁男性玩家）\n3. 功能列表：能干什么？（如：注册、点赞、搜索）\n4. 技术选型：用什么做？（如：HTML5+Vue+MySQL）"
+          },
+          {
+            "type": "tip",
+            "text": "💡 对于个人练习项目，也要养成写简易文档的习惯，这会极大提高你的工程能力。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "type": "section",
+      "content": {
+        "section": "02",
+        "icon": "🎮",
+        "title": "“游戏天地”网站规划",
+        "subtitle": "明确我们要建造什么样的游戏帝国"
+      }
+    },
+    {
+      "id": "s09",
+      "type": "content",
+      "content": {
+        "title": "案例背景：为什么选游戏类网站？",
+        "subtitle": "Case Study: Game World Site",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "游戏类网站通常包含Web开发中最具代表性的元素：\n\n• 酷炫的视觉效果（CSS动画、大图轮播）\n• 复杂的信息分类（攻略、评测、资讯）\n• 频繁的用户交互（评论区、评分系统）\n• 响应式需求（玩家可能在手机或PC上查看攻略）"
+          },
+          {
+            "type": "highlight",
+            "text": "本案例目标：\n打造一个名为“游戏天地”的综合性门户，包含首页、资讯列表页、游戏详情页。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "type": "bullets",
+      "content": {
+        "title": "第一步：明确网站目标定位",
+        "subtitle": "Define the Purpose",
+        "layout": "list",
+        "items": [
+          {
+            "title": "核心价值",
+            "detail": "为玩家提供最新、最全的游戏资讯和深度攻略。"
+          },
+          {
+            "title": "品牌风格",
+            "detail": "科技感、动感、暗黑模式（Gamers' Preference）。"
+          },
+          {
+            "title": "核心功能",
+            "detail": "游戏搜索、资讯分类展示、视频预告片播放、社区互动。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "type": "content",
+      "content": {
+        "title": "技术栈选择（初学者友好组合）",
+        "subtitle": "Technology Stack Selection",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "根据本章实战目标，我们选择最经典的现代开发技术："
+          },
+          {
+            "type": "highlight",
+            "text": "• 结构层：HTML5（使用语义化标签）\n• 表现层：CSS3（采用Flexbox布局 + 媒体查询）\n• 交互层：JavaScript（使用原生JS或轻量级jQuery）\n• 辅助框架：Bootstrap 5（加速响应式开发）"
+          },
+          {
+            "type": "warning",
+            "text": "⚠️ 注意：初学者不要盲目追求流行框架（如React/Vue），先打好原生代码基础，才能走得更远。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "type": "content",
+      "content": {
+        "title": "信息架构（IA）：规划内容的逻辑",
+        "subtitle": "Information Architecture",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "信息架构就像是给图书馆分类。好的分类能让用户一眼找到目标。"
+          },
+          {
+            "type": "definition",
+            "text": "“游戏天地”的分类规划：\n- 网站首页：聚合最新、最热内容\n- 游戏库：按平台（PC/PS5/Switch）或类型（RPG/FPS）分类\n- 资讯中心：行业新闻、新作预告\n- 玩家社区：论坛、评分系统"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "type": "table",
+      "content": {
+        "title": "站点地图（Sitemap）规划表",
+        "subtitle": "Visualizing Site Structure",
+        "headers": [
+          "一级导航",
+          "二级页面",
+          "页面内容描述",
+          "优先级"
+        ],
+        "rows": [
+          [
+            "首页",
+            "index.html",
+            "幻灯片、热门推荐、最新资讯、友情链接",
+            "极高"
+          ],
+          [
+            "游戏库",
+            "games.html",
+            "全游戏列表、多条件筛选、搜索框",
+            "高"
+          ],
+          [
+            "资讯中心",
+            "news.html",
+            "文章列表、时间线布局、阅读排行",
+            "中"
+          ],
+          [
+            "关于我们",
+            "about.html",
+            "团队介绍、联系方式、版权声明",
+            "低"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "type": "section",
+      "content": {
+        "section": "03",
+        "icon": "🖋️",
+        "title": "“游戏天地”网站设计",
+        "subtitle": "从黑白原型到炫酷视觉"
+      }
+    },
+    {
+      "id": "s15",
+      "type": "bullets",
+      "content": {
+        "title": "导航系统设计要点",
+        "subtitle": "Designing Navigation",
+        "layout": "cards",
+        "items": [
+          {
+            "icon": "🔝",
+            "title": "全局导航 (Global)",
+            "detail": "固定在顶部，包含Logo、主分类、搜索、登录。无论用户在哪个页面都能看到。"
+          },
+          {
+            "icon": "👣",
+            "title": "面包屑导航 (Breadcrumb)",
+            "detail": "显示路径：首页 > 游戏库 > 动作类 > 战神5。防止用户迷路。"
+          },
+          {
+            "icon": "🔚",
+            "title": "页脚导航 (Footer)",
+            "detail": "包含备案信息、社交媒体链接、快速跳转。是“垃圾桶”也是“藏宝箱”。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "type": "content",
+      "content": {
+        "title": "视觉风格确立：配色方案",
+        "subtitle": "Color Palette",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "游戏网站通常不适合大白底，我们要营造沉浸感。"
+          },
+          {
+            "type": "highlight",
+            "text": "🎨 推荐配色：\n• 背景：深灰色或深蓝色 (#121212 / #0d1b2a)\n• 主色：电竞蓝或荧光绿 (#00e5ff / #76ff03) —— 用于强调按钮、标题\n• 辅助：浅灰或白色 (#e0e0e0) —— 用于正文阅读"
+          },
+          {
+            "type": "tip",
+            "text": "💡 技巧：使用 60-30-10 原则。60%背景色，30%辅助色，10%强调色。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "type": "content",
+      "content": {
+        "title": "版式设计：F型扫描模式的应用",
+        "subtitle": "F-Pattern for Content Scanning",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "研究表明，用户浏览网页时视线呈“F”型。我们要利用这一点布局。"
+          },
+          {
+            "type": "definition",
+            "text": "1. 顶端横线：放置Logo和导航（最重要）。\n2. 左侧纵线：放置醒目的标题或图片（次重要）。\n3. 快速扫描：右侧和下方放置详细内容。"
+          },
+          {
+            "type": "highlight",
+            "text": "在“游戏天地”中：\n左侧放置大尺寸的游戏封面图，右侧放置游戏评分和简介，符合认知习惯。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "type": "bullets",
+      "content": {
+        "title": "关键页面设计：首页 index.html",
+        "subtitle": "Homepage Layout",
+        "layout": "grid",
+        "items": [
+          {
+            "icon": "🖼️",
+            "title": "英雄区 (Hero Section)",
+            "detail": "巨大的幻灯片轮播，展示当季最火爆的游戏预告大图。"
+          },
+          {
+            "icon": "📰",
+            "title": "最新资讯流",
+            "detail": "采用卡片式布局，左图右文，带上发布时间和分类标签。"
+          },
+          {
+            "icon": "🏆",
+            "title": "侧边排行榜",
+            "detail": "展示本周热门下载或评分最高的Top 10游戏。"
+          },
+          {
+            "icon": "📩",
+            "title": "订阅区域",
+            "detail": "底部引导用户输入邮箱，订阅最新的游戏优惠信息。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "type": "comparison",
+      "content": {
+        "title": "设计 vs 实现：两种思维的碰撞",
+        "subtitle": "Design Thinking vs. Coding Thinking",
+        "left": {
+          "label": "设计师关注什么",
+          "icon": "🎨",
+          "color": "purple",
+          "items": [
+            "像素级的完美对齐",
+            "色彩的心理暗示",
+            "微动效带来的愉悦感",
+            "用户的视觉流向"
+          ]
+        },
+        "right": {
+          "label": "前端开发关注什么",
+          "icon": "💻",
+          "color": "blue",
+          "items": [
+            "HTML结构的语义化",
+            "CSS的可复用性与性能",
+            "浏览器兼容性测试",
+            "加载速度与SEO优化"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s20",
+      "type": "section",
+      "content": {
+        "section": "04",
+        "icon": "🛠️",
+        "title": "“游戏天地”网站实现",
+        "subtitle": "代码时间：从零构建实战"
+      }
+    },
+    {
+      "id": "s21",
+      "type": "content",
+      "content": {
+        "title": "建立项目文件夹结构",
+        "subtitle": "Step 1: Project Organization",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "规范的文件夹结构是项目成功的一半。严禁把所有文件堆在根目录！"
+          },
+          {
+            "type": "highlight",
+            "text": "Game_World_Project/\n├── css/          # 存放 .css 样式文件\n├── js/           # 存放 .js 脚本文件\n├── img/          # 存放 图片、图标资源\n├── media/        # 存放 视频、音频文件\n├── index.html    # 网站首页\n└── games.html    # 游戏库页"
+          },
+          {
+            "type": "tip",
+            "text": "💡 职业习惯：图片文件名应具有描述性，如 `hero-banner-gow.jpg`，而不是 `123.jpg`。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "type": "code",
+      "content": {
+        "title": "编写 HTML5 基础骨架",
+        "subtitle": "HTML Skeleton Structure",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>游戏天地 - 专业游戏资讯平台</title>\n    <!-- 引入外部CSS -->\n    <link rel=\"stylesheet\" href=\"css/style.css\">\n</head>\n<body>\n    <!-- 网站顶部导航 -->\n    <header>\n        <nav class=\"container\">\n            <div class=\"logo\">GAME WORLD</div>\n            <ul>\n                <li><a href=\"index.html\" class=\"active\">首页</a></li>\n                <li><a href=\"games.html\">游戏库</a></li>\n                <li><a href=\"news.html\">资讯</a></li>\n            </ul>\n        </nav>\n    </header>\n\n    <!-- 主体内容 -->\n    <main>\n        <!-- 幻灯片区 -->\n        <section class=\"hero\"></section>\n        <!-- 游戏卡片区 -->\n        <section class=\"news-grid\"></section>\n    </main>\n\n    <!-- 页脚 -->\n    <footer></footer>\n</body>\n</html>",
+        "explanation": [
+          {
+            "line": "10-20",
+            "text": "使用 header, nav 等语义化标签，不仅结构清晰，还有利于SEO优化。"
+          },
+          {
+            "line": "7",
+            "text": "link 标签一定要放在 head 里，确保页面加载时样式能先应用。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "type": "code",
+      "content": {
+        "title": "CSS3 全局样式设置",
+        "subtitle": "Global CSS Variables & Reset",
+        "language": "css",
+        "code": "/* 定义全局颜色变量，方便一键修改风格 */\n:root {\n    --bg-dark: #121212;\n    --accent-blue: #00e5ff;\n    --text-white: #ffffff;\n    --gap: 20px;\n}\n\n* {\n    margin: 0; padding: 0;\n    box-sizing: border-box;\n}\n\nbody {\n    background-color: var(--bg-dark);\n    color: var(--text-white);\n    font-family: 'Segoe UI', Tahoma, sans-serif;\n}\n\n.container {\n    max-width: 1200px;\n    margin: 0 auto;\n    padding: 0 var(--gap);\n}",
+        "explanation": [
+          {
+            "line": "2-7",
+            "text": "使用 CSS Variables (:root) 是现代开发的标准做法，维护成本极低。"
+          },
+          {
+            "line": "20-24",
+            "text": ".container 类用于控制页面内容宽度并居中，是布局中最常用的工具类。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "type": "code",
+      "content": {
+        "title": "实现导航条样式 (Flexbox)",
+        "subtitle": "Header & Navigation Styling",
+        "language": "css",
+        "code": "header {\n    height: 80px;\n    background: rgba(0,0,0,0.8);\n    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */\n    position: sticky; top: 0; z-index: 1000;\n}\n\nnav {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    height: 100%;\n}\n\n.logo {\n    font-size: 24px; font-weight: bold; \n    color: var(--accent-blue);\n}\n\nnav ul {\n    display: flex;\n    list-style: none;\n}\n\nnav ul li a {\n    color: white; text-decoration: none;\n    padding: 10px 20px;\n    transition: color 0.3s;\n}\n\nnav ul li a:hover {\n    color: var(--accent-blue);\n}",
+        "explanation": [
+          {
+            "line": "4",
+            "text": "backdrop-filter 让导航栏背景透明模糊，极具现代科技感。"
+          },
+          {
+            "line": "9",
+            "text": "display: flex 是目前最推荐的布局方案，处理水平排列非常简单。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "type": "content",
+      "content": {
+        "title": "卡片式布局 (Card Layout) 的原理",
+        "subtitle": "The Foundation of Modern UI",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "卡片就像是一个独立的内容单元，每个卡片包含：图片、标题、简述。"
+          },
+          {
+            "type": "highlight",
+            "text": "HTML 结构：\n<div class='card'>\n  <img src='...'>\n  <div class='info'>\n    <h3>游戏名称</h3>\n    <p>简介内容...</p>\n  </div>\n</div>"
+          },
+          {
+            "type": "definition",
+            "text": "实现技巧：\n1. 设置 card 的 overflow: hidden 保证图片圆角正常。\n2. 使用 transition 过渡效果，增加 hover 时的阴影或缩放。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "type": "code",
+      "content": {
+        "title": "CSS Grid 实现响应式卡片网格",
+        "subtitle": "Responsive Grid Implementation",
+        "language": "css",
+        "code": ".news-grid {\n    display: grid;\n    /* 自动填充，最小280px，最大占满一份 */\n    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n    gap: 30px;\n    margin-top: 50px;\n}\n\n.card {\n    background: #1e1e1e;\n    border-radius: 10px;\n    transition: transform 0.3s;\n}\n\n.card:hover {\n    transform: translateY(-10px); /* 悬浮特效 */\n}\n\n.card img {\n    width: 100%; height: 200px;\n    object-fit: cover; /* 保证图片不拉伸 */\n}",
+        "explanation": [
+          {
+            "line": "4",
+            "text": "这是最强大的响应式写法，无需媒体查询即可自动在手机上排成一列，在电脑上排成多列。"
+          },
+          {
+            "line": "21",
+            "text": "object-fit: cover 解决了素材图片比例不一的问题，自动居中裁剪。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "type": "code",
+      "content": {
+        "title": "JavaScript 交互：搜索框实时显示",
+        "subtitle": "Simple JS Interaction",
+        "language": "javascript",
+        "code": "// 找到搜索输入框和按钮\nconst searchBtn = document.querySelector('#search-btn');\nconst searchInput = document.querySelector('#search-input');\n\n// 监听点击事件\nsearchBtn.addEventListener('click', () => {\n    const query = searchInput.value.trim();\n    if (query) {\n        alert('正在为你搜索：' + query);\n        // 这里可以执行实际的过滤逻辑或页面跳转\n    } else {\n        alert('请输入搜索关键词');\n    }\n});\n\n// 监听回车键\nsearchInput.addEventListener('keypress', (e) => {\n    if (e.key === 'Enter') searchBtn.click();\n});",
+        "explanation": [
+          {
+            "line": "6",
+            "text": "addEventListener 是现代推荐的绑定事件方式，代码更干净。"
+          },
+          {
+            "line": "18",
+            "text": "监听回车键能极大地提升用户输入体验。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "type": "bullets",
+      "content": {
+        "title": "视频对象处理 (HTML5 Video)",
+        "subtitle": "Embedding Media Content",
+        "layout": "list",
+        "items": [
+          {
+            "title": "插入标签",
+            "detail": "<video controls poster='thumb.jpg' src='trailer.mp4'></video>"
+          },
+          {
+            "title": "属性配置",
+            "detail": "autoplay (静音自动播放)、loop (循环)、muted (静音)。"
+          },
+          {
+            "title": "CSS 美化",
+            "detail": "给视频增加 border-radius 和 box-shadow，让它融入暗黑风格页面。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "type": "content",
+      "content": {
+        "title": "响应式设计的终极利器：媒体查询",
+        "subtitle": "CSS Media Queries",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "我们的“游戏天地”必须在手机上也能看攻略。"
+          },
+          {
+            "type": "highlight",
+            "text": "@media (max-width: 768px) {\n    /* 手机端样式 */\n    .container { width: 95%; }\n    nav ul { display: none; } /* 隐藏菜单，改为汉堡菜单 */\n    .hero-title { font-size: 24px; }\n}"
+          },
+          {
+            "type": "definition",
+            "text": "断点选择建议：\n- 1200px (电脑大屏)\n- 768px (平板/手机横屏)\n- 480px (手机竖屏)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "type": "code",
+      "content": {
+        "title": "表单实战：玩家反馈页面",
+        "subtitle": "Building a Feedback Form",
+        "language": "html",
+        "code": "<section class=\"contact container\">\n    <h2>联系我们</h2>\n    <form action=\"/submit-feedback\" method=\"POST\">\n        <div class=\"form-group\">\n            <label>昵称</label>\n            <input type=\"text\" name=\"username\" required>\n        </div>\n        <div class=\"form-group\">\n            <label>游戏平台</label>\n            <select name=\"platform\">\n                <option>PC</option>\n                <option>PS5</option>\n                <option>Switch</option>\n            </select>\n        </div>\n        <div class=\"form-group\">\n            <label>留言信息</label>\n            <textarea name=\"message\"></textarea>\n        </div>\n        <button type=\"submit\">发送反馈</button>\n    </form>\n</section>",
+        "explanation": [
+          {
+            "line": "6",
+            "text": "required 属性开启浏览器原生验证，防止提交空表单。"
+          },
+          {
+            "line": "10-14",
+            "text": "select 标签提供下拉选择，保证数据输入规范。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "type": "section",
+      "content": {
+        "section": "05",
+        "icon": "🚀",
+        "title": "测试、部署与总结",
+        "subtitle": "从开发环境到生产环境的最后一公里"
+      }
+    },
+    {
+      "id": "s32",
+      "type": "bullets",
+      "content": {
+        "title": "上线前的“自查清单”",
+        "subtitle": "Pre-deployment Checklist",
+        "layout": "grid",
+        "items": [
+          {
+            "icon": "🔗",
+            "title": "检查死链接",
+            "detail": "确保所有 a 标签都能跳转到正确的页面，不要有404。"
+          },
+          {
+            "icon": "🖼️",
+            "title": "优化图片大小",
+            "detail": "使用 TinyPNG 压缩图片。大图不应超过 500KB，否则手机端加载极慢。"
+          },
+          {
+            "icon": "🔍",
+            "title": "完善 Meta 标签",
+            "detail": "检查 title 和 meta description，确保搜索引擎能正确抓取。"
+          },
+          {
+            "icon": "✅",
+            "title": "HTML 验证",
+            "detail": "通过 W3C 验证器检查标签是否闭合，语法是否规范。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "type": "content",
+      "content": {
+        "title": "常见的浏览器兼容性坑",
+        "subtitle": "Browser Compatibility Issues",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "虽然现代浏览器差异变小，但依然要注意以下几点："
+          },
+          {
+            "type": "highlight",
+            "text": "1. CSS前缀：某些属性需要加 -webkit-, -moz-（如弹性盒早期的实现）。\n2. 字体显示：不同系统的默认字体不一致，需指定备用字体族。\n3. 图片格式：WebP 格式加载快，但旧版浏览器可能不显示（需提供 JPG 降级方案）。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 工具推荐：使用 Can I Use (caniuse.com) 查询特定 CSS 属性的兼容性情况。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "type": "bullets",
+      "content": {
+        "title": "免费部署你的网站",
+        "subtitle": "Free Hosting Options",
+        "layout": "cards",
+        "items": [
+          {
+            "icon": "🐙",
+            "title": "GitHub Pages",
+            "detail": "最适合开发者。只需将代码推送到仓库，即可获得 username.github.io 的免费域名。"
+          },
+          {
+            "icon": "▲",
+            "title": "Vercel / Netlify",
+            "detail": "现代前端首选。支持自动化部署，速度极快，且有非常酷的后台管理界面。"
+          },
+          {
+            "icon": "☁️",
+            "title": "腾讯云 / 阿里云 (Gitee Pages)",
+            "detail": "国内速度最稳的选择，适合国内用户访问的项目展示。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "type": "quote",
+      "content": {
+        "quote": "Web development is not just about writing code; it's about solving problems and creating experiences that people love.",
+        "author": "Anonymous Web Developer",
+        "role": "Industry Insight",
+        "context": "网页开发不仅仅是写代码，而是解决问题并创造人们喜爱的体验。"
+      }
+    },
+    {
+      "id": "s36",
+      "type": "content",
+      "content": {
+        "title": "深入：什么是“暗黑模式”适配？",
+        "subtitle": "Dark Mode Adaptation",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "由于游戏网站常驻暗黑模式，我们要掌握如何检测系统偏好："
+          },
+          {
+            "type": "highlight",
+            "text": "@media (prefers-color-scheme: dark) {\n  body {\n    background-color: #121212;\n    color: white;\n  }\n}"
+          },
+          {
+            "type": "definition",
+            "text": "这让网站能随手机系统的切换而自动变色，极具专业感。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "type": "content",
+      "content": {
+        "title": "进阶预告：从静态到动态",
+        "subtitle": "The Next Step: Dynamization",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "本案例是基于静态文件实现的。在真实的职业场景中："
+          },
+          {
+            "type": "highlight",
+            "text": "• 资讯内容不会写死在HTML里，而是存在数据库。\n• 我们会用 JavaScript 发送 Ajax 请求到 API 获取数据。\n• 我们会使用模板引擎或现代框架（Vue/React）自动生成卡片列表。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 静态网页是基础，动态交互是核心。继续坚持，你正在通往全栈开发的道路上！"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "type": "bullets",
+      "content": {
+        "title": "项目复盘：你学会了什么？",
+        "subtitle": "Project Retrospective",
+        "layout": "grid",
+        "items": [
+          {
+            "icon": "📐",
+            "title": "规划能力",
+            "detail": "学会了从受众角度分析需求，并制定合理的站点地图。"
+          },
+          {
+            "icon": "🎨",
+            "title": "设计审美",
+            "detail": "理解了配色、排版和导航对用户体验的巨大影响。"
+          },
+          {
+            "icon": "🔨",
+            "title": "工程实践",
+            "detail": "亲手搭建了多页面网站，掌握了Flex和Grid复合布局。"
+          },
+          {
+            "icon": "🛠️",
+            "title": "调试技巧",
+            "detail": "学会了使用F12排查样式问题，并优化资源加载。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "type": "content",
+      "content": {
+        "title": "常见问题 (FAQ) - 1",
+        "subtitle": "Common Hurdles for Beginners",
+        "body": [
+          {
+            "type": "definition",
+            "text": "Q: 为什么我的背景图不显示？\nA: 检查路径是否正确。如果你在 css/style.css 里写，路径应该是 ../img/bg.jpg。"
+          },
+          {
+            "type": "definition",
+            "text": "Q: 导航条在手机上乱码/错位了？\nA: 检查是否漏掉了 <meta name='viewport'>，这是移动端布局的核心。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "type": "content",
+      "content": {
+        "title": "常见问题 (FAQ) - 2",
+        "subtitle": "Common Hurdles for Beginners",
+        "body": [
+          {
+            "type": "definition",
+            "text": "Q: 感觉自己写的代码太乱，怎么优化？\nA: 尝试提取公共样式（如 .btn, .section-title）。学会给代码加注释，这不仅是给别人看，更是给自己看。"
+          }
+          ,
+          {
+            "type": "definition",
+            "text": "Q: 学完这一章，我能去找工作了吗？\nA: 你已经具备了制作静态门户的能力！下一步建议学习交互逻辑（JS进阶）和数据交互，那是通往初级开发者的必经之路。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s41",
+      "type": "content",
+      "content": {
+        "title": "实战作业：你的任务",
+        "subtitle": "Home Assignment",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "请在接下来的一周内，独立完成“游戏天地”的首页制作。"
+          },
+          {
+            "type": "highlight",
+            "text": "评分标准：\n1. 结构清晰（有Header, Main, Footer）\n2. 至少包含 6 张游戏卡片布局\n3. 导航栏具备 Hover 特效\n4. 网页在手机上能够正常扫描浏览"
+          },
+          {
+            "type": "tip",
+            "text": "💡 勇于尝试！即使最初不好看，代码运行起来就是胜利。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s42",
+      "type": "section",
+      "content": {
+        "section": "06",
+        "icon": "✨",
+        "title": "未来已来",
+        "subtitle": "Web 3.0 与 AI 时代的网页设计"
+      }
+    },
+    {
+      "id": "s43",
+      "type": "bullets",
+      "content": {
+        "title": "AI 辅助开发的技巧",
+        "subtitle": "Developing with AI Tools",
+        "layout": "list",
+        "items": [
+          {
+            "title": "生成原型图",
+            "detail": "利用 Midjourney 生成网站 UI 灵感图，快速确定配色。"
+          },
+          {
+            "title": "代码纠错",
+            "detail": "把报错信息直接发给 ChatGPT/Claude，它们能极快地定位语法错误。"
+          },
+          {
+            "title": "填充素材",
+            "detail": "使用 AI 生成测试用的占位文字和无版权图片，加速项目演示。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s44",
+      "type": "content",
+      "content": {
+        "title": "什么是“微前端”？（视野拓展）",
+        "subtitle": "Micro-Frontends Overview",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "当“游戏天地”变得像“腾讯游戏”那么大时，单体结构就撑不住了。"
+          },
+          {
+            "type": "definition",
+            "text": "微前端就像把一个巨大的拼图拆成几个独立的小拼图：\n- 充值系统由 A 团队负责\n- 游戏库由 B 团队负责\n- 社区由 C 团队负责\n各团队技术栈可以不同，最后无缝拼在一起。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s45",
+      "type": "content",
+      "content": {
+        "title": "性能优化的“三个1”目标",
+        "subtitle": "Performance Goals",
+        "body": [
+          {
+            "type": "highlight",
+            "text": "1. 1秒内显示：首屏关键内容必须在1秒内渲染完毕。\n2. 1次请求：尽量合并小图标到雪碧图（或用SVG），减少HTTP连接数。\n3. 1MB以内：初始加载的资源总量控制在1MB以内，适应移动网络。"
+          },
+          {
+            "type": "paragraph",
+            "text": "加载速度直接影响留存率。玩家是没耐心的，多等一秒就会关掉网页。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s46",
+      "type": "content",
+      "content": {
+        "title": "Web 安全基础：本章提醒",
+        "subtitle": "Security Basics",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在制作反馈表单时，一定要记住："
+          },
+          {
+            "type": "warning",
+            "text": "⚠️ 永远不要信任用户输入的内容！\n\n- 前端要校验：防止垃圾信息攻击。\n- 后端要过滤：防止 SQL 注入和 XSS 跨站脚本攻击。\n虽然我们目前在学前端，但安全意识要从第一行代码抓起。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s47",
+      "type": "bullets",
+      "content": {
+        "title": "开发者资源推荐",
+        "subtitle": "Resources to Bookmark",
+        "layout": "grid",
+        "items": [
+          {
+            "icon": "📖",
+            "title": "MDN Web Docs",
+            "detail": "Web开发的“新华字典”，最权威、最详尽。"
+          },
+          {
+            "icon": "🎨",
+            "title": "Dribbble",
+            "detail": "找设计灵感的圣地。看看顶尖设计师如何处理布局和色彩。"
+          },
+          {
+            "icon": "📦",
+            "title": "Can I Use",
+            "detail": "查询CSS/JS新特性在各版本浏览器中的支持程度。"
+          },
+          {
+            "icon": "🏗️",
+            "title": "W3Schools",
+            "detail": "非常适合初学者的互动练习平台。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s48",
+      "type": "summary",
+      "content": {
+        "title": "全章核心回顾",
+        "points": [
+          "网站开发不仅仅是敲代码，更是一套从需求、规划、设计到实现的系统工程。",
+          "项目管理五步走：需求、规划、开发、测试、发布。每一步都不可或缺。",
+          "“游戏天地”实战中，我们复习了 Flex 布局、Grid 网格以及响应式媒体查询的核心用法。",
+          "良好的文件组织结构和代码风格（如变量命名、注释）是区分专业与业余的标志。",
+          "互联网是不断进化的，保持对 AI、PWA 等新技术的敏感度是开发者的核心竞争力。"
+        ]
+      }
+    },
+    {
+      "id": "s49",
+      "type": "quote",
+      "content": {
+        "quote": "Stay hungry, stay foolish. The best way to learn Web Development is to build something.",
+        "author": "Steve Jobs (Modified for Web)",
+        "role": "Encouragement",
+        "context": "学习Web开发的最好方法，就是亲手去做一个东西。"
+      }
+    },
+    {
+      "id": "s50",
+      "type": "thankyou",
+      "content": {
+        "title": "圆满完成！",
+        "subtitle": "Course Completed!",
+        "message": "恭喜你！你已经掌握了从创意到成品的 Web 应用开发全流程。\n\n这不仅是本章的结束，更是你职业生涯的开始。\n请记住，每一个复杂的网站都是由最基础的 HTML/CSS 堆砌而成的。\n只要你保持好奇心，不断实战，未来必属于你！",
+        "contact": "teacher@example.edu.cn",
+        "nextClass": "进阶课程：深入 JavaScript 异步编程与后端接口对接"
+      }
+    }
+  ]
+}

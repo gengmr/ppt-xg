@@ -1,0 +1,1305 @@
+{
+  "meta": {
+    "course": "网页设计与制作（HTML5+CSS3+JavaScript）",
+    "chapter": "第6章",
+    "title": "CSS3进阶",
+    "subtitle": "Advanced CSS3: Selectors, Box Model, Layout & Effects",
+    "instructor": "主讲教师",
+    "department": "计算机科学与技术学院",
+    "school": "石家庄信息工程技术学院",
+    "semester": "2026年春季学期",
+    "duration": 90,
+    "version": "1.0.0",
+    "lastModified": "2026-03-12"
+  },
+  "theme": {
+    "primaryColor": "#1e40af",
+    "accentColor": "#06b6d4",
+    "backgroundColor": "#0f172a"
+  },
+  "slides":[
+    {
+      "id": "s01",
+      "type": "cover",
+      "content": {
+        "courseTitle": "网页设计与制作（HTML5+CSS3+JavaScript）",
+        "chapterTitle": "第6章 · Chapter 06",
+        "title": "CSS3进阶核心技术",
+        "subtitle": "Advanced CSS3: Selectors, Box Model, Layout & Effects",
+        "instructor": "主讲教师",
+        "school": "石家庄信息工程技术学院",
+        "semester": "2026年春季学期",
+        "tags":[
+          "高级选择器",
+          "盒模型",
+          "网页布局",
+          "浮动与定位",
+          "CSS3特效",
+          "样式优先级"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "type": "agenda",
+      "content": {
+        "title": "本章大纲",
+        "items":[
+          {
+            "index": "01",
+            "title": "CSS3高级选择器",
+            "subtitle": "精准定位页面元素的利器（后代、子代、兄弟、属性选择器）"
+          },
+          {
+            "index": "02",
+            "title": "CSS3布局：盒模型",
+            "subtitle": "网页布局的基石（Content, Padding, Border, Margin）"
+          },
+          {
+            "index": "03",
+            "title": "CSS3布局：浮动与定位",
+            "subtitle": "打破标准文档流的排列限制"
+          },
+          {
+            "index": "04",
+            "title": "CSS3高级属性",
+            "subtitle": "显示模式、溢出处理与炫酷特效（圆角、阴影、动画）"
+          },
+          {
+            "index": "05",
+            "title": "CSS3样式的优先级",
+            "subtitle": "解决样式冲突的“游戏规则”与权重计算"
+          },
+          {
+            "index": "06",
+            "title": "综合实践",
+            "subtitle": "中华美食网站实战与巩固练习"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "type": "section",
+      "content": {
+        "section": "01",
+        "icon": "🎯",
+        "title": "CSS3高级选择器",
+        "subtitle": "指哪打哪！精准定位页面中任何一个细微元素的利器"
+      }
+    },
+    {
+      "id": "s04",
+      "type": "bullets",
+      "content": {
+        "title": "温故知新：基础选择器回顾",
+        "subtitle": "Basic Selectors Review",
+        "layout": "grid",
+        "items":[
+          {
+            "icon": "🏷️",
+            "title": "标签选择器",
+            "subtitle": "直接使用HTML标签名",
+            "detail": "例如：p { color: red; }\n选中页面内所有的 <p> 标签，将文字变为红色。作用范围极广。",
+            "badge": "基础"
+          },
+          {
+            "icon": "🆔",
+            "title": "ID选择器",
+            "subtitle": "以 # 开头",
+            "detail": "例如：#header { font-size: 20px; }\n通过元素的 id 属性定位，ID在同一个页面中必须唯一。",
+            "badge": "唯一标识"
+          },
+          {
+            "icon": "📦",
+            "title": "类选择器",
+            "subtitle": "以 . 开头",
+            "detail": "例如：.btn { background: blue; }\n通过元素的 class 属性定位，最常用的复用样式方案。",
+            "badge": "最常用"
+          },
+          {
+            "icon": "👥",
+            "title": "群组选择器",
+            "subtitle": "使用逗号 , 分隔",
+            "detail": "例如：h1, h2, h3 { font-weight: bold; }\n同时选中多个不同的元素，应用同一套样式。",
+            "badge": "批量应用"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "type": "content",
+      "content": {
+        "title": "为什么需要“高级选择器”？",
+        "subtitle": "Why Do We Need Advanced Selectors?",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "在真实的网页开发中，HTML结构往往层级嵌套非常深。\n如果我们只用基础选择器（如类或标签），会导致几个严重的问题："
+          },
+          {
+            "type": "warning",
+            "text": "1. 命名灾难：为了选中特定的元素，我们不得不给几乎每一个标签起一个 class 名字，导致代码臃肿。\n2. 结构破坏：样式与结构高度耦合，如果HTML结构微调，CSS可能失效。"
+          },
+          {
+            "type": "highlight",
+            "text": "🎯 解决方案：使用关系型选择器（高级选择器）！\n通过元素之间的“亲戚关系”（父子、祖孙、兄弟）或“特征属性”来锁定目标元素，无需额外增加 class 名。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "type": "code",
+      "content": {
+        "title": "后代选择器：祖孙三代一网打尽",
+        "subtitle": "Descendant Selector",
+        "language": "html",
+        "code": "<style>\n  /* 语法：祖先元素 后代元素 (中间用【空格】分隔) */\n  .nav a {\n    color: red;\n  }\n</style>\n\n<div class=\"nav\">\n  <!-- 直接子元素：变红 -->\n  <a href=\"#\">首页</a>\n  <ul>\n    <li>\n      <!-- 孙子元素：变红 -->\n      <a href=\"#\">关于我们</a> \n    </li>\n  </ul>\n</div>\n\n<!-- 在.nav外面的a标签：不变色 -->\n<a href=\"#\">外部链接</a>",
+        "explanation":[
+          {
+            "line": "2-4",
+            "text": "空格代表“里面”的意思。选中 .nav 内部的【所有】 <a> 标签。"
+          },
+          {
+            "line": "9-13",
+            "text": "无论嵌套多深（儿子、孙子、曾孙），只要在 .nav 内部，统统生效。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "type": "code",
+      "content": {
+        "title": "子代选择器：只管亲儿子",
+        "subtitle": "Child Selector",
+        "language": "html",
+        "code": "<style>\n  /* 语法：父元素 > 子元素 (中间用【大于号】分隔) */\n  .nav > a {\n    color: blue;\n  }\n</style>\n\n<div class=\"nav\">\n  <!-- 直接子元素（儿子）：变蓝 -->\n  <a href=\"#\">我是直系儿子</a>\n  <ul>\n    <li>\n      <!-- 孙子元素：不变色！ -->\n      <a href=\"#\">我是孙子</a> \n    </li>\n  </ul>\n</div>",
+        "explanation":[
+          {
+            "line": "2-4",
+            "text": "> 符号代表“直接子元素”。只选中作为亲儿子的标签。"
+          },
+          {
+            "line": "13-14",
+            "text": "被 ul 和 li 隔开的 a 标签是“孙子”，不满足直接子元素的条件，因此不会变色。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "type": "comparison",
+      "content": {
+        "title": "对比：后代选择器 vs 子代选择器",
+        "subtitle": "Descendant vs Child",
+        "left": {
+          "label": "空格（后代选择器）",
+          "icon": "🌳",
+          "color": "blue",
+          "items":[
+            "符号形式：A B",
+            "作用范围：A内部的全部B",
+            "穿透性：极强，无视嵌套深度",
+            "常用于：统一某个模块内部所有同类元素的样式",
+            "风险：如果嵌套过深，可能会误伤不需要选中的元素"
+          ]
+        },
+        "right": {
+          "label": "大于号（子代选择器）",
+          "icon": "👨‍👦",
+          "color": "green",
+          "items":[
+            "符号形式：A > B",
+            "作用范围：必须是A的直接子元素B",
+            "穿透性：无，只作用于第一层级",
+            "常用于：结构严谨的导航栏、列表，防止影响内部嵌套的子列表",
+            "优点：控制精确，不会发生误伤"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s09",
+      "type": "code",
+      "content": {
+        "title": "相邻兄弟选择器：只影响紧挨着的下铺兄弟",
+        "subtitle": "Adjacent Sibling Selector",
+        "language": "html",
+        "code": "<style>\n  /* 语法：元素1 + 元素2 (中间用【加号】分隔) */\n  h2 + p {\n    color: green;\n    font-weight: bold;\n  }\n</style>\n\n<div>\n  <p>我是段落1（不变）</p>\n  <h2>我是标题</h2>\n  <p>我是段落2（变绿！因为紧挨着h2后面）</p>\n  <p>我是段落3（不变，中间隔了别人）</p>\n</div>",
+        "explanation":[
+          {
+            "line": "2-5",
+            "text": "+ 号代表选中【紧跟在元素1后面】的元素2。"
+          },
+          {
+            "line": "12",
+            "text": "段落2紧挨着h2出现，且是h2的弟弟，被成功选中。"
+          },
+          {
+            "line": "10,13",
+            "text": "段落1是哥哥（在前面），段落3不紧挨着，都不会生效。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "type": "code",
+      "content": {
+        "title": "补充：通用兄弟选择器",
+        "subtitle": "General Sibling Selector",
+        "language": "html",
+        "code": "<style>\n  /* 语法：元素1 ~ 元素2 (中间用【波浪号】分隔) */\n  h2 ~ p {\n    color: purple;\n  }\n</style>\n\n<div>\n  <p>我是段落1（不变）</p>\n  <h2>我是标题</h2>\n  <p>我是段落2（变紫！）</p>\n  <span>我是个干扰元素</span>\n  <p>我是段落3（变紫！）</p>\n</div>",
+        "explanation":[
+          {
+            "line": "2-4",
+            "text": "~ 号代表选中【元素1后面的所有匹配的兄弟元素】，不管有没有紧挨着。"
+          },
+          {
+            "line": "11,13",
+            "text": "段落2和段落3都在h2的后面，且处于同一层级（亲兄弟），即使被span隔开也全部生效。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "type": "code",
+      "content": {
+        "title": "属性选择器：靠特征找人",
+        "subtitle": "Attribute Selectors",
+        "language": "html",
+        "code": "<style>\n  /* 1. 拥有某个属性即选中 */\n[disabled] { background: #ccc; }\n\n  /* 2. 属性等于特定的值 */\n  input[type=\"password\"] { border: 2px solid red; }\n</style>\n\n<form>\n  <!-- 生效：拥有disabled属性 -->\n  <button disabled>提交按钮(不可用)</button>\n  <button>重置按钮</button>\n\n  <br><br>\n  \n  <input type=\"text\" placeholder=\"用户名\">\n  <!-- 生效：type属性等于password -->\n  <input type=\"password\" placeholder=\"密码\">\n</form>",
+        "explanation":[
+          {
+            "line": "2",
+            "text": "[属性名]：只要HTML标签上挂有这个属性就选中。常用于表单禁用状态。"
+          },
+          {
+            "line": "5",
+            "text": "元素[属性名=\"值\"]：非常实用！尤其在表单中，用于区分输入框是文本框、密码框还是单选框。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "type": "table",
+      "content": {
+        "title": "属性选择器的进阶匹配模式",
+        "subtitle": "Advanced Attribute Matching",
+        "headers":[
+          "语法形式",
+          "匹配逻辑",
+          "代码示例",
+          "常用场景"
+        ],
+        "rows": [
+          [
+            "[attr^=\"val\"]",
+            "以指定值【开头】",
+            "a[href^=\"https\"]",
+            "选中所有安全的外部链接并添加特定图标"
+          ],
+          [
+            "[attr$=\"val\"]",
+            "以指定值【结尾】",
+            "img[src$=\".png\"]",
+            "选中所有PNG格式的图片"
+          ],
+          [
+            "[attr*=\"val\"]",
+            "【包含】指定的子字符串",
+            "[class*=\"icon-\"]",
+            "选中类名包含 icon- 的所有图标元素"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "type": "summary",
+      "content": {
+        "title": "第一节小结：如何选择器的运用思路",
+        "points":[
+          "当你需要选中某个容器内全部的特定标签时，使用 【空格】后代选择器",
+          "当你只想控制直接的一级子元素，避免污染深层结构时，使用 【>】子代选择器",
+          "当你需要控制跟在某个元素后面的元素样式（如标题下的第一段落），使用 【+】相邻兄弟选择器",
+          "当你遇到表单元素，无法通过标签名区分时，使用 【[attr=\"value\"]】属性选择器"
+        ],
+        "nextChapter": null
+      }
+    },
+    {
+      "id": "s14",
+      "type": "section",
+      "content": {
+        "section": "02",
+        "icon": "📦",
+        "title": "CSS3布局：盒模型",
+        "subtitle": "网页布局的基石，万物皆是盒子"
+      }
+    },
+    {
+      "id": "s15",
+      "type": "content",
+      "content": {
+        "title": "什么是CSS盒模型？",
+        "subtitle": "What is the CSS Box Model?",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "在CSS的世界里，所有的HTML元素都可以看作是一个矩形的“盒子”。\n不论它是圆形、椭圆还是三角形外观，它占据的物理空间永远是一个矩形框。"
+          },
+          {
+            "type": "definition",
+            "text": "CSS盒模型（Box Model）本质上是一个包裹着每一个HTML元素的盒子架构。\n它决定了元素在网页中所占据的空间大小，以及它与其他元素之间的距离和关系。"
+          },
+          {
+            "type": "highlight",
+            "text": "🎁 拆解快递盒的比喻：\nContent（要寄的手机） → Padding（防震防撞的泡沫） → Border（纸箱的外壳） → Margin（纸箱与别的纸箱之间的间距）"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "type": "bullets",
+      "content": {
+        "title": "盒模型的四大金刚",
+        "subtitle": "The 4 Parts of the Box Model",
+        "layout": "cards",
+        "items":[
+          {
+            "icon": "📄",
+            "title": "Content (内容)",
+            "subtitle": "核心呈现区",
+            "detail": "盒子用来显示文本和图像的区域。\n通过 width 和 height 属性设置的就是这个区域的尺寸。\n它是盒子的心脏。",
+            "badge": "中心区"
+          },
+          {
+            "icon": "🛡️",
+            "title": "Padding (内边距)",
+            "subtitle": "内容与边框的缓冲",
+            "detail": "清除内容周围的区域，内边距是透明的。\n背景色会延伸到内边距区域。\n就像衣服的内衬，让文字不至于紧贴着边框。",
+            "badge": "内部缓冲"
+          },
+          {
+            "icon": "🖼️",
+            "title": "Border (边框)",
+            "subtitle": "盒子的边界",
+            "detail": "围绕在内边距和内容外的边框。\n可以设置粗细、样式（实线、虚线）和颜色。\n就像照片的相框，是盒子的实体边界。",
+            "badge": "实体边界"
+          },
+          {
+            "icon": "↔️",
+            "title": "Margin (外边距)",
+            "subtitle": "盒子与盒子的距离",
+            "detail": "清除边框外的区域，外边距是透明的，且不会受到背景色影响。\n决定了当前元素与其他元素之间的距离。\n就像房子与房子之间的过道。",
+            "badge": "外部隔离"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "type": "content",
+      "content": {
+        "title": "深入剖析：Content 与 Padding",
+        "subtitle": "Content and Padding Properties",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "设置盒子大小的基础属性：\n• width：设置内容的宽度\n• height：设置内容的高度\n• background-color：背景颜色（会填充Content和Padding区域）"
+          },
+          {
+            "type": "highlight",
+            "text": "Padding（内边距）的简写语法，顺时针法则：\npadding: 20px;            /* 上下左右全是20px */\npadding: 10px 20px;       /* 上下10px，左右20px */\npadding: 10px 20px 30px;  /* 上10px，左右20px，下30px */\npadding: 10px 20px 30px 40px; /* 上右下左（顺时针），依次设置 */"
+          },
+          {
+            "type": "tip",
+            "text": "新手提示：当发现文字紧挨着盒子的边沿，看起来很挤的时候，不要去调整宽高，直接增加 padding 就能让内容呼吸！"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "type": "code",
+      "content": {
+        "title": "深入剖析：Border 边框细节",
+        "subtitle": "Styling Borders",
+        "language": "css",
+        "code": "/* 边框必须包含三个要素：宽度(粗细)、样式(线条类型)、颜色 */\n.box {\n  /* 分开写 */\n  border-width: 2px;\n  border-style: solid; /* solid实线, dashed虚线, dotted点线 */\n  border-color: #ff0000;\n\n  /* 综合简写（最常用，无顺序要求） */\n  border: 2px solid red;\n\n  /* 也可以单独给某一条边设置 */\n  border-bottom: 5px dashed blue;\n  border-left: none; /* 去掉左边框 */\n}",
+        "explanation":[
+          {
+            "line": "5",
+            "text": "border-style 是必填项，如果只写宽度和颜色不写样式，边框是显示不出来的！"
+          },
+          {
+            "line": "9",
+            "text": "简写语法极大地减少了代码量，日常开发中99%的情况使用简写。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "type": "code",
+      "content": {
+        "title": "深入剖析：Margin 外边距技巧",
+        "subtitle": "The Magic of Margins",
+        "language": "css",
+        "code": ".box {\n  /* 外边距语法与Padding完全一样（顺时针法则） */\n  margin: 10px 20px 30px 40px;\n}\n\n/* 💡 经典技巧：盒子水平居中 */\n.container {\n  width: 800px; /* 必须有固定的宽度 */\n  margin: 0 auto; \n  /* 上下间距为0，左右间距自动(auto)平分剩余空间 */\n}",
+        "explanation":[
+          {
+            "line": "8-9",
+            "text": "margin: 0 auto; 是前端开发中最常用的居中手法。前提是这个元素必须是一个块级元素（如div），并且具有明确的 width。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "type": "content",
+      "content": {
+        "title": "一道必考的数学题：盒子的实际占据尺寸",
+        "subtitle": "Calculating Element Dimensions",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "当你在CSS中设置 width: 200px 时，很多人以为盒子在屏幕上就占200像素宽。\n这是新手的最大误区！"
+          },
+          {
+            "type": "warning",
+            "text": "在“标准盒模型”下：\n你设置的 width仅仅只是 内容区(Content) 的宽度！\n如果加了内边距和边框，盒子会被“撑大”！"
+          },
+          {
+            "type": "highlight",
+            "text": "📐 盒子在网页中实际占据宽度的公式：\n实际占据宽度 = width + 左padding + 右padding + 左border + 右border + 左margin + 右margin\n\n📐 盒子实际可见大小的公式（不含透明的margin）：\n可见宽度 = width + 左右padding + 左右border"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "type": "comparison",
+      "content": {
+        "title": "历史遗留问题：标准盒模型 vs IE怪异盒模型",
+        "subtitle": "Standard Box Model vs IE Box Model",
+        "left": {
+          "label": "标准盒模型 (W3C标准)",
+          "icon": "📏",
+          "color": "blue",
+          "items":[
+            "默认行为",
+            "width = 纯内容区宽度",
+            "添加 padding 和 border 会导致盒子实际体积变大",
+            "痛点：为了让盒子严格保持300px宽，加了20px padding后，必须去手动修改width为260px，计算非常痛苦"
+          ]
+        },
+        "right": {
+          "label": "怪异盒模型 (IE传统)",
+          "icon": "🧩",
+          "color": "orange",
+          "items":[
+            "早期IE浏览器的行为",
+            "width = 包含(内容 + padding + border)的总宽度",
+            "添加 padding 和 border 不会改变盒子总体积，只会向内挤压内容区域",
+            "意外的好处：设定好的盒子多大就是多大，非常符合人类直觉，布局不易错位"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s22",
+      "type": "code",
+      "content": {
+        "title": "拯救布局的终极神药：box-sizing",
+        "subtitle": "Controlling the Box Model",
+        "language": "css",
+        "code": "/* 默认的标准盒模型（会撑大盒子） */\n.box1 {\n  box-sizing: content-box;\n}\n\n/* 切换为怪异盒模型（不会撑大盒子，向内挤压） */\n.box2 {\n  box-sizing: border-box;\n}\n\n/* 💡 现代开发最佳实践：强制所有元素使用怪异盒模型 */\n/* 把它写在你每一个项目的最开头！ */\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}",
+        "explanation":[
+          {
+            "line": "7-9",
+            "text": "border-box 让 width 包含了 border 和 padding，极大地简化了响应式布局中的尺寸计算。"
+          },
+          {
+            "line": "14-17",
+            "text": "通配符*清除浏览器默认的内外边距，并将一切元素转为 border-box，这是目前业界公认的标准起手式代码。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "type": "content",
+      "content": {
+        "title": "避坑指南：Margin的塌陷现象",
+        "subtitle": "Margin Collapse Trap",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "外边距（Margin）在垂直方向上有一种特殊的合并机制，称为“外边距塌陷（Margin Collapse）”。"
+          },
+          {
+            "type": "warning",
+            "text": "现象一：兄弟元素垂直合并\n上面的盒子 margin-bottom: 30px; 下面的盒子 margin-top: 20px;\n它们之间的实际距离不是 50px，而是取最大值 30px！\n（注：水平方向的左右margin不会塌陷，会叠加）"
+          },
+          {
+            "type": "warning",
+            "text": "现象二：父子元素垂直塌陷\n父盒子里面有个子盒子，给子盒子设置 margin-top: 50px;\n子盒子没有往下走，反而是父盒子带着子盒子一起往下掉了50px！"
+          },
+          {
+            "type": "tip",
+            "text": "解决父子塌陷的常用方法：\n1. 给父元素增加透明的边框（border: 1px solid transparent）\n2. 给父元素增加内边距（padding-top: 1px）\n3. 给父元素开启 BFC（触发块级格式化上下文，如 overflow: hidden）"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "type": "section",
+      "content": {
+        "section": "03",
+        "icon": "🧩",
+        "title": "CSS3布局：浮动与定位",
+        "subtitle": "如何让元素脱离常规束缚，去到想去的地方"
+      }
+    },
+    {
+      "id": "s25",
+      "type": "content",
+      "content": {
+        "title": "基础概念：标准文档流",
+        "subtitle": "Normal Document Flow",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "在不写任何布局CSS（没有浮动、没有定位）的情况下，网页元素会按照“标准文档流”排布："
+          },
+          {
+            "type": "highlight",
+            "text": "规则1：块级元素（div, p, h1, ul等）\n独占一行，从上到下垂直排列。就像水流一样，从页面顶端向下流淌。"
+          },
+          {
+            "type": "highlight",
+            "text": "规则2：行内元素（span, a, strong等）和行内块元素（img, input等）\n在一行内从左到右水平排列，直到一行排满，才会换行。"
+          },
+          {
+            "type": "paragraph",
+            "text": "问题来了：如果我们想让两个<div>（块级元素）水平并排显示，该怎么办？\n→ 这就需要使用布局技术来“打破”标准流！"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "type": "content",
+      "content": {
+        "title": "浮动（Float）：最初为文字环绕而生",
+        "subtitle": "Understanding Float",
+        "body":[
+          {
+            "type": "definition",
+            "text": "float 属性的最初设计目的，是为了实现报纸上常见的“图文混排（文字环绕图片）”效果。\n但早期前端开发者发现它可以让块级元素并排显示，于是它成为了曾经统治前端十年的核心布局技术。"
+          },
+          {
+            "type": "paragraph",
+            "text": "浮动的核心特征：\n1. 脱离文档流：浮动的元素会“漂浮”在标准流的上面，不再占据原来的空间。\n2. 改变显示模式：任何元素一旦浮动，就会变成具备类似 inline-block 的特性，可以设置宽高，且不再独占一行。\n3. 互相贴靠：多个浮动元素排在一起时，会互相贴紧。空间不够时会自动换行。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "type": "code",
+      "content": {
+        "title": "浮动的基本使用",
+        "subtitle": "Float in Action",
+        "language": "html",
+        "code": "<style>\n  .box {\n    width: 200px;\n    height: 100px;\n  }\n  .left-box {\n    background: red;\n    float: left;  /* 向左浮动 */\n  }\n  .right-box {\n    background: blue;\n    float: right; /* 向右浮动 */\n  }\n</style>\n\n<div class=\"container\">\n  <!-- 这两个div将会在同一行显示，一左一右 -->\n  <div class=\"box left-box\"></div>\n  <div class=\"box right-box\"></div>\n</div>",
+        "explanation":[
+          {
+            "line": "8, 12",
+            "text": "float的可用值：left(左浮动)、right(右浮动)、none(不浮动，默认值)。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "type": "content",
+      "content": {
+        "title": "浮动带来的灾难：高度塌陷",
+        "subtitle": "The Float Collapse Problem",
+        "body":[
+          {
+            "type": "warning",
+            "text": "🚨 什么是高度塌陷？\n在标准流中，父盒子如果不设置高度，它的高度会被内部的子元素自动撑开。\n但是，当内部的所有子元素都设置了“浮动”后，子元素“飘”起来了，脱离了文档流。\n\n此时，父盒子会认为里面没有东西了，导致父盒子的高度变成 0 ！\n这就叫“高度塌陷”。"
+          },
+          {
+            "type": "paragraph",
+            "text": "高度塌陷的后果非常严重：\n紧跟在父盒子后面的其他页面元素，会直接钻到父盒子的底部，导致整个页面排版错乱、重叠。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "type": "code",
+      "content": {
+        "title": "拯救塌陷：清除浮动与 Clearfix",
+        "subtitle": "The Clearfix Hack",
+        "language": "css",
+        "code": "/* 方案1：给父盒子写死高度（不灵活，很少用） */\n\n/* 方案2：使用 overflow: hidden 触发 BFC（常用）*/\n.parent {\n  overflow: hidden; \n}\n\n/* 方案3：终极黑魔法 - clearfix 类（业界标准） */\n/* 把这段代码放到公共样式中 */\n.clearfix::after {\n  content: \"\";      /* 创建一个伪元素在末尾 */\n  display: block;   /* 必须是块级元素 */\n  clear: both;      /* 核心：清除左右两边的浮动影响 */\n}\n\n/* 使用时给塌陷的父盒子加上类名 */\n/* <div class=\"parent clearfix\"> ... </div> */",
+        "explanation":[
+          {
+            "line": "10-14",
+            "text": "clearfix 的原理是在父盒子的最后面自动加一堵隐形的“墙”，利用 clear: both 要求这堵墙两边不允许有浮动元素，从而硬生生地把父盒子撑开。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "type": "bullets",
+      "content": {
+        "title": "定位机制（Position）概览",
+        "subtitle": "Positioning Mechanisms",
+        "layout": "list",
+        "items":[
+          {
+            "icon": "📌",
+            "title": "static（静态定位）",
+            "subtitle": "元素的默认状态",
+            "detail": "按标准文档流排布。不能使用 top、left 等偏移属性，也没有 z-index 层级概念。"
+          },
+          {
+            "icon": "📍",
+            "title": "relative（相对定位）",
+            "subtitle": "相对于自己原来的位置移动",
+            "detail": "不脱离文档流，原来的空间仍被占据。主要用作绝对定位的“参考坐标系”。"
+          },
+          {
+            "icon": "🎯",
+            "title": "absolute（绝对定位）",
+            "subtitle": "脱离文档流，相对祖先移动",
+            "detail": "完全脱离文档流。相对于最近的一个带有非static定位的祖先元素进行移动。"
+          },
+          {
+            "icon": "⚓",
+            "title": "fixed（固定定位）",
+            "subtitle": "死死钉在屏幕上",
+            "detail": "脱离文档流。始终相对于浏览器可视窗口移动，页面滚动时它一动不动。"
+          },
+          {
+            "icon": "🧲",
+            "title": "sticky（粘性定位）",
+            "subtitle": "相对与固定的结合体",
+            "detail": "正常滚动时像relative，滚动到特定位置时像fixed吸附在屏幕边缘。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "type": "content",
+      "content": {
+        "title": "相对定位（Relative）：自娱自乐",
+        "subtitle": "Relative Positioning",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "当元素设置 position: relative; 时，它开启了相对定位。\n搭配四个偏移属性使用：top, bottom, left, right。"
+          },
+          {
+            "type": "highlight",
+            "text": "相对定位的两大特点：\n1. 它是相对于【自己原来在文档流中的位置】进行移动的。\n2. 它【不会脱离文档流】！它原来的坑位仍然保留在那里，别的元素无法占据它的位置。就好像它的“灵魂”出窍偏移了，但“肉体”还在原地占着座。"
+          },
+          {
+            "type": "tip",
+            "text": "日常开发中，很少单独使用 relative 来做大范围布局偏移，它最主要的作用是给 absolute 绝对定位当“父亲”（参考原点）。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "type": "code",
+      "content": {
+        "title": "绝对定位（Absolute）：拼爹时代",
+        "subtitle": "Absolute Positioning",
+        "language": "html",
+        "code": "<style>\n  .box {\n    position: absolute;\n    top: 50px;\n    left: 100px;\n  }\n</style>\n\n<div class=\"grandpa\">\n  <div class=\"parent\">\n    <div class=\"box\">我是绝对定位的盒子</div>\n  </div>\n</div>",
+        "explanation":[
+          {
+            "line": "3",
+            "text": "absolute 完全脱离文档流，不占原坑位，层级提高，会飘在其他元素上面。"
+          },
+          {
+            "line": "4-5",
+            "text": "这 50px 和 100px 是相对于谁移动的？\n规则：它会向外一层一层寻找祖先，谁有定位（relative/absolute/fixed），就以谁为起点。\n如果一直找到 html 标签都没有找到有定位的祖先，就以整个浏览器文档为起点！"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "type": "content",
+      "content": {
+        "title": "最经典的布局套路：子绝父相",
+        "subtitle": "Absolute Child, Relative Parent",
+        "body":[
+          {
+            "type": "highlight",
+            "text": "背诵口诀：“子绝父相”（子元素绝对定位，父元素相对定位）"
+          },
+          {
+            "type": "paragraph",
+            "text": "为什么是这种组合组合？\n\n1. 为什么要“子绝”？\n因为我们需要子元素在父盒子内部自由移动、甚至叠加（例如图片右上角的“HOT”角标），所以子元素必须脱离标准流使用绝对定位。\n\n2. 为什么要“父相”？\n为了把绝对定位的参考系限制在父盒子身上，父盒子必须要有定位。但父盒子不能使用 absolute，因为用了绝对定位父盒子也会脱离文档流，导致页面整体排版崩溃。所以父元素使用 relative 最合适：既能当参考系，又老老实实待在标准流里占位。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "type": "code",
+      "content": {
+        "title": "实战演示：右上角的角标",
+        "subtitle": "Action: Badge on a Card",
+        "language": "html",
+        "code": "<style>\n  .card {\n    position: relative; /* 父相：只提供参考原点，不移动 */\n    width: 200px;\n    height: 300px;\n    background: #eee;\n  }\n  \n  .badge {\n    position: absolute; /* 子绝：脱离文档流，任意飞 */\n    top: -10px;         /* 相对父盒子顶部往上凸出10px */\n    right: -10px;       /* 相对父盒子右侧往外凸出10px */\n    background: red;\n    color: white;\n    border-radius: 10px;\n    padding: 2px 8px;\n  }\n</style>\n\n<div class=\"card\">\n  <div class=\"badge\">HOT</div>\n  <img src=\"product.jpg\">\n</div>",
+        "explanation":[
+          {
+            "line": "11-12",
+            "text": "巧妙利用负值，可以让绝对定位的元素一半悬空在父盒子外面，极其常用的设计手法。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "type": "code",
+      "content": {
+        "title": "固定定位（Fixed）：任凭风浪起",
+        "subtitle": "Fixed Positioning",
+        "language": "css",
+        "code": "/* 常见场景：永远停靠在右下角的“回到顶部”按钮 */\n.back-to-top {\n  position: fixed;\n  bottom: 50px;\n  right: 50px;\n  width: 40px;\n  height: 40px;\n  background: #00bcd4;\n}\n\n/* 常见场景：固定在顶部的全局导航栏 */\n.header-nav {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%; /* 绝对/固定定位后元素默认由内容撑开，需要重新设定宽度 */\n  z-index: 999; /* 保证层级最高，不被页面其他内容遮挡 */\n}",
+        "explanation":[
+          {
+            "line": "3",
+            "text": "fixed 永远以【浏览器可视窗口】作为参考，与父元素没有任何关系。"
+          },
+          {
+            "line": "17",
+            "text": "z-index 仅对定位元素（非 static）生效，数字越大越靠上。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "type": "section",
+      "content": {
+        "section": "04",
+        "icon": "✨",
+        "title": "CSS3高级属性",
+        "subtitle": "从显示模式切换，到让人惊艳的视觉特效"
+      }
+    },
+    {
+      "id": "s37",
+      "type": "table",
+      "content": {
+        "title": "display：改变元素的基因属性",
+        "subtitle": "The Display Property",
+        "headers":[
+          "属性值",
+          "转换结果",
+          "特性描述",
+          "能否设置宽高"
+        ],
+        "rows": [[
+            "block",
+            "块级元素",
+            "独占一行，如 div, p默认如此",
+            "✅ 能"
+          ],[
+            "inline",
+            "行内元素",
+            "并排显示，内容撑开，如 span默认如此",
+            "❌ 不能"
+          ],[
+            "inline-block",
+            "行内块元素",
+            "兼顾两者：既能并排显示，又能设置尺寸",
+            "✅ 能"
+          ],[
+            "none",
+            "隐藏",
+            "元素在页面彻底消失，不占据任何空间",
+            "不适用"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "type": "comparison",
+      "content": {
+        "title": "面试必考：隐藏元素的两种方式对比",
+        "subtitle": "display:none vs visibility:hidden",
+        "left": {
+          "label": "display: none;",
+          "icon": "👻",
+          "color": "orange",
+          "items":[
+            "彻底消失",
+            "不占据文档流空间（原来的坑位会让出来）",
+            "引发重排（Reflow）和重绘，性能消耗大",
+            "子元素也会连带彻底隐藏",
+            "常用于：弹窗控制、标签页切换"
+          ]
+        },
+        "right": {
+          "label": "visibility: hidden;",
+          "icon": "🫥",
+          "color": "blue",
+          "items":[
+            "隐身不可见",
+            "依然占据原本的文档空间（占着茅坑不拉屎）",
+            "只引发重绘（Repaint），性能消耗较小",
+            "常用于：预留页面结构、鼠标悬停显示元素时防止页面抖动"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s39",
+      "type": "bullets",
+      "content": {
+        "title": "overflow：当盒子装不下内容时怎么办？",
+        "subtitle": "Handling Overflowing Content",
+        "layout": "grid",
+        "items":[
+          {
+            "icon": "🌊",
+            "title": "visible (默认)",
+            "subtitle": "任由溢出",
+            "detail": "内容会溢出盒子，继续显示在盒子外部，可能会覆盖下面的元素。",
+            "badge": "默认值"
+          },
+          {
+            "icon": "✂️",
+            "title": "hidden",
+            "subtitle": "无情裁剪",
+            "detail": "多出来的内容直接被一刀切掉，不可见。\n不仅能处理溢出，还能配合清除浮动、解决margin塌陷。",
+            "badge": "非常常用"
+          },
+          {
+            "icon": "📜",
+            "title": "scroll",
+            "subtitle": "强制滚动条",
+            "detail": "不管内容有没有溢出，都会强制显示水平和垂直滚动条框架。"
+          },
+          {
+            "icon": "↕️",
+            "title": "auto",
+            "subtitle": "智能滚动",
+            "detail": "内容不溢出正常显示；一旦溢出，自动出现滚动条供用户滑动查看。",
+            "badge": "用户友好"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "type": "code",
+      "content": {
+        "title": "cursor：自定义鼠标指针",
+        "subtitle": "Changing the Mouse Cursor",
+        "language": "css",
+        "code": "/* 把鼠标变成“点击手势”：暗示元素可以点击 */\n.btn {\n  cursor: pointer;  \n}\n\n/* 文本输入图标（工字型） */\n.text-area {\n  cursor: text;\n}\n\n/* 禁用标识（红圈斜杠）：暗示不可操作 */\n.disabled-btn {\n  cursor: not-allowed;\n}\n\n/* 十字星定位标 */\n.target {\n  cursor: crosshair;\n}",
+        "explanation":[
+          {
+            "line": "3",
+            "text": "pointer 是最常用的，给 a 标签以外的 div 加上点击事件时，强烈建议加上此样式以提升交互体验。"
+          }
+        ],
+        "output": "合理使用鼠标指针样式，极大地提升网页的无障碍体验和直观性。"
+      }
+    },
+    {
+      "id": "s41",
+      "type": "code",
+      "content": {
+        "title": "CSS3特效：border-radius 圆角魔法",
+        "subtitle": "Rounding Corners",
+        "language": "css",
+        "code": ".box {\n  width: 200px;\n  height: 200px;\n  background: #333;\n  \n  /* 基础用法：四周全是 10px 的圆角 */\n  border-radius: 10px;\n  \n  /* 变成一个完美的圆形（前提是正方形盒子） */\n  border-radius: 50%; \n}\n\n.pill {\n  width: 300px;\n  height: 50px;\n  background: blue;\n  \n  /* 胶囊形状（两端半圆）：给一个远大于高度一半的值 */\n  border-radius: 999px; \n}",
+        "explanation":[
+          {
+            "line": "10",
+            "text": "50% 技巧常用于制作用户头像。"
+          },
+          {
+            "line": "19",
+            "text": "999px 技巧常用于制作圆润的按钮或搜索框。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s42",
+      "type": "code",
+      "content": {
+        "title": "CSS3特效：box-shadow 盒子阴影",
+        "subtitle": "Creating Depth with Shadows",
+        "language": "css",
+        "code": "/* 语法：X轴偏移 Y轴偏移 模糊半径 扩散半径 颜色 */\n\n.card {\n  /* 经典柔和阴影：没有X偏移，向下偏10px，模糊20px，轻微透明黑 */\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);\n}\n\n.card-hover {\n  /* 内阴影（在前面加 inset） */\n  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);\n}\n\n.glowing-btn {\n  /* 发光效果：无偏移，大模糊，使用亮色系 */\n  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);\n}",
+        "explanation":[
+          {
+            "line": "5",
+            "text": "利用 rgba 设置半透明黑色作为阴影颜色是最常见的做法，能让阴影看起来更自然。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s43",
+      "type": "comparison",
+      "content": {
+        "title": "对比：opacity 与 rgba 透明度的区别",
+        "subtitle": "Opacity vs RGBA Alpha Channel",
+        "left": {
+          "label": "opacity 属性",
+          "icon": "👻",
+          "color": "blue",
+          "items":[
+            "语法：opacity: 0.5; (值从0到1)",
+            "作用于整个元素这个整体",
+            "内容、背景、边框同时变透明",
+            "【致命缺点】：子元素会被强行继承透明度，且子元素无法通过设置 opacity: 1 来恢复不透明！"
+          ]
+        },
+        "right": {
+          "label": "rgba() 颜色",
+          "icon": "🎨",
+          "color": "green",
+          "items":[
+            "语法：background: rgba(0,0,0, 0.5);",
+            "仅仅是对指定的颜色通道起作用",
+            "只让背景变透明，里面的文字和边框不受影响",
+            "【优点】：子元素不会受到背景色透明度的影响，适合做遮罩层、半透明菜单条。"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s44",
+      "type": "code",
+      "content": {
+        "title": "CSS3特效：transition 过渡动画",
+        "subtitle": "Smooth Transitions",
+        "language": "css",
+        "code": ".btn {\n  background: #3498db;\n  color: white;\n  width: 100px;\n  height: 40px;\n  \n  /* 语法：属性 持续时间 动画节奏 延迟 */\n  /* 告诉浏览器：当我的背景色和宽度发生改变时，请用0.3秒平滑过渡 */\n  transition: background 0.3s ease, width 0.3s ease;\n  \n  /* 或者偷懒的写法，监控所有属性： */\n  /* transition: all 0.3s ease; */\n}\n\n.btn:hover {\n  /* 鼠标悬停时触发状态改变 */\n  background: #2ecc71;\n  width: 120px;\n}",
+        "explanation":[
+          {
+            "line": "9",
+            "text": "transition必须写在元素本身的样式里，而不是 :hover 里。这样移入和移出鼠标时都会有动画效果。"
+          },
+          {
+            "line": "9",
+            "text": "ease 表示动画速度先快后慢，是最自然的物理节奏。其他还有 linear(匀速), ease-in(加速), ease-out(减速)。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s45",
+      "type": "bullets",
+      "content": {
+        "title": "CSS3特效：transform 2D变换",
+        "subtitle": "Transforming the DOM Space",
+        "layout": "grid",
+        "items":[
+          {
+            "icon": "↔️",
+            "title": "位移 translate()",
+            "subtitle": "硬件加速移动",
+            "detail": "transform: translate(50px, 100px);\n沿X和Y轴平移。常用 translate(-50%, -50%) 配合绝对定位实现元素完美居中。"
+          },
+          {
+            "icon": "🔄",
+            "title": "旋转 rotate()",
+            "subtitle": "指定角度",
+            "detail": "transform: rotate(45deg);\n顺时针旋转45度。常用于制作箭头展开/收起的动效。"
+          },
+          {
+            "icon": "🔍",
+            "title": "缩放 scale()",
+            "subtitle": "按比例放大缩小",
+            "detail": "transform: scale(1.2);\n整体放大1.2倍。非常适合做鼠标悬停卡片时的突出效果。"
+          },
+          {
+            "icon": "📐",
+            "title": "倾斜 skew()",
+            "subtitle": "扭曲形变",
+            "detail": "transform: skew(30deg, 0);\n沿X轴倾斜30度，常用于制作具有速度感的平行四边形UI。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s46",
+      "type": "section",
+      "content": {
+        "section": "05",
+        "icon": "⚖️",
+        "title": "CSS3样式的优先级",
+        "subtitle": "当样式发生冲突时，到底听谁的？"
+      }
+    },
+    {
+      "id": "s47",
+      "type": "content",
+      "content": {
+        "title": "样式冲突：谁来做主？",
+        "subtitle": "Resolving Style Conflicts",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "CSS的全称是“层叠样式表（Cascading Style Sheets）”。\n“层叠”一词完美概括了它的机制：多重样式可以叠加在一起，但当遇到同样的属性（比如都设置了color）发生冲突时，就必须有一套严格的打分规则来决定谁胜出。"
+          },
+          {
+            "type": "highlight",
+            "text": "宏观规则一：就近原则\n同样的选择器，写在代码后面（靠下）的，会覆盖写在前面（靠上）的。\n外部样式表 < 内部样式表 < 行内样式"
+          },
+          {
+            "type": "highlight",
+            "text": "宏观规则二：继承特性\n特定的样式（主要是文本相关的属性如 color, font-size）会自动传递给子孙元素。但继承的优先级是最低的！"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s48",
+      "type": "table",
+      "content": {
+        "title": "核心：优先级的权重计算规则",
+        "subtitle": "The Specificity Formula: 0, 0, 0, 0",
+        "headers":[
+          "优先级",
+          "选择器类型",
+          "权重值得分",
+          "说明"
+        ],
+        "rows": [[
+            "👑 最高",
+            "!important 标记",
+            "∞ (无穷大)",
+            "强行无视一切规则，不到万不得已不要用"
+          ],[
+            "第2级",
+            "行内样式 style=\"...\"",
+            "1, 0, 0, 0",
+            "写在HTML标签内部"
+          ],[
+            "第3级",
+            "ID选择器 #id",
+            "0, 1, 0, 0",
+            "拥有最高权重的正常选择器"
+          ],[
+            "第4级",
+            "类、伪类、属性选择器",
+            "0, 0, 1, 0",
+            ".class, :hover,[type]"
+          ],[
+            "第5级",
+            "标签名选择器",
+            "0, 0, 0, 1",
+            "div, p, span"
+          ],[
+            "👎 最低",
+            "通配符*、关系符(> +)、继承",
+            "0, 0, 0, 0",
+            "随时可被覆盖"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s49",
+      "type": "code",
+      "content": {
+        "title": "权重计算实战演练",
+        "subtitle": "Calculating Specificity - Practice",
+        "language": "css",
+        "code": "/* 我们要计算这些组合选择器的总分，从左到右比较每一位的数字大小 */\n\n/* 题型1： */\n#header .nav li { color: red; }\n/* 1个ID(0,1,0,0) + 1个类(0,0,1,0) + 1个标签(0,0,0,1) = 0,1,1,1 */\n\n/* 题型2： */\n.container ul.list li.item { color: blue; }\n/* 3个类(0,0,3,0) + 2个标签(0,0,0,2) = 0,0,3,2 */\n\n/* 题型3： */\n#header li.item { color: green; }\n/* 1个ID(0,1,0,0) + 1个类(0,0,1,0) + 1个标签(0,0,0,1) = 0,1,1,1 */\n\n/* 比较方法：先比第一位，一样大再比第二位...\n题型1 和 题型3 得分相同(0,1,1,1)，题型3写在后面，根据就近原则，最终颜色为 green。\n题型2 得分最高位是百位(3)，比不上题型1的千位(1)，所以哪怕它写得再长，也是失败的！ */",
+        "explanation":[
+          {
+            "line": "15-18",
+            "text": "记住：CSS权重不存在进位机制！10个类选择器（0,0,10,0）依然比不过1个ID选择器（0,1,0,0）。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s50",
+      "type": "content",
+      "content": {
+        "title": "慎用核武器：!important",
+        "subtitle": "The Danger of !important",
+        "body":[
+          {
+            "type": "definition",
+            "text": "语法：color: red !important;\n将它添加在任何CSS属性值的末尾，该属性就会瞬间获得最高绝对统治权，覆盖一切其他来源的样式（包括行内样式）。"
+          },
+          {
+            "type": "warning",
+            "text": "为什么说它是危险的核武器？\n如果在一个项目中大量使用 !important，整个优先级系统将会崩溃。\n后期维护时，如果你想修改一个已经带了 !important 的样式，你毫无办法，只能写代码更长的 !important，最终陷入泥潭。"
+          },
+          {
+            "type": "tip",
+            "text": "合理的使用场景：\n1. 覆盖第三方UI组件库（如Bootstrap、ElementUI）里的顽固样式时。\n2. 定义全局唯一的辅助类，例如 .hidden { display: none !important; }"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s51",
+      "type": "section",
+      "content": {
+        "section": "06",
+        "icon": "🛠️",
+        "title": "综合实践",
+        "subtitle": "实战演练：中华美食网站设计与课后练习"
+      }
+    },
+    {
+      "id": "s52",
+      "type": "bullets",
+      "content": {
+        "title": "项目规划：中华美食网站布局",
+        "subtitle": "Project: Chinese Food Website Structure",
+        "layout": "list",
+        "items":[
+          {
+            "icon": "🏗️",
+            "title": "顶部导航栏（Header）",
+            "subtitle": "全局统一头部",
+            "detail": "使用固定定位 position: fixed 贴紧顶部；内部使用 display: inline-block 结合左右 padding 实现导航项横向排列；鼠标悬停 hover 改变背景色。"
+          },
+          {
+            "icon": "🖼️",
+            "title": "主视觉区（Banner）",
+            "subtitle": "大图展示区",
+            "detail": "给容器设置高度和居中的背景大图。文字标题使用绝对定位 position: absolute 置于图片中央，利用 transform: translate(-50%, -50%) 完美居中。"
+          },
+          {
+            "icon": "🍱",
+            "title": "美食列表展示（Content）",
+            "subtitle": "图文卡片排版",
+            "detail": "使用 float: left 让多个美食卡片在一行并排显示；父级务必添加 .clearfix 清除浮动；每张卡片使用 border-radius 实现圆角，box-shadow 实现投影效果；鼠标悬停配合 transition 实现微微上浮动画。"
+          },
+          {
+            "icon": "📜",
+            "title": "底部页脚（Footer）",
+            "subtitle": "版权信息区",
+            "detail": "简单文字居中 text-align: center；使用深色背景；由于上方清除了浮动，Footer 能够稳稳地停留在页面最下方。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s53",
+      "type": "code",
+      "content": {
+        "title": "实战代码片段：美食卡片特效",
+        "subtitle": "Food Card Effect Code",
+        "language": "css",
+        "code": "/* 卡片基础布局 */\n.food-card {\n  float: left;\n  width: 300px;\n  margin: 15px;\n  background: #fff;\n  border-radius: 8px;\n  overflow: hidden; /* 防止里面的图片超出圆角范围 */\n  \n  /* 初始阴影与动画过渡配置 */\n  box-shadow: 0 4px 6px rgba(0,0,0,0.1);\n  transition: all 0.3s ease;\n}\n\n/* 悬停时的视觉特效 */\n.food-card:hover {\n  /* Y轴上浮10像素 */\n  transform: translateY(-10px);\n  /* 阴影加重且变大，产生立体感 */\n  box-shadow: 0 15px 25px rgba(0,0,0,0.2);\n}",
+        "explanation":[
+          {
+            "line": "8",
+            "text": "overflow: hidden 是做圆角卡片时极易被忽略的细节。图片默认是直角的，如果不裁剪，图片的直角会盖住父盒子的圆角。"
+          },
+          {
+            "line": "12",
+            "text": "all 代表监听该元素所有的变化（包括transform和阴影），用0.3秒平滑完成变化。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s54",
+      "type": "bullets",
+      "content": {
+        "title": "课后练习题：查漏补缺",
+        "subtitle": "Self-Assessment",
+        "layout": "grid",
+        "items":[
+          {
+            "icon": "📝",
+            "title": "计算题 1",
+            "subtitle": "盒模型尺寸",
+            "detail": "一个 div 的 CSS 为 width: 100px; padding: 10px; border: 2px solid; margin: 5px; 在标准盒模型下，它实际占据页面的总宽度是多少？"
+          },
+          {
+            "icon": "📝",
+            "title": "计算题 2",
+            "subtitle": "权重比较",
+            "detail": "div#main.content p 和 #main .content p 相比，哪一个的选择器权重更高？"
+          },
+          {
+            "icon": "💻",
+            "title": "上机实操 1",
+            "subtitle": "浮动排版",
+            "detail": "使用 HTML+CSS 制作一个标准的三栏布局（左中右并排显示，左右宽度固定，中间自适应，必须自己手写清除浮动类）。"
+          },
+          {
+            "icon": "💻",
+            "title": "上机实操 2",
+            "subtitle": "固定导航条",
+            "detail": "实现一个顶部导航栏，要求页面向下滑动时，导航栏始终固定在窗口顶部不随之滚动，并带有微透明黑色背景。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s55",
+      "type": "summary",
+      "content": {
+        "title": "本章小结",
+        "points":[
+          "高级选择器提高了样式控制的精确度。掌握后代(空格)、子代(>)、兄弟(+)以及属性([])选择器，能让我们极大精简HTML代码中的class命名。",
+          "盒模型是CSS布局的基础。务必牢记 width 只是内容宽度，理解 padding 撑内部、margin 隔外部的特性。推荐全局使用 box-sizing: border-box 来降低计算复杂度。",
+          "浮动(float)能让块级元素并排显示，但别忘了在父级使用 clearfix 清除浮动，否则会导致高度塌陷引发灾难性排版错误。",
+          "定位机制中，“子绝父相”是最重要的空间控制手段；固定定位能让元素钉在屏幕特定位置不随内容滚动。",
+          "掌握CSS3高级属性，如 display 模式切换、圆角(border-radius)、阴影(box-shadow)以及平滑的过渡动画(transition)，能让网站的质感产生质的飞跃。",
+          "样式冲突通过优先级解决。遵循继承最低、就近原则，并通过“0,0,0,0”规则精确计算权重，慎用 !important。"
+        ],
+        "nextChapter": {
+          "chapter": "第七章",
+          "title": "JavaScript与前端开发技术",
+          "preview": "为网页注入灵魂：从静态呈现走向动态交互，探索变量、函数、DOM操作与现代前端框架。"
+        }
+      }
+    },
+    {
+      "id": "s56",
+      "type": "thankyou",
+      "content": {
+        "title": "感谢聆听",
+        "subtitle": "CSS3的魔法才刚刚开始",
+        "message": "CSS 是一门易学难精的语言，布局和特性的细微差别往往决定了页面的质量。\n\n请务必多写代码、多按 F12 调试盒模型，把“子绝父相”和“清除浮动”变成刻在骨子里的肌肉记忆。\n遇到排版错乱时不要慌，检查一下你的盒子多大、定位基准是谁。",
+        "contact": "如遇到布局疑难杂症，请随时在课程群截图讨论",
+        "nextClass": "下次课预告：第7章 JavaScript与前端开发技术"
+      }
+    }
+  ]
+}
