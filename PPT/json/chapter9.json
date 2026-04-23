@@ -1,0 +1,1133 @@
+{
+  "meta": {
+    "course": "网页设计与制作（HTML5+CSS3+JavaScript）",
+    "chapter": "第九章",
+    "title": "用 Dreamweaver 制作网页",
+    "subtitle": "Web Development with Adobe Dreamweaver",
+    "instructor": "主讲教师",
+    "department": "信息工程学院",
+    "school": "电子信息职业技术学院",
+    "semester": "2026年春季学期",
+    "duration": 90,
+    "version": "5.0.0",
+    "lastModified": "2026-03-12"
+  },
+  "theme": {
+    "primaryColor": "#211b33",
+    "accentColor": "#00e5ff",
+    "backgroundColor": "#0a0a0f"
+  },
+  "slides": [
+    {
+      "id": "s01",
+      "type": "cover",
+      "content": {
+        "courseTitle": "网页设计与制作",
+        "chapterTitle": "第九章 · Chapter 09",
+        "title": "用 Dreamweaver 制作网页",
+        "subtitle": "从代码走向可视化高效开发",
+        "instructor": "主讲教师",
+        "school": "电子信息职业技术学院",
+        "semester": "2026年春季学期",
+        "tags": [
+          "Dreamweaver CC",
+          "可视化编辑",
+          "站点管理",
+          "CSS设计器",
+          "响应式布局"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "type": "agenda",
+      "content": {
+        "title": "本章学习大纲",
+        "items": [
+          {
+            "index": "01",
+            "title": "认识 Dreamweaver 界面",
+            "subtitle": "熟悉你的创作舞台"
+          },
+          {
+            "index": "02",
+            "title": "本地站点的搭建与管理",
+            "subtitle": "网页开发的「地基」"
+          },
+          {
+            "index": "03",
+            "title": "可视化网页编辑技巧",
+            "subtitle": "文本、图像与多媒体的拖拽艺术"
+          },
+          {
+            "index": "04",
+            "title": "掌握 CSS 设计器",
+            "subtitle": "图形化配置复杂的样式规则"
+          },
+          {
+            "index": "05",
+            "title": "高级功能与高效开发",
+            "subtitle": "Emmet、Bootstrap与响应式设计"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "type": "section",
+      "content": {
+        "section": "01",
+        "icon": "🎨",
+        "title": "Dreamweaver 界面预览",
+        "subtitle": "所谓「工欲善其事，必先利其器」"
+      }
+    },
+    {
+      "id": "s04",
+      "type": "content",
+      "content": {
+        "title": "初识 Dreamweaver：不仅仅是编辑器",
+        "subtitle": "More Than Just a Code Editor",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "Adobe Dreamweaver（简称DW）是全球最著名的「所见即所得」（WYSIWYG）网页制作工具。\n它最大的魅力在于：你可以像写 Word 文档一样拖拽元素，同时它会精准地为你生成 HTML 代码。"
+          },
+          {
+            "type": "highlight",
+            "text": "🌟 核心定位：\n1. 对于初学者：提供直观的可视化界面，降低 HTML/CSS 学习门槛。\n2. 对于专业开发者：提供强大的代码提示、站点管理和响应式预览功能。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 学习建议：虽然 DW 提供了可视化操作，但请始终保持「拆分视图」，观察你的每一个点击动作生成了什么样的代码。这才是掌握网页开发的捷径。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "type": "bullets",
+      "content": {
+        "title": "工作区五大核心面板",
+        "subtitle": "The Main Interface Components",
+        "layout": "grid",
+        "items": [
+          {
+            "icon": "🖼️",
+            "title": "文档窗口",
+            "subtitle": "Document Window",
+            "detail": "创作的核心区域。支持「代码」、「拆分」、「设计」和「实时」四种模式。\n「实时」模式基于 Webkit 内核，所见即所得。",
+            "badge": "最核心"
+          },
+          {
+            "icon": "🛠️",
+            "title": "插入面板",
+            "subtitle": "Insert Panel",
+            "detail": "各类标签的仓库。点击即可插入图像、表格、表单、Bootstrap 组件等，无需手写代码。",
+            "badge": "快速输入"
+          },
+          {
+            "icon": "📂",
+            "title": "文件面板",
+            "subtitle": "Files Panel",
+            "detail": "站点的文件管家。不仅可以管理本地文件，还能通过 FTP 连接远程服务器进行发布。",
+            "badge": "站点管理"
+          },
+          {
+            "icon": "⚙️",
+            "title": "属性面板",
+            "subtitle": "Properties Panel",
+            "detail": "根据当前选中的元素（文本、图片等）动态切换，快速修改 ID、类、宽高、链接等属性。",
+            "badge": "上下文感知"
+          },
+          {
+            "icon": "🎨",
+            "title": "CSS 设计器",
+            "subtitle": "CSS Designer",
+            "detail": "这是 DW 的灵魂面板。通过可视化的方式定义媒体查询、选择器和具体的样式属性。",
+            "badge": "视觉化样式"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "type": "content",
+      "content": {
+        "title": "细化操作：面板之间的联动",
+        "subtitle": "How Panels Work Together",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "Dreamweaver 的可视化并不是孤立存在的，它的面板之间存在高度的「上下文联动」。"
+          },
+          {
+            "type": "definition",
+            "text": "例如：当你在「文档窗口」中点击一张图片时，\n1. 「属性面板」会瞬间变为图像专属面板，显示宽、高、源文件路径等。\n2. 「代码视图」中的光标会自动跳转并高亮对应的 <img> 标签。\n3. 「CSS 设计器」会自动聚焦并高亮当前图片所应用的相关 CSS 规则。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 细化提示：这种联动机制是排查页面错误（比如为什么这段文字变红了）的最佳手段。只需点击元素，观察各面板的反馈即可定位问题所在。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "type": "content",
+      "content": {
+        "title": "四大视图模式：你该选哪个？",
+        "subtitle": "Choosing the Right View",
+        "body": [
+          {
+            "type": "definition",
+            "text": "1. 代码视图 (Code)：纯粹的编程环境，适合精细修改。 \n2. 设计视图 (Design)：类似于编辑 Word，适合快速排版，但对现代 CSS3 渲染不够精准。"
+          },
+          {
+            "type": "definition",
+            "text": "3. 实时视图 (Live)：高度还原浏览器真实效果，推荐在配置样式时使用。\n4. 拆分视图 (Split)：左代码右实时（或上下），初学者进阶的必备模式。"
+          },
+          {
+            "type": "highlight",
+            "text": "🚀 推荐配置：使用「拆分」+「实时」模式。这样你既能看到代码的变化，又能实时看到视觉效果。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "type": "content",
+      "content": {
+        "title": "细化操作：拆分视图的高效用法",
+        "subtitle": "Mastering Split View",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在「拆分视图」下，你可以实现「代码」与「视图」的双向无缝同步："
+          },
+          {
+            "type": "highlight",
+            "text": "• 从视图到代码：在实时视图中双击一段文字进入编辑模式，代码视图会实时同步你打出的每一个字。\n• 从代码到视图：在代码视图中粘贴一段新的 <div> 结构，实时视图可能不会立刻更新，此时只需在实时视图区域点击一下鼠标，或按下 F5 键，视觉画面就会瞬间刷新适配代码。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "type": "bullets",
+      "content": {
+        "title": "DW 顶部工具栏详解",
+        "subtitle": "Toolbar Functions",
+        "layout": "list",
+        "items": [
+          {
+            "icon": "📱",
+            "title": "多屏预览按钮",
+            "detail": "快速检查网页在手机、平板和电脑屏幕上的表现。"
+          },
+          {
+            "icon": "🔍",
+            "title": "浏览器预览 (F12)",
+            "detail": "在真实的外部浏览器（Chrome, Edge）中运行当前页面。"
+          },
+          {
+            "icon": "🔗",
+            "title": "相关文件栏",
+            "detail": "在 HTML 窗口上方显示链接的 CSS 和 JS 文件，点击即可快速切换编辑。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "type": "content",
+      "content": {
+        "title": "随堂测验：工作区面板与视图认知",
+        "subtitle": "Knowledge Check: Panels and Views",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "【题目】张同学正在使用 Dreamweaver 进行网页排版，他希望能够一边手动编写现代 HTML5 代码，一边实时看到相当于真实浏览器级别的最终渲染效果。他应该选择哪种视图模式组合？\n\nA. 仅代码视图\nB. 代码 + 设计的拆分视图\nC. 仅实时视图\nD. 代码 + 实时的拆分视图"
+          },
+          {
+            "type": "highlight",
+            "text": "【正确答案】D. 代码 + 实时的拆分视图"
+          },
+          {
+            "type": "definition",
+            "text": "【详细解析】\n• 选项 A 只有代码，无法直接看到渲染效果。\n• 选项 B 中的「设计视图」对现代 CSS3（如 flex）支持不佳，无法呈现页面真实效果。\n• 选项 C 只有渲染效果，无法手动自由编写底层代码。\n• 选项 D 是最推荐的模式，左侧/上方写代码，右侧/下方基于 Webkit 内核即时准确渲染，完美满足需求。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "type": "section",
+      "content": {
+        "section": "02",
+        "icon": "🏗️",
+        "title": "使用本地站点",
+        "subtitle": "所有伟大网页的起点"
+      }
+    },
+    {
+      "id": "s12",
+      "type": "content",
+      "content": {
+        "title": "为什么要先建立「站点」？",
+        "subtitle": "Why Sites Matter",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "新手最常犯的错误：直接双击一个 HTML 文件开始编辑。\n在 DW 中，必须先「定义站点」，否则：\n\n❌ 图片路径会乱（变成 C:\\Users\\... 这种无法在网上显示的绝对路径）\n❌ 链接可能失效\n❌ 无法使用 DW 的文件批量管理功能"
+          },
+          {
+            "type": "definition",
+            "text": "本地站点（Local Site）：指在你的电脑上建立一个专门存放项目所有文件的文件夹。\nDW 会监视这个文件夹，自动帮你处理相对路径。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "type": "code",
+      "content": {
+        "title": "示例对比：未建站点引发的路径灾难",
+        "subtitle": "Absolute vs Relative Path Code Examples",
+        "language": "html",
+        "code": "<!-- ❌ 错误做法：未定义本地站点时，直接拖入图片生成的代码 -->\n<img src=\"file:///C|/Users/Student/Desktop/project/images/logo.png\" alt=\"Logo\">\n\n<!-- ✅ 正确做法：定义站点后，将文件面板中的图片拖入文档窗口生成的代码 -->\n<img src=\"images/logo.png\" alt=\"Logo\">",
+        "explanation": [
+          { "line": "2", "text": "本地文件系统绝对路径。一旦网页发给他人或上传服务器，别人的设备没有此路径，图片必定变为红叉。" },
+          { "line": "5", "text": "标准的相对路径。Dreamweaver 在站点内自动计算两者相对位置，无论整个项目文件夹移动到哪里，结构均不被破坏。" }
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "type": "bullets",
+      "content": {
+        "title": "三步创建本地站点",
+        "subtitle": "Step-by-Step Site Setup",
+        "layout": "cards",
+        "items": [
+          {
+            "icon": "1️⃣",
+            "title": "打开管理窗口",
+            "detail": "选择菜单：站点 ➜ 新建站点 (Site > New Site)。",
+            "badge": "开始"
+          },
+          {
+            "icon": "2️⃣",
+            "title": "命名与选径",
+            "detail": "给站点起个名字（仅供自己识别），然后选择你电脑上的根目录文件夹。",
+            "badge": "核心步"
+          },
+          {
+            "icon": "3️⃣",
+            "title": "默认图像目录",
+            "detail": "在「高级设置」里选择你的 images 文件夹，以后 DW 插入图片会自动往这存。",
+            "badge": "推荐配置"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "type": "content",
+      "content": {
+        "title": "文件面板的高效操作",
+        "subtitle": "Managing Files within DW",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "建立站点后，你的文件面板就是你的「控制中心」：\n\n• 右键新建文件/文件夹：会自动继承站点配置。\n• 拖动重命名：DW 会自动搜索整个站点，询问你是否要更新所有引用了该文件的链接！（这是最强功能之一）\n• 刷新状态：确保面板显示的是硬盘上的最新文件。"
+          },
+          {
+            "type": "warning",
+            "text": "⚠️ 警告：千万不要在 Windows 文件资源管理器里随便移动站点内的图片，否则 DW 的代码会找不到文件。请始终在 DW 的「文件面板」内进行移动或重命名。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "type": "comparison",
+      "content": {
+        "title": "站点根目录 vs. 操作系统目录",
+        "subtitle": "Relative Path vs Absolute Path",
+        "left": {
+          "label": "站点根目录 (推荐)",
+          "icon": "✅",
+          "color": "green",
+          "items": [
+            "路径示例：images/logo.png",
+            "不依赖电脑硬盘分区",
+            "上传到服务器后依然有效",
+            "适合团队协作和迁移"
+          ]
+        },
+        "right": {
+          "label": "本地绝对路径 (严禁)",
+          "icon": "❌",
+          "color": "orange",
+          "items": [
+            "路径示例：C:/Users/Desktop/web/img.jpg",
+            "一旦换电脑图片就变红叉",
+            "上传到服务器必挂",
+            "初学者最容易掉入的坑"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s17",
+      "type": "content",
+      "content": {
+        "title": "随堂测验：站点与路径认知",
+        "subtitle": "Knowledge Check: Sites and Paths",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "【题目】你在 Dreamweaver 中建立好站点后，发现有一个 HTML 文件名写错了，想将其重命名。为了防止其他引用了该文件的页面链接失效，你应该怎么做？\n\nA. 关闭 DW，在 Windows 桌面找到文件夹直接重命名\nB. 在 DW 的「文件面板」中选中该文件，右键选择重命名\nC. 忽略它，因为重命名必定导致文件损坏\nD. 删除旧文件，重新建一个并手写所有代码"
+          },
+          {
+            "type": "highlight",
+            "text": "【正确答案】B. 在 DW 的「文件面板」中选中该文件，右键选择重命名"
+          },
+          {
+            "type": "definition",
+            "text": "【详细解析】\n• 选项 A 会导致 DW 无法感知硬盘文件的变化，原来指向它的超链接会全部失效成为死链。\n• 选项 B 是标准操作规范。在 DW 的文件面板执行重命名或移动时，DW 会自动扫描站点，并弹出对话框询问是否更新所有相关的链接代码，点击「更新」即可一键修复整个项目，极大提升维护效率。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "type": "section",
+      "content": {
+        "section": "03",
+        "icon": "✍️",
+        "title": "编辑网页内容",
+        "subtitle": "可视化创建你的第一个页面"
+      }
+    },
+    {
+      "id": "s19",
+      "type": "content",
+      "content": {
+        "title": "插入文本与段落格式化",
+        "subtitle": "Text and Typography in DW",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在设计/实时视图中，你可以直接输入文字。\n• Enter 键：创建一个新的 <p> 标签（段落）。\n• Shift + Enter 键：创建一个 <br> 标签（换行）。"
+          },
+          {
+            "type": "highlight",
+            "text": "使用属性面板快速设置：\n1. 选中文字 ➜ 格式下拉框 ➜ 选择「标题 1」到「标题 6」。\n2. 列表按钮：一键生成 <ul> 或 <ol> 结构。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 小技巧：在实时视图中双击文字，可以直接进入「橙色边框」编辑模式，修改完点击外部即可自动保存到代码。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "type": "code",
+      "content": {
+        "title": "可视化操作背后的 HTML",
+        "subtitle": "What DW Generates",
+        "language": "html",
+        "code": "<!-- 当你在 DW 中设置标题和段落时 -->\n<section class=\"main-content\">\n  <h1>欢迎来到我的站点</h1>\n  <p>这是在 Dreamweaver 实时视图中直接输入的段落。</p>\n  <ul>\n    <li>第一项内容</li>\n    <li>第二项内容</li>\n  </ul>\n</section>",
+        "explanation": [
+          { "line": "3", "text": "通过属性面板下拉框选择「格式：标题1」生成" },
+          { "line": "5-8", "text": "点击属性面板的「项目列表」图标自动包裹 ul 和 li" }
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "type": "content",
+      "content": {
+        "title": "插入图像：不再为路径发愁",
+        "subtitle": "Inserting Images",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "操作方法：\n1. 菜单「插入」➜「图像」。\n2. 直接从「文件面板」把图片拖进文档窗口。"
+          },
+          {
+            "type": "definition",
+            "text": "设置图像属性：\n• 源 (Src)：文件路径。\n• 替代 (Alt)：图片加载失败或盲人阅读器使用的文字描述（SEO必备）。\n• 宽高：建议在 CSS 中设置，不要在 HTML 里写死像素值。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 图像热区：在属性面板左下角有圆形、矩形图标，可以在一张大图上划定多个「隐形点击区域」，点击不同位置跳到不同页面。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "type": "content",
+      "content": {
+        "title": "细化操作：绘制图像热区",
+        "subtitle": "Image Hotspots Detailed Steps",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "当我们需要在一张大图（例如一张完整的中国地图）上，点击不同的省份跳转到相应的网页时，就需要用到「热区」技术。"
+          },
+          {
+            "type": "definition",
+            "text": "可视化绘制步骤：\n1. 在文档窗口选中该图像元素。\n2. 查看底部「属性面板」左下角的「地图」区域，其中包含矩形、圆形、多边形热区绘制工具。\n3. 选择多边形工具，在设计/实时视图的图像上点击描点，圈出任意不规则的目标区域。\n4. 圈定闭合后，属性面板会自动切换为热区属性，此时填入该热区对应的「链接」即可实现局部跳转。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 提示：此操作会自动在代码视图中为你生成复杂的 `<map>` 和 `<area>` 标签，彻底避免了初学者手动计算和输入烦琐坐标参数的困扰。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "type": "bullets",
+      "content": {
+        "title": "创建超链接：三种快捷方式",
+        "subtitle": "Hyperlinks Made Easy",
+        "layout": "grid",
+        "items": [
+          {
+            "icon": "🔗",
+            "title": "指向文件图标",
+            "detail": "属性面板上有个像「靶心」的图标，按住它拖动到文件面板的目标文件上，链接自动生成。"
+          },
+          {
+            "icon": "📂",
+            "title": "文件夹图标",
+            "detail": "点击属性面板链接框旁的文件夹图标，浏览并选择文件。"
+          },
+          {
+            "icon": "⚓",
+            "title": "锚点链接",
+            "detail": "在同一个页面内，先给目标位置设一个 ID，然后在链接框输入 #ID名 即可实现跳转。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "type": "code",
+      "content": {
+        "title": "示例解析：页面内锚点跳转",
+        "subtitle": "Internal Anchor Links Setup",
+        "language": "html",
+        "code": "<!-- 第一步：给目标位置（例如网页底部）设定一个唯一的 ID -->\n<div id=\"footer-contact\">\n  <h2>联系我们</h2>\n  <p>电话：400-123-4567</p>\n</div>\n\n<!-- 第二步：在网页顶部的导航处，创建一个指向该 ID 的超链接 -->\n<nav>\n  <a href=\"#footer-contact\">跳至底部联系方式</a>\n</nav>",
+        "explanation": [
+          { "line": "2", "text": "通过选中元素并在属性面板填入 ID 值，或者直接书写代码定义唯一标识符 footer-contact" },
+          { "line": "9", "text": "在链接属性框中，输入井号 # 加上对应的 ID 名称，点击该链接网页即可平滑或直接滚动至底部" }
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "type": "content",
+      "content": {
+        "title": "多媒体：音频与视频的插入",
+        "subtitle": "HTML5 Audio and Video",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "DW 对 HTML5 多媒体有极佳的支持。在插入面板中选择「HTML5 Video」或「HTML5 Audio」。"
+          },
+          {
+            "type": "highlight",
+            "text": "配置项：\n• 控制条 (Controls)：是否显示播放/暂停/音量键。\n• 自动播放 (Autoplay)：慎用，浏览器常有限制。\n• 循环 (Loop)：播完自动重头开始。\n• 预载 (Preload)：页面加载时是否提前下载视频数据。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "type": "code",
+      "content": {
+        "title": "多媒体代码解析",
+        "subtitle": "Standard HTML5 Video Tag",
+        "language": "html",
+        "code": "<video width=\"640\" height=\"360\" controls poster=\"images/cover.jpg\">\n  <source src=\"video/intro.mp4\" type=\"video/mp4\">\n  您的浏览器不支持 HTML5 视频标签。\n</video>",
+        "explanation": [
+          { "line": "1", "text": "poster 属性设置视频加载前显示的封面图" },
+          { "line": "2", "text": "source 标签定义视频源，建议提供 mp4 格式，兼容性最好" }
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "type": "content",
+      "content": {
+        "title": "可视化创建表格",
+        "subtitle": "Visual Table Creation",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "虽然现在不推荐用表格做网页大框架，但表格依然是展示「数据」的最佳方式。"
+          },
+          {
+            "type": "highlight",
+            "text": "DW 的强大表格编辑能力：\n1. 插入时设置：行列数、表格宽度、边框、单元格间距。\n2. 合并与拆分：选中多个单元格 ➜ 右键 ➜ 表格 ➜ 合并单元格。\n3. 排序：菜单 命令 ➜ 排序表格。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 提示：在设计视图中，你可以直接拖动表格边框来调整大小，DW 会自动更新样式代码。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "type": "code",
+      "content": {
+        "title": "示例解析：可视化合并单元格背后的代码",
+        "subtitle": "Table Rowspan & Colspan Output",
+        "language": "html",
+        "code": "<table border=\"1\">\n  <tr>\n    <!-- 可视化合并两个横向单元格后，DW 自动添加 colspan=\"2\" 并删除多余的 td -->\n    <td colspan=\"2\">第一行跨两列的内容</td>\n  </tr>\n  <tr>\n    <td>第二行第一列</td>\n    <td>第二行第二列</td>\n  </tr>\n</table>",
+        "explanation": [
+          { "line": "4", "text": "colspan=\"2\" 表示该单元格横跨两列。DW 在后台帮你精确计算了表格行列数并自动增删代码，大大降低了手写复杂表格结构的易错率。" }
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "type": "content",
+      "content": {
+        "title": "表单制作：拖放完成交互",
+        "subtitle": "Form Design with DW",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "表单是网页最难写的部分，DW 的「插入面板 > 表单」让它变得简单："
+          },
+          {
+            "type": "bullets",
+            "layout": "list",
+            "items": [
+              { "icon": "📝", "title": "文本框/密码框", "detail": "插入后在属性面板设置 type 和 placeholder。" },
+              { "icon": "🔘", "title": "单选/复选框", "detail": "快速成组，DW 自动处理 name 属性的一致性。" },
+              { "icon": "🔽", "title": "下拉菜单", "detail": "点击「列表值」按钮，可视化添加选项内容。" },
+              { "icon": "🚀", "title": "提交按钮", "detail": "默认关联表单的 submit 动作。" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "type": "code",
+      "content": {
+        "title": "表单生成的结构示例",
+        "subtitle": "DW-generated Form Structure",
+        "language": "html",
+        "code": "<form action=\"submit.php\" method=\"POST\">\n  <label for=\"username\">用户名：</label>\n  <input type=\"text\" name=\"username\" id=\"username\" placeholder=\"请输入\">\n  \n  <label for=\"city\">城市：</label>\n  <select name=\"city\" id=\"city\">\n    <option value=\"sh\">上海</option>\n    <option value=\"bj\">北京</option>\n  </select>\n  \n  <button type=\"submit\">立即注册</button>\n</form>",
+        "explanation": [
+          { "line": "1", "text": "action 定义数据去哪，method 定义传输方式" },
+          { "line": "3", "text": "placeholder 是文本框里的占位提示文字" }
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "type": "content",
+      "content": {
+        "title": "随堂测验：链接与多媒体控制",
+        "subtitle": "Knowledge Check: Media Properties",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "【题目】你在网页中通过插入面板放置了一段 HTML5 视频，希望它在页面加载完成时静音并且自动开始播放。在 DW 的多媒体属性面板中，你需要勾选哪些控制选项组合？\n\nA. 仅勾选 Autoplay (自动播放)\nB. 勾选 Autoplay (自动播放) 和 Muted (静音)\nC. 仅勾选 Loop (循环)\nD. 勾选 Controls (控制条)"
+          },
+          {
+            "type": "highlight",
+            "text": "【正确答案】B. 勾选 Autoplay (自动播放) 和 Muted (静音)"
+          },
+          {
+            "type": "definition",
+            "text": "【详细解析】\n现代主流浏览器（如 Chrome, Edge 等）具有严格的防打扰自动播放策略，通常规定：带有声音的媒体资源必须被明确设置为静音（Muted）后，才允许被执行自动播放（Autoplay）。因此在属性配置中需同时启用这两个选项才能顺利产生预期的视觉效果。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "type": "section",
+      "content": {
+        "section": "04",
+        "icon": "🌈",
+        "title": "使用 CSS 样式",
+        "subtitle": "可视化样式的设计艺术"
+      }
+    },
+    {
+      "id": "s33",
+      "type": "content",
+      "content": {
+        "title": "CSS 设计器：DW 的灵魂",
+        "subtitle": "The CSS Designer Panel",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "DW CC 之后推出的 CSS 设计器彻底改变了样式编写方式。\n它由四个窗格组成："
+          },
+          {
+            "type": "definition",
+            "text": "1. 源 (Sources)：选择哪个 .css 文件，或是在页面内新建样式。\n2. 媒体 (Media)：定义媒体查询（响应式设计的关键）。\n3. 选择器 (Selectors)：给哪个 ID、类或标签加样式。\n4. 属性 (Properties)：具体的视觉参数（布局、文本、边框、背景）。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "type": "bullets",
+      "content": {
+        "title": "定义样式规则的步骤",
+        "subtitle": "Workflow for Adding Styles",
+        "layout": "list",
+        "items": [
+          {
+            "icon": "➕",
+            "title": "添加源",
+            "detail": "点击「源」下的加号，创建新 CSS 文件或链接已有文件。"
+          },
+          {
+            "icon": "🎯",
+            "title": "创建选择器",
+            "detail": "在 HTML 视图选中元素，点击「选择器」下的加号，DW 会自动帮你推测一个选择器名（如 .main-header）。"
+          },
+          {
+            "icon": "📏",
+            "title": "调整属性",
+            "detail": "在属性窗格中拖动数值或选择颜色。取消勾选「显示集合」可看到所有可用属性。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "type": "content",
+      "content": {
+        "title": "细化操作：可视化调节间距的艺术",
+        "subtitle": "Visual Margin & Padding Adjustments",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在手写 CSS 布局时，常常需要不断盲猜像素值并刷新浏览器查看效果。\n但在 CSS 设计器的「布局」属性区，DW 提供了一个直观的十字形间距图表："
+          },
+          {
+            "type": "definition",
+            "text": "• 拖拽调节：鼠标悬停在图表的上下左右边缘（代表 margin 或 padding），直接按住并拖动鼠标，数值会实时增减，文档窗口里的容器间距也会跟着变大变小。\n• 约束比例：点击图表中间的「链条」图标，再拖动任意一侧的数值，四个方向的边距即可同步等比例变化。\n• 单位切换：点击数值旁边的下拉框，可以一键将 px（像素）切换为 %（百分比）或 rem，极其适合快速调整响应式布局参数。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "type": "content",
+      "content": {
+        "title": "应用 CSS 样式",
+        "subtitle": "Applying CSS to Elements",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在 DW 中，为元素指定类或 ID 有三种极快的方法："
+          },
+          {
+            "type": "highlight",
+            "text": "1. 标签选择器：在文档窗口下方的状态栏，右键点击标签名 ➜ 设置类/ID。\n2. 属性面板：在 Class 下拉框直接选择已有的 CSS 类名。\n3. 元素显示：在实时视图选中元素，点击出现的蓝色「+」号直接输入类名。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 优先原则：建议尽量使用「外部样式表」，方便多页面共用和后期维护。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "type": "content",
+      "content": {
+        "title": "使用 Div + CSS 进行页面布局",
+        "subtitle": "Div-based Layout in DW",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "布局是网页制作的重头戏。现代网页通常是由多个 <div> 容器组成的。"
+          },
+          {
+            "type": "definition",
+            "text": "布局流程：\n1. 插入 Div：点击插入面板 ➜ Div ➜ 设置 ID（如 container）。\n2. 设置宽高：在 CSS 设计器中给该 ID 设置 width 和 height。\n3. 设置浮动或弹性：使用 float 或现代的 flex 布局让块并排显示。\n4. 调整内外边距：可视化调整 margin 和 padding。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "type": "code",
+      "content": {
+        "title": "布局代码示例",
+        "subtitle": "Standard Layout Code",
+        "language": "css",
+        "code": "#header {\n  width: 100%;\n  height: 80px;\n  background-color: #333;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 20px;\n}\n\n.main-box {\n  float: left;\n  width: 70%;\n  margin-right: 2%;\n}",
+        "explanation": [
+          { "line": "5", "text": "使用 Flex 布局，DW CSS 设计器中有专门的图标配置" },
+          { "line": "12", "text": "传统的浮动布局，注意百分比宽度以适应不同屏幕" }
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "type": "content",
+      "content": {
+        "title": "随堂测验：CSS设计器操作逻辑",
+        "subtitle": "Knowledge Check: CSS Designer Selectors",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "【题目】在 CSS 设计器中，你在文档窗口选中了一个被包含在特定区域内的 `<h1>` 标签，随后点击了「选择器」窗格的加号（+），Dreamweaver 会进行怎样的默认推测操作？\n\nA. 它会随机生成一个毫无意义的类名要求你重新定义\nB. 它会根据该标签所处的父级结构生成一个高特异性的选择器（例如 #main .content h1）\nC. 它只会单纯提取通用的 h1 标签，影响全站所有的标题\nD. 它会自动把样式加到浏览器的默认文件中"
+          },
+          {
+            "type": "highlight",
+            "text": "【正确答案】B. 它会根据父级结构生成具体的层级选择器"
+          },
+          {
+            "type": "definition",
+            "text": "【详细解析】\n为了确保样式应用的针对性，DW 的智能算法会向上追溯选中元素的父级 ID 或类名，给出一个带有上下文特异性的后代选择器。当然，如果你觉得这个推测名称过长，你可以在它高亮时直接使用键盘进行精简和修改，随后按回车键确认即可生成规则。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "type": "section",
+      "content": {
+        "section": "05",
+        "icon": "⚡",
+        "title": "高级功能与效率提升",
+        "subtitle": "成为专业开发者的进阶之路"
+      }
+    },
+    {
+      "id": "s41",
+      "type": "content",
+      "content": {
+        "title": "快速代码编写：Emmet 语法",
+        "subtitle": "Boosting Speed with Emmet",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "DW 原生支持 Emmet。在代码视图输入简写后按 Tab 键，瞬间生成大量代码。"
+          },
+          {
+            "type": "highlight",
+            "text": "常用缩写：\n• ul>li*5 ➜ 生成一个包含5项的列表\n• div.header ➜ 生成 <div class=\"header\"></div>\n• nav>ul>li>a ➜ 生成完整的导航链结构\n• lorem ➜ 生成一段无意义的占位文字"
+          },
+          {
+            "type": "tip",
+            "text": "💡 实时预览：在输入缩写时，DW 会显示预览气泡，告诉你按 Tab 之后会变成什么样。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s42",
+      "type": "code",
+      "content": {
+        "title": "示例解析：Emmet 组合缩写的魔力",
+        "subtitle": "Advanced Emmet Syntax Walkthrough",
+        "language": "html",
+        "code": "<!-- 在 DW 代码视图中输入以下复杂结构缩写： -->\n<!-- div#container>ul.menu>li.item*3>a -->\n\n<!-- 按下 Tab 键后，瞬间展开为以下结构： -->\n<div id=\"container\">\n  <ul class=\"menu\">\n    <li class=\"item\"><a href=\"\"></a></li>\n    <li class=\"item\"><a href=\"\"></a></li>\n    <li class=\"item\"><a href=\"\"></a></li>\n  </ul>\n</div>",
+        "explanation": [
+          { "line": "2", "text": "缩写规则：# 代表 ID 属性，. 代表 Class 类名，> 代表父子嵌套关系，* 代表元素的重复生成次数" },
+          { "line": "6-10", "text": "一次操作即可完美生成带有具体类名、ID并且嵌套层级极度清晰的 HTML 骨架，极大节省手写开闭标签的时间" }
+        ]
+      }
+    },
+    {
+      "id": "s43",
+      "type": "content",
+      "content": {
+        "title": "代码提示与整理",
+        "subtitle": "Code Hints and Beautification",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "• 代码提示：输入 < 或 CSS 属性前几个字母，DW 会弹出补全菜单。按上下键选择，Enter 补全。\n• 括号匹配：点击左侧行号旁的收缩箭头，可以隐藏一整块 HTML，让代码更清晰。\n• 格式化代码：菜单 应用 ➜ 源格式，一键让杂乱的代码缩进对齐，整齐划一。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s44",
+      "type": "content",
+      "content": {
+        "title": "响应式网页设计（RWD）",
+        "subtitle": "Responsive Web Design in DW",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "现代网页必须适配手机。DW 提供了直观的响应式工具："
+          },
+          {
+            "type": "definition",
+            "text": "1. 可视媒体查询栏：在文档窗口上方，点击不同颜色的条形块切换不同屏幕尺寸。\n2. 媒体查询编辑器：点击 CSS 设计器中的「+」，选择 min-width 或 max-width。\n3. 流体网格布局：DW 内置的弹性栅格系统。"
+          },
+          {
+            "type": "highlight",
+            "text": "核心原理：当屏幕宽度小于 768px 时，应用一套专门针对手机的 CSS 规则。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s45",
+      "type": "content",
+      "content": {
+        "title": "细化操作：可视媒体查询栏的使用",
+        "subtitle": "Visual Media Queries Bar in Action",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在 DW 文档窗口的正上方，有一条带有绿、蓝、紫色色块的水平刻度条，这就是用来辅助断点设计的可视媒体查询栏。"
+          },
+          {
+            "type": "highlight",
+            "text": "操作细节：\n1. 颜色含义：不同颜色代表不同的断点约束条件。绿色通常代表 max-width（最大宽度条件，向下兼容手机），蓝色代表 min-width（最小宽度条件，向上兼容大屏）。\n2. 点击切换：直接点击上方任意一个色块，文档区域的视图会瞬间收缩或拉伸到该预设的尺寸，让你直观看到移动设备下的排版状态。\n3. 专注编辑：此时处于特定视口宽度下，你在 CSS 设计器中修改的任何对应样式参数，DW 都会自动把代码封装到特定 `@media` 规则内，保证不影响原本的电脑端大屏样式。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s46",
+      "type": "code",
+      "content": {
+        "title": "媒体查询代码示例",
+        "subtitle": "Responsive CSS Structure",
+        "language": "css",
+        "code": "/* 默认电脑样式 */\n.sidebar { width: 300px; float: left; }\n\n/* 手机样式：当屏幕小于 768px 时 */\n@media (max-width: 768px) {\n  .sidebar {\n    width: 100%; /* 侧边栏变全宽，自动排到主内容下方 */\n    float: none;\n    background-color: #f0f0f0;\n  }\n}",
+        "explanation": [
+          { "line": "5", "text": "通过 DW 媒体查询栏色块点击自动激活生成的断点阈值" },
+          { "line": "7", "text": "在该查询内修改宽度和浮动属性，以适应手机端竖屏的上下堆叠显示需求" }
+        ]
+      }
+    },
+    {
+      "id": "s47",
+      "type": "content",
+      "content": {
+        "title": "使用 Bootstrap：工业级框架集成",
+        "subtitle": "Built-in Bootstrap Support",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "Dreamweaver 深度集成了 Bootstrap 框架。你不需要去官网下载文件，DW 自带了一切。"
+          },
+          {
+            "type": "highlight",
+            "text": "操作流程：\n1. 新建文档 ➜ 选择 Bootstrap ➜ 勾选「新建」或「链接」。\n2. 使用插入面板中的「Bootstrap 组件」：轮播图、导航条、卡片、警告框一键插入。\n3. 使用「栅格系统」进行复杂布局，自动适配所有终端。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s48",
+      "type": "bullets",
+      "content": {
+        "title": "使用 jQuery 增加特效",
+        "subtitle": "jQuery Interactivity",
+        "layout": "cards",
+        "items": [
+          {
+            "icon": "✨",
+            "title": "交互行为",
+            "detail": "菜单 窗口 ➜ 行为。可以可视化添加「弹出消息」、「显示/隐藏元素」、「交换图像」等逻辑。",
+            "badge": "零代码"
+          },
+          {
+            "icon": "🧩",
+            "title": "jQuery UI 组件",
+            "detail": "轻松插入折叠面板、日期选择器、选项卡等复杂的 UI 控件。",
+            "badge": "组件化"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s49",
+      "type": "content",
+      "content": {
+        "title": "随堂测验：响应式与组件原理",
+        "subtitle": "Knowledge Check: Bootstrap Integration",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "【题目】当你在 DW 中通过右侧的插入面板插入一个 Bootstrap「轮播（Carousel）」组件时，DW 强大的内部机制会在后台进行什么操作？\n\nA. 只生成单纯的 HTML 图片占位代码，后续所有的特效逻辑和样式需要你亲自手写\nB. 自动生成包含 HTML 层级的代码，并在站点中自动生成并引入运行该组件所必需的 Bootstrap 核心 CSS 和 JS 文件\nC. 提示你必须先前往外部浏览器访问 Bootstrap 官网手动下载源码包\nD. 仅支持特定服务器环境下生效，本地预览无效"
+          },
+          {
+            "type": "highlight",
+            "text": "【正确答案】B. 自动生成 HTML 结构并无缝引入相关的 CSS/JS 支撑文件"
+          },
+          {
+            "type": "definition",
+            "text": "【详细解析】\n这是 Dreamweaver 作为综合 IDE 的魅力所在。当你首次在一个项目中调用内置的 Bootstrap 组件时，DW 会在你的本地站点文件夹里悄悄创建 `css/bootstrap.css` 和 `js/bootstrap.js`，并利用 `<link>` 和 `<script>` 标签将其完美链接到当前 HTML 文档。这构成了快速应用工业级框架实现复杂页面的最快路径。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s50",
+      "type": "section",
+      "content": {
+        "section": "06",
+        "icon": "📝",
+        "title": "本章练习题",
+        "subtitle": "巩固你的 Dreamweaver 技能"
+      }
+    },
+    {
+      "id": "s51",
+      "type": "content",
+      "content": {
+        "title": "练习 1：站点搭建",
+        "subtitle": "Practice 01: Site Creation",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "【任务描述】\n在你的电脑 D 盘创建一个名为「MyProject」的文件夹，并在其中创建子文件夹 images、css、js。请在 Dreamweaver 中将其定义为本地站点。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 检查点：\n1. 站点名称是否设置为「我的第一个练习」？\n2. 根目录是否指向了你刚才创建的文件夹？\n3. 文件面板是否能看到这些文件夹？"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s52",
+      "type": "bullets",
+      "content": {
+        "title": "练习 1 详细解析",
+        "subtitle": "Practice 01 Walkthrough",
+        "layout": "list",
+        "items": [
+          {
+            "icon": "📁",
+            "title": "第一步：准备物理文件夹",
+            "detail": "在操作系统的资源管理器中打开 D 盘，右键新建一个名为 MyProject 的文件夹，随后进入该文件夹内，分别新建 images、css、js 三个空文件夹完成底层架构准备。"
+          },
+          {
+            "icon": "⚙️",
+            "title": "第二步：DW 站点配置",
+            "detail": "回到 DW 软件界面，点击顶部菜单「站点」->「新建站点」。站点名称输入：我的第一个练习。本地站点文件夹通过后方的浏览图标按钮，精确指向 D:\\MyProject 目录。"
+          },
+          {
+            "icon": "🖼️",
+            "title": "第三步：高级设置与验证",
+            "detail": "点击左侧选项卡中的「高级设置」->「本地信息」，将「默认图像文件夹」指向刚才建好的 D:\\MyProject\\images 路径。点击保存后，右侧的文件面板即会刷出完整的层级结构，代表搭建成功。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s53",
+      "type": "content",
+      "content": {
+        "title": "练习 2：可视化图文混排",
+        "subtitle": "Practice 02: Layout Design",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "【任务描述】\n新建一个 HTML 页面，要求如下：\n1. 插入一个 <h1> 标题。\n2. 插入一张图片，设置 alt 属性为「风景照」。\n3. 在图片下方添加一个指向百度（www.baidu.com）的外部链接。\n4. 将文字颜色修改为蓝色（使用属性面板或 CSS 设计器）。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s54",
+      "type": "code",
+      "content": {
+        "title": "练习 2 详细解析",
+        "subtitle": "Practice 02 Walkthrough",
+        "language": "html",
+        "code": "<body>\n  <!-- 1. 选中输入好的文字，通过属性面板下拉框将段落格式设为标题 1。接着利用 CSS 设计器新建规则赋予蓝色 -->\n  <h1 style=\"color: blue;\">我的相册</h1>\n  \n  <!-- 2. 将图片从文件面板拖入，并在属性面板的「替代」文本框中填入：风景照 -->\n  <img src=\"images/scenery.jpg\" alt=\"风景照\">\n  \n  <!-- 3. 键入文字“访问百度”，选中该段文字后，在属性面板的链接框中补全完整网址，并设定 target=\"_blank\" -->\n  <br>\n  <a href=\"http://www.baidu.com\" target=\"_blank\">访问百度</a>\n</body>",
+        "explanation": [
+          { "line": "3", "text": "无论使用内联样式还是外部 CSS，最终渲染结果保证了字体层级和颜色的要求" },
+          { "line": "6", "text": "规范的 alt 属性设置保证了图片加载失败时也有文本反馈，符合 Web 标准规范" },
+          { "line": "10", "text": "注意外部链接务必加上 http:// 或 https:// 前缀，否则 DW 会将其误认为是相对路径导致跳转失败" }
+        ]
+      }
+    },
+    {
+      "id": "s55",
+      "type": "content",
+      "content": {
+        "title": "练习 3：响应式初探",
+        "subtitle": "Practice 03: Basic Responsive",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "【任务描述】\n创建一个 Div 盒子，宽度 500px，背景红色。利用媒体查询，当屏幕宽度小于 600px 时（模拟手机端），将背景颜色变为绿色，宽度变为 100%。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 操作提示：\n在媒体查询栏点击「+」设置 max-width: 600px，然后在这个范围内修改样式。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s56",
+      "type": "code",
+      "content": {
+        "title": "练习 3 详细解析",
+        "subtitle": "Practice 03 Walkthrough",
+        "language": "css",
+        "code": "/* 默认基础样式：大屏端维持定宽和原始色彩 */\n#myBox {\n  width: 500px;\n  height: 200px;\n  background-color: red;\n}\n\n/* 媒体查询栏配置：设定最大视口约束阈值为 600px */\n@media (max-width: 600px) {\n  #myBox {\n    width: 100%;\n    background-color: green;\n  }\n}",
+        "explanation": [
+          { "line": "2", "text": "第一步：在没有激活任何媒体查询视图的情况下，通过全局 CSS 设计器常规添加 #myBox 的样式参数" },
+          { "line": "9", "text": "第二步：点击可视媒体查询栏中的绿色区域以新增和激活断点，随后在 CSS 设计器中修改宽度和背景色，代码便会自动被包裹于此区间内" }
+        ]
+      }
+    },
+    {
+      "id": "s57",
+      "type": "summary",
+      "content": {
+        "title": "本章小结",
+        "points": [
+          "Dreamweaver 提供了强大的可视化开发环境，但「拆分视图」是学习的最佳模式。",
+          "建立站点是第一步，也是最重要的一步，它决定了文件引用的正确性。",
+          "文本、图像、表格、表单都可以通过插入面板快速建立，极大提高了效率。",
+          "CSS 设计器是样式的核心，通过「源-媒体-选择器-属性」的逻辑管理全局视觉。",
+          "现代网页制作离不开响应式设计，DW 的媒体查询工具栏让调试手机端变得直观。",
+          "内置的 Bootstrap 支持让初学者也能快速做出专业级的高端网站布局。"
+        ],
+        "nextChapter": {
+          "chapter": "第十章",
+          "title": "综合项目实践",
+          "preview": "从需求分析到最终发布，我们将完成一个完整的「游戏天地」商业级网站。"
+        }
+      }
+    },
+    {
+      "id": "s58",
+      "type": "thankyou",
+      "content": {
+        "title": "恭喜完成本章！",
+        "subtitle": "Ready for Project Practice!",
+        "message": "至此，你已经掌握了 Dreamweaver 这个强大的生产力工具。\n工具只是延伸，你的创意才是网页的灵魂。\n请反复练习本章的操作，因为在接下来的综合项目中，\n我们将全面依靠这些技能来构建一个真实的网站！",
+        "contact": "如有疑问请在学习群或论坛提交作业截图",
+        "nextClass": "下一章：综合项目实践 · 游戏天地网站实战"
+      }
+    }
+  ]
+}

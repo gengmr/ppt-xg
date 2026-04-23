@@ -1,0 +1,1567 @@
+{
+  "meta": {
+    "course": "Web应用开发技术",
+    "chapter": "第五章",
+    "title": "表格与表单",
+    "subtitle": "Tables and Forms in HTML",
+    "instructor": "主讲教师",
+    "department": "信息工程学院",
+    "school": "石家庄信息工程技术学院",
+    "semester": "2026年春季学期",
+    "duration": 90,
+    "version": "1.0.0",
+    "lastModified": "2026-03-12"
+  },
+  "theme": {
+    "primaryColor": "#0d1b4b",
+    "accentColor": "#4fc3f7",
+    "backgroundColor": "#080f1e"
+  },
+  "slides":[
+    {
+      "id": "s01",
+      "type": "cover",
+      "content": {
+        "courseTitle": "Web应用开发技术",
+        "chapterTitle": "第5章 · Chapter 05",
+        "title": "表格与表单",
+        "subtitle": "Tables and Forms in HTML",
+        "instructor": "主讲教师",
+        "school": "石家庄信息工程技术学院",
+        "semester": "2026年春季学期",
+        "tags":[
+          "HTML5",
+          "数据展示",
+          "用户交互",
+          "前端基础"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "type": "agenda",
+      "content": {
+        "title": "本章大纲",
+        "items":[
+          {
+            "index": "01",
+            "title": "创建表格",
+            "subtitle": "table、tr、td 基本结构与合并单元格"
+          },
+          {
+            "index": "02",
+            "title": "表格的属性设置",
+            "subtitle": "边框、间距、对齐方式与现代CSS替代方案"
+          },
+          {
+            "index": "03",
+            "title": "创建表单",
+            "subtitle": "什么是表单、工作流程及 form 标签核心属性"
+          },
+          {
+            "index": "04",
+            "title": "创建表单控件",
+            "subtitle": "input家族、下拉菜单、多行文本域及按钮"
+          },
+          {
+            "index": "05",
+            "title": "综合实例：表格与表单",
+            "subtitle": "复杂数据表格页与用户注册页开发实战"
+          },
+          {
+            "index": "06",
+            "title": "练习题",
+            "subtitle": "巩固所学知识"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "type": "section",
+      "content": {
+        "section": "01",
+        "icon": "📊",
+        "title": "创建表格",
+        "subtitle": "掌握网页中二维数据的结构化展示方法"
+      }
+    },
+    {
+      "id": "s04",
+      "type": "content",
+      "content": {
+        "title": "表格在网页中的角色",
+        "subtitle": "The Role of Tables",
+        "body":[
+          {
+            "type": "definition",
+            "text": "表格（Table）是一种将数据按行（Row）和列（Column）排列的二维数据结构。\n在网页中，它被广泛用于展示具有逻辑关系和对比特性的结构化数据。"
+          },
+          {
+            "type": "paragraph",
+            "text": "生活中的常见例子：\n• 课程表、值日表\n• 员工通讯录、工资单\n• 财务报表、产品参数对比表"
+          },
+          {
+            "type": "highlight",
+            "text": "核心原则：表格应该仅用来「展示数据」，而不是用来「排版布局」。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "type": "comparison",
+      "content": {
+        "title": "表格的用途演变：从布局到数据展示",
+        "subtitle": "Evolution of HTML Tables",
+        "left": {
+          "label": "过去（Web 1.0时代）",
+          "icon": "🏛️",
+          "color": "orange",
+          "items":[
+            "CSS尚未成熟时，开发者用表格来给网页排版",
+            "将页面强行切分为网格状的单元格",
+            "嵌套层级极深，代码臃肿复杂",
+            "不易维护，修改一个位置可能导致整个页面错乱",
+            "不利于搜索引擎优化（SEO）和屏幕阅读器识别"
+          ]
+        },
+        "right": {
+          "label": "现在（HTML5时代）",
+          "icon": "✨",
+          "color": "blue",
+          "items":[
+            "回归本质：只用于展示真正的二维表格数据",
+            "页面布局由专门的CSS（Flexbox, Grid）负责",
+            "结构清晰，代码语义化好",
+            "便于移动端做响应式处理",
+            "对无障碍访问（盲人阅读器）更加友好"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s06",
+      "type": "bullets",
+      "content": {
+        "title": "构建表格的三大核心基础标签",
+        "subtitle": "Core Tags for Tables",
+        "layout": "cards",
+        "items":[
+          {
+            "icon": "📦",
+            "title": "<table>",
+            "subtitle": "表格容器",
+            "detail": "定义整个表格的外框。\n所有的表格相关标签都必须包含在 <table> 和 </table> 之间。\n它就像是一个大盒子，把数据装在里面。",
+            "badge": "最外层"
+          },
+          {
+            "icon": "➖",
+            "title": "<tr>",
+            "subtitle": "表格的行 (Table Row)",
+            "detail": "定义表格中的一个水平行。\n一个 <table> 里面有几个 <tr>，这个表格就有多少行。\n<tr> 标签内部不能直接放文字，只能包裹单元格。",
+            "badge": "行级元素"
+          },
+          {
+            "icon": "🔲",
+            "title": "<td>",
+            "subtitle": "表格的数据单元格 (Table Data)",
+            "detail": "定义表格中的一个标准单元格。\n一个 <tr> 里面有几个 <td>，该行就被划分出多少列。\n你真正要展示的文字、图片，全都放在 <td> 里面。",
+            "badge": "单元格"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "type": "code",
+      "content": {
+        "title": "代码演示：最基础的 2×2 表格",
+        "subtitle": "A Basic 2x2 Table",
+        "language": "html",
+        "code": "<table border=\"1\">\n  <!-- 第一行 -->\n  <tr>\n    <td>张三</td>\n    <td>20岁</td>\n  </tr>\n  <!-- 第二行 -->\n  <tr>\n    <td>李四</td>\n    <td>22岁</td>\n  </tr>\n</table>",
+        "explanation":[
+          {
+            "line": "1",
+            "text": "<table> 定义表格开始，border=\"1\" 用于显示边框（暂时添加，方便看清结构）"
+          },
+          {
+            "line": "3",
+            "text": "第一个 <tr> 开始，代表表格的第一行"
+          },
+          {
+            "line": "4-5",
+            "text": "第一行中有两个 <td> 单元格，相当于这一行分为了两列"
+          },
+          {
+            "line": "8",
+            "text": "第二个 <tr> 开始，表示表格的第二行，结构同上"
+          }
+        ],
+        "output": "在浏览器中会呈现一个2行2列、带边框的基础网格数据。"
+      }
+    },
+    {
+      "id": "s08",
+      "type": "content",
+      "content": {
+        "title": "表头单元格：<th> 标签",
+        "subtitle": "Table Header",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "在一个正规的表格中，第一行（或者第一列）往往用于说明数据的含义（比如：姓名、年龄、性别），这就是“表头”。\n在HTML中，我们使用 <th> 标签（Table Header）来代替普通的 <td> 标签定义表头单元格。"
+          },
+          {
+            "type": "highlight",
+            "text": "<th> 与 <td> 的主要区别：\n\n1. 语义不同：<th> 表示这是一个标题单元格，而 <td> 表示普通数据。\n2. 默认外观不同：浏览器默认会将 <th> 里的文字加粗（bold）并居中（center）对齐。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "type": "code",
+      "content": {
+        "title": "代码演示：带有表头的表格",
+        "subtitle": "Table with Headers",
+        "language": "html",
+        "code": "<table border=\"1\">\n  <!-- 表头行 -->\n  <tr>\n    <th>姓名</th>\n    <th>专业</th>\n    <th>成绩</th>\n  </tr>\n  <!-- 数据行 -->\n  <tr>\n    <td>王五</td>\n    <td>软件工程</td>\n    <td>95</td>\n  </tr>\n</table>",
+        "explanation":[
+          {
+            "line": "4-6",
+            "text": "第一行的单元格全用 <th>，浏览器会自动将“姓名、专业、成绩”加粗并居中显示。"
+          },
+          {
+            "line": "10-12",
+            "text": "下面的数据行依然使用常规的 <td> 来展示具体的信息。"
+          }
+        ],
+        "output": "首行文字变粗且居中，形成了清晰的标题列指示作用。"
+      }
+    },
+    {
+      "id": "s10",
+      "type": "bullets",
+      "content": {
+        "title": "表格的高级语义化结构",
+        "subtitle": "Advanced Table Sections (thead, tbody, tfoot)",
+        "layout": "list",
+        "items":[
+          {
+            "icon": "⬆️",
+            "title": "<thead> (表头区)",
+            "detail": "用于组合表格的表头内容（通常包含由 <th> 组成的行）。不管数据多长，表头区域在结构上总是被视为表格的顶部。",
+            "badge": "语义头部"
+          },
+          {
+            "icon": "⏹️",
+            "title": "<tbody> (主体区)",
+            "detail": "用于组合表格的主体数据行（包含大量的 <td>）。一个表格可以有多个 <tbody>，方便用CSS进行独立的分组样式控制。",
+            "badge": "核心数据"
+          },
+          {
+            "icon": "⬇️",
+            "title": "<tfoot> (表尾区)",
+            "detail": "用于组合表格的脚注或汇总行（例如：总计、平均值）。即便在HTML代码中把它写在 <tbody> 前面，浏览器渲染时也会把它固定在最下面。",
+            "badge": "总结与统计"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "type": "code",
+      "content": {
+        "title": "代码演示：完整语义化表格",
+        "subtitle": "Semantically Structured Table",
+        "language": "html",
+        "code": "<table border=\"1\">\n  <thead>\n    <tr>\n      <th>商品名称</th>\n      <th>价格</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>苹果手机</td>\n      <td>￥5999</td>\n    </tr>\n    <tr>\n      <td>蓝牙耳机</td>\n      <td>￥899</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <th>总计金额</th>\n      <td>￥6898</td>\n    </tr>\n  </tfoot>\n</table>",
+        "explanation":[
+          {
+            "line": "2",
+            "text": "使用 <thead> 包裹表头部分"
+          },
+          {
+            "line": "8",
+            "text": "使用 <tbody> 包裹具体的数据行，使结构更加清晰"
+          },
+          {
+            "line": "18",
+            "text": "使用 <tfoot> 定义统计行，便于后期对总计数据进行单独的CSS美化或JS计算操作"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "type": "content",
+      "content": {
+        "title": "合并单元格的概念",
+        "subtitle": "Merging Table Cells",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "在实际业务中，我们经常遇到类似 Excel 中“合并单元格”的需求，比如某一项数据属于多个分类，或者某一分类下有多个子项。\n\n在 HTML 中，我们通过给 <td> 或 <th> 标签添加特定的属性来实现合并："
+          },
+          {
+            "type": "highlight",
+            "text": "1. 跨列合并：colspan（横向合并左右相邻的单元格）\n2. 跨行合并：rowspan（纵向合并上下相邻的单元格）"
+          },
+          {
+            "type": "warning",
+            "text": "核心原理：当某个单元格“撑开”占据了额外的空间后，该行或该列中原本应该存在的单元格，在代码中就必须被「删除」，否则表格会被“挤破”，导致错位。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "type": "content",
+      "content": {
+        "title": "跨列合并：colspan 属性",
+        "subtitle": "Column Span",
+        "body":[
+          {
+            "type": "definition",
+            "text": "colspan（Column Span）属性用于水平方向向右合并列。\n\n用法：<td colspan=\"合并的数量\">"
+          },
+          {
+            "type": "paragraph",
+            "text": "假设第一行原本有 3 个单元格，你想让第一个单元格横跨 2 列：\n那么你应该在第一个 <td> 写上 colspan=\"2\"，并且把同一行中原本的第 2 个 <td> 删掉！"
+          },
+          {
+            "type": "tip",
+            "text": "口诀：向右合并，合并多少填数字，本行右侧对应的 td 全删光。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "type": "code",
+      "content": {
+        "title": "代码演示：跨列合并 colspan",
+        "subtitle": "Colspan Example",
+        "language": "html",
+        "code": "<table border=\"1\">\n  <!-- 第一行：跨列合并 -->\n  <tr>\n    <td colspan=\"2\">个人基本信息（占据两列）</td>\n    <!-- 注意：这里原本的第二个 td 被删除了 -->\n  </tr>\n  <!-- 第二行：正常两列 -->\n  <tr>\n    <td>姓名：张三</td>\n    <td>性别：男</td>\n  </tr>\n</table>",
+        "explanation":[
+          {
+            "line": "4",
+            "text": "colspan=\"2\" 告诉浏览器这个单元格的宽度要顶上平时2个单元格的宽度"
+          },
+          {
+            "line": "5",
+            "text": "因为上方占据了2列，为了保证总列数为2不变，本行少写一个 td"
+          },
+          {
+            "line": "8",
+            "text": "第二行正常写两个 td，恰好与第一行那一个超宽的 td 对齐"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "type": "content",
+      "content": {
+        "title": "跨行合并：rowspan 属性",
+        "subtitle": "Row Span",
+        "body":[
+          {
+            "type": "definition",
+            "text": "rowspan（Row Span）属性用于垂直方向向下合并行。\n\n用法：<td rowspan=\"合并的数量\">"
+          },
+          {
+            "type": "paragraph",
+            "text": "假设表格有两行，每行两列。你想让第一行的第一个单元格纵向跨越两行：\n你需要在第一行的第一个 <td> 加上 rowspan=\"2\"。\n因为这个单元格“侵占”了第二行的左侧空间，所以你在写第二行代码时，必须删掉第一列的 <td>！"
+          },
+          {
+            "type": "tip",
+            "text": "口诀：向下合并，合并多少填数字，下方受影响行里的 td 要扣掉。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "type": "code",
+      "content": {
+        "title": "代码演示：跨行合并 rowspan",
+        "subtitle": "Rowspan Example",
+        "language": "html",
+        "code": "<table border=\"1\">\n  <!-- 第一行 -->\n  <tr>\n    <td rowspan=\"2\">前端三剑客</td> <!-- 向下霸占了第二行的对应位置 -->\n    <td>HTML</td>\n  </tr>\n  <!-- 第二行 -->\n  <tr>\n    <!-- 注意：原本的第一个 td 被第一行霸占了，所以这里直接写第二列的内容 -->\n    <td>CSS</td>\n  </tr>\n</table>",
+        "explanation":[
+          {
+            "line": "4",
+            "text": "rowspan=\"2\" 意味着这个单元格在垂直方向占据 2 行的高度"
+          },
+          {
+            "line": "10",
+            "text": "第二行在编写时，直接从原本的第二列开始写，因为第一列的位置已经被上方合并来的单元格占据了"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "type": "timeline",
+      "content": {
+        "title": "构造复杂表格的4步法",
+        "subtitle": "Steps to Build Complex Tables",
+        "items":[
+          {
+            "year": "第1步",
+            "event": "草图规划，确定最大行列数",
+            "detail": "在纸上或脑海中画出表格，数出最多有几行、最多有几列，做到心中有数。"
+          },
+          {
+            "year": "第2步",
+            "event": "编写完整的基础网格结构",
+            "detail": "先不要管合并，老老实实写出所有的 <tr> 和 <td>，构建一个没有合并的标准矩形网格。"
+          },
+          {
+            "year": "第3步",
+            "event": "添加合并属性并删除多余单元格",
+            "detail": "找到需要合并的起点单元格添加 colspan 或 rowspan，然后立刻在代码中删除被“挤走”的多余 td。",
+            "highlight": true
+          },
+          {
+            "year": "第4步",
+            "event": "填入数据与设置样式",
+            "detail": "最后将真实的文字或图片填入保留下来的 td 中，并使用 CSS 进行美化排版。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "type": "section",
+      "content": {
+        "section": "02",
+        "icon": "📐",
+        "title": "表格的属性设置",
+        "subtitle": "边框、间距、对齐方式的控制与演变"
+      }
+    },
+    {
+      "id": "s19",
+      "type": "content",
+      "content": {
+        "title": "时代变迁：HTML属性 vs CSS样式",
+        "subtitle": "HTML Attributes vs CSS Styles",
+        "body":[
+          {
+            "type": "warning",
+            "text": "重要说明：\n在早期的HTML规范中，为了让表格好看，提供了一系列专门修饰外观的HTML属性（如 border, align, bgcolor）。\n\n但在HTML5的现代开发标准中，【表现与结构分离】是核心原则。这些专门管外观的HTML属性大多已被废弃或不再推荐使用，官方强烈推荐使用 CSS 来代替它们！"
+          },
+          {
+            "type": "paragraph",
+            "text": "本节学习意义：\n虽然推荐用CSS，但这些经典的表格HTML属性能极大地帮助你理解表格底层渲染模型。且在阅读老旧项目代码或开发特定场景（如HTML邮件开发）时，这些原生属性依然是必须掌握的基础知识。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "type": "table",
+      "content": {
+        "title": "经典 HTML 表格属性总览",
+        "subtitle": "Classic Table Attributes",
+        "headers":[
+          "属性名",
+          "作用说明",
+          "适用标签",
+          "值类型/示例"
+        ],
+        "rows": [[
+            "border",
+            "设置表格最外层边框的像素宽度",
+            "<table>",
+            "数字 (例如: border=\"1\")"
+          ],[
+            "cellspacing",
+            "设置单元格与单元格之间的间隙大小",
+            "<table>",
+            "数字 (例如: cellspacing=\"0\")"
+          ],[
+            "cellpadding",
+            "设置单元格内容到边框之间的内边距",
+            "<table>",
+            "数字 (例如: cellpadding=\"10\")"
+          ],[
+            "width / height",
+            "设置宽度与高度",
+            "<table>, <td>",
+            "像素值或百分比 (例如: width=\"100%\")"
+          ],[
+            "align",
+            "设置内容在水平方向的对齐方式",
+            "<tr>, <td>, <th>",
+            "left / center / right"
+          ],[
+            "valign",
+            "设置内容在垂直方向的对齐方式",
+            "<tr>, <td>, <th>",
+            "top / middle / bottom"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "type": "content",
+      "content": {
+        "title": "边框设置：border 属性",
+        "subtitle": "The border Attribute",
+        "body":[
+          {
+            "type": "definition",
+            "text": "默认情况下，浏览器渲染出来的 HTML 表格是没有边框的，数据看起来像是一排排悬空的文字。\n通过给 <table> 标签加上 border 属性，可以快速为表格画上线框。"
+          },
+          {
+            "type": "highlight",
+            "text": "需要注意的是：在HTML中给 table 设置 border=\"1\"，浏览器不仅会给外围画框，还会自动给里面的每一个 td 单元格画上细线框，形成典型的“双线边框”效果。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "type": "code",
+      "content": {
+        "title": "代码演示：border 使用",
+        "subtitle": "Using border",
+        "language": "html",
+        "code": "<table border=\"1\">\n  <tr>\n    <td>数据1</td>\n    <td>数据2</td>\n  </tr>\n</table>\n\n<table border=\"5\">\n  <tr>\n    <td>外边框很粗</td>\n    <td>内部仍是细线</td>\n  </tr>\n</table>",
+        "explanation":[
+          {
+            "line": "1",
+            "text": "常见的 1px 细外边框"
+          },
+          {
+            "line": "8",
+            "text": "border值改大只会改变表格「最外层包围框」的粗细，内部单元格之间的边线依然是极细的线。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "type": "content",
+      "content": {
+        "title": "单元格间距：cellspacing 属性",
+        "subtitle": "The cellspacing Attribute",
+        "body":[
+          {
+            "type": "definition",
+            "text": "cellspacing（单元格间隙）用来设置单元格与单元格之间，以及单元格与表格外框之间的缝隙大小。"
+          },
+          {
+            "type": "paragraph",
+            "text": "浏览器默认的 cellspacing 通常是 2 像素，这就是为什么你加了 border 后，表格看起来有“双条线”的原因（两条线中间隔了2个像素的缝隙）。"
+          },
+          {
+            "type": "tip",
+            "text": "经典技巧：在老代码中，为了让双线边框变成好看的“单实线边框”，开发者常常会设置 cellspacing=\"0\"，让单元格紧紧贴在一起。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "type": "code",
+      "content": {
+        "title": "代码演示：cellspacing 缝隙调整",
+        "subtitle": "Using cellspacing",
+        "language": "html",
+        "code": "<!-- 消除双线缝隙，呈现单线效果 -->\n<table border=\"1\" cellspacing=\"0\">\n  <tr>\n    <td>紧紧相连</td>\n    <td>没有缝隙</td>\n  </tr>\n</table>\n\n<!-- 夸张的缝隙 -->\n<table border=\"1\" cellspacing=\"15\">\n  <tr>\n    <td>距离很远</td>\n    <td>距离很远</td>\n  </tr>\n</table>",
+        "explanation":[
+          {
+            "line": "2",
+            "text": "设置 cellspacing=\"0\" 是早期实现单线表格最简单的方法。"
+          },
+          {
+            "line": "10",
+            "text": "设置较大的 cellspacing 会让每个单元格像孤岛一样分开。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "type": "content",
+      "content": {
+        "title": "单元格内填充：cellpadding 属性",
+        "subtitle": "The cellpadding Attribute",
+        "body":[
+          {
+            "type": "definition",
+            "text": "cellpadding（单元格内边距）用来设置单元格内的文字数据与单元格边框线之间的距离（留白）。"
+          },
+          {
+            "type": "paragraph",
+            "text": "默认情况下，文字是几乎紧贴着单元格边框的，显得非常局促。\n增加 cellpadding 可以让单元格“膨胀”起来，让里面的文字“呼吸”，提升表格的阅读体验。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "type": "code",
+      "content": {
+        "title": "代码演示：cellpadding 内留白",
+        "subtitle": "Using cellpadding",
+        "language": "html",
+        "code": "<table border=\"1\" cellpadding=\"10\">\n  <tr>\n    <td>四面八方</td>\n    <td>都有10px的空地</td>\n  </tr>\n  <tr>\n    <td>看起来</td>\n    <td>舒服多了</td>\n  </tr>\n</table>",
+        "explanation":[
+          {
+            "line": "1",
+            "text": "给整个表格设置 cellpadding，这意味着表格里的每一个 td 内四周都会增加 10px 的留白空间。"
+          }
+        ],
+        "output": "单元格变大了，文字离边线有一段距离，整体看起来大气且不拥挤。"
+      }
+    },
+    {
+      "id": "s27",
+      "type": "comparison",
+      "content": {
+        "title": "核心对比：cellspacing vs cellpadding",
+        "subtitle": "Spacing vs Padding",
+        "left": {
+          "label": "cellspacing (间隙)",
+          "icon": "↔️",
+          "color": "blue",
+          "items":[
+            "作用于单元格【外部】",
+            "控制的是“框与框”之间的距离",
+            "增加它会让表格变大，但单元格自身可用面积不变",
+            "现代CSS替代品：border-spacing"
+          ]
+        },
+        "right": {
+          "label": "cellpadding (内边距)",
+          "icon": "🔲",
+          "color": "green",
+          "items":[
+            "作用于单元格【内部】",
+            "控制的是“内容与框”之间的距离",
+            "增加它会让单元格“变胖”撑大",
+            "现代CSS替代品：padding (在td中设置)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s28",
+      "type": "code",
+      "content": {
+        "title": "现代开发做法：用 CSS 替代 HTML 属性",
+        "subtitle": "Modern CSS Alternative for Tables",
+        "language": "css",
+        "code": "/* 现代前端开发中，抛弃 border=\"1\" cellspacing=\"0\" 等写法，直接用CSS控制： */\n\ntable {\n  width: 100%; /* 替代表格的 width=\"100%\" */\n  border-collapse: collapse; /* 替代 cellspacing=\"0\"，合并双边框为单实线 */\n  border: 1px solid #ccc; /* 给外框加线 */\n}\n\nth, td {\n  padding: 12px; /* 替代 cellpadding=\"12\"，设置舒服的内边距 */\n  border: 1px solid #ccc; /* 给每个内部单元格加线 */\n  text-align: center; /* 替代 align=\"center\" 水平居中 */\n  vertical-align: middle; /* 替代 valign=\"middle\" 垂直居中 */\n}",
+        "explanation":[
+          {
+            "line": "5",
+            "text": "border-collapse: collapse 是 CSS 中处理表格边框的灵魂属性，它能把相邻单元格挨在一起的两根线合并成一根，实现完美的单线表格。"
+          },
+          {
+            "line": "10",
+            "text": "直接给 td 加 padding 远比以前用 cellpadding 灵活，因为CSS可以单独设置上下左右不同的间距。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "type": "content",
+      "content": {
+        "title": "控制表格内容对齐方式：align 与 valign",
+        "subtitle": "Horizontal and Vertical Alignment",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "你可以精准控制单元格里面文字靠哪边站。\n对齐分为两个维度：\n1. 水平维度（左/中/右）：使用 align 属性\n2. 垂直维度（上/中/下）：使用 valign 属性"
+          },
+          {
+            "type": "highlight",
+            "text": "作用范围层级：\n你可以把 align 加在 <tr> 上，一整行都受影响；\n也可以把它加在单独的 <td> 上，只影响当前单元格；\n如果 <td> 自己设置了对齐方式，会覆盖 <tr> 的整体设置。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "type": "table",
+      "content": {
+        "title": "对齐属性的合法取值",
+        "subtitle": "Values for align and valign",
+        "headers": [
+          "属性",
+          "取值",
+          "效果",
+          "对应CSS样式"
+        ],
+        "rows": [[
+            "align (水平)",
+            "left",
+            "内容靠左对齐（td默认）",
+            "text-align: left;"
+          ],[
+            "align (水平)",
+            "center",
+            "内容水平居中（th默认）",
+            "text-align: center;"
+          ],[
+            "align (水平)",
+            "right",
+            "内容靠右对齐",
+            "text-align: right;"
+          ],[
+            "valign (垂直)",
+            "top",
+            "内容顶端对齐",
+            "vertical-align: top;"
+          ],[
+            "valign (垂直)",
+            "middle",
+            "内容垂直居中（默认）",
+            "vertical-align: middle;"
+          ],[
+            "valign (垂直)",
+            "bottom",
+            "内容底端对齐",
+            "vertical-align: bottom;"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "type": "section",
+      "content": {
+        "section": "03",
+        "icon": "📝",
+        "title": "创建表单",
+        "subtitle": "打破单向信息传递，实现用户互动与数据采集"
+      }
+    },
+    {
+      "id": "s32",
+      "type": "content",
+      "content": {
+        "title": "什么是表单？Web应用的心脏",
+        "subtitle": "What is a Form?",
+        "body":[
+          {
+            "type": "definition",
+            "text": "表单（Form）是网页上用于收集用户输入信息的区域。\n它是实现客户端（浏览器）与服务器（后端程序）之间双向交互的核心组件。"
+          },
+          {
+            "type": "paragraph",
+            "text": "如果没有表单，网页永远只是一份报纸（只能看）。\n有了表单，网页就变成了双向沟通的工具，你可以在网上：\n• 登录账号、注册新用户\n• 在搜索框输入关键字查资料\n• 在电商网站填写收货地址\n• 发表文章、发表评论"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "type": "bullets",
+      "content": {
+        "title": "生活场景类比 Web 表单",
+        "subtitle": "Real World Analogy",
+        "layout": "grid",
+        "items":[
+          {
+            "icon": "📄",
+            "title": "1. 拿到一张空表格",
+            "subtitle": "HTML表单渲染",
+            "detail": "你去银行办卡，大堂经理给你一张印好各种方格的纸。\n(浏览器在页面上渲染出输入框、单选按钮等HTML结构)"
+          },
+          {
+            "icon": "✍️",
+            "title": "2. 填写个人信息",
+            "subtitle": "用户交互操作",
+            "detail": "你用笔在姓名、身份证、密码框里填入你的数据。\n(用户在浏览器的输入框内打字，或点击单选框)"
+          },
+          {
+            "icon": "📮",
+            "title": "3. 递交窗口",
+            "subtitle": "点击Submit提交",
+            "detail": "填好后，你走到柜台，把单子递给柜员。\n(用户点击页面上的「提交」按钮，浏览器打包数据)"
+          },
+          {
+            "icon": "⚙️",
+            "title": "4. 柜员录入并反馈",
+            "subtitle": "服务器处理与响应",
+            "detail": "柜员检查你没填错后录入系统，随后交给你一张新卡。\n(服务器接收请求，处理完毕后返回一个新网页或提示)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "type": "content",
+      "content": {
+        "title": "表单的包裹容器：<form> 标签",
+        "subtitle": "The <form> Tag",
+        "body":[
+          {
+            "type": "definition",
+            "text": "在HTML中，<form> 是表单的最外层容器。\n所有的文本框、密码框、提交按钮都必须放置在 <form> 与 </form> 之间，才能组成一个具有提交功能的完整表单。"
+          },
+          {
+            "type": "warning",
+            "text": "注意：<form> 标签本身在浏览器上是透明不可见的。它纯粹是一个逻辑容器，主要用于告诉浏览器：「我包裹的这些输入控件是一个小组，一会儿我要统一把它们的数据打包发送走」。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "type": "table",
+      "content": {
+        "title": "<form> 标签的关键属性",
+        "subtitle": "Key Attributes of the Form Tag",
+        "headers": [
+          "属性",
+          "含义",
+          "作用说明"
+        ],
+        "rows": [[
+            "action",
+            "表单提交的目的地",
+            "必填属性。用户点击提交后，数据发给哪个服务器地址来处理（例如 action=\"login.php\"）"
+          ],[
+            "method",
+            "数据传输方法",
+            "决定浏览器使用哪种 HTTP 方法发数据，常用值为 GET 或 POST"
+          ],[
+            "enctype",
+            "数据编码类型",
+            "当表单包含“文件上传”时，必须设置为 multipart/form-data"
+          ],[
+            "target",
+            "结果展示窗口",
+            "提交表单后，服务器返回的结果在哪里打开（_self 当前页，_blank 新窗口）"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "type": "comparison",
+      "content": {
+        "title": "重点对比：GET 与 POST 的区别",
+        "subtitle": "GET vs POST Methods",
+        "left": {
+          "label": "GET 方式（默认）",
+          "icon": "📨",
+          "color": "orange",
+          "items":[
+            "把表单数据作为参数，直接拼接到 URL 地址后面（如 ?q=HTML）",
+            "由于URL长度受限，不能传输大量数据",
+            "极度不安全，密码等敏感信息会直接暴露在地址栏和历史记录中",
+            "优势是速度快、可收藏为书签",
+            "适用场景：百度搜索框、商品筛选条件"
+          ]
+        },
+        "right": {
+          "label": "POST 方式",
+          "icon": "📦",
+          "color": "blue",
+          "items":[
+            "把表单数据隐藏在 HTTP 请求体的内部，地址栏看不见",
+            "没有大小限制，可以传输长篇大论甚至几GB的高清视频",
+            "安全性较好，不会暴露在URL中（结合HTTPS更安全）",
+            "不可被用户直接加入书签收藏",
+            "适用场景：用户登录/注册、发表长文章、上传照片"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s37",
+      "type": "content",
+      "content": {
+        "title": "不可忽视的 enctype 属性",
+        "subtitle": "Encoding Type",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "enctype 属性规定在发送表单数据之前，浏览器如何对这些数据进行编码压缩打包。"
+          },
+          {
+            "type": "highlight",
+            "text": "默认值：application/x-www-form-urlencoded\n它会把普通文字转成特殊的URL格式字符串发走。一般情况不需要改这个。"
+          },
+          {
+            "type": "tip",
+            "text": "唯一特例：文件上传！\n一旦你的表单里有「选择图片/文件」的功能，你必须给 form 加上 enctype=\"multipart/form-data\"。如果不加，服务器收到的只是文件的名字，而不是文件真正的二进制数据内容。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "type": "section",
+      "content": {
+        "section": "04",
+        "icon": "🖱️",
+        "title": "创建表单控件",
+        "subtitle": "丰富多样的输入手段：让数据录入更高效"
+      }
+    },
+    {
+      "id": "s39",
+      "type": "content",
+      "content": {
+        "title": "千变万化的 <input> 标签",
+        "subtitle": "The Versatile <input> Tag",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "表单控件中最核心、最庞大的家族就是 <input>（输入标签）。它是一个单标签元素。\n<input> 之所以强大，是因为它拥有一个堪称「变身器」的属性：type（类型）。"
+          },
+          {
+            "type": "highlight",
+            "text": "只要改变 type 的值，<input> 就能瞬间变成文本框、密码框、小圆点单选、方形复选框、甚至是各种各样的按钮！"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "type": "table",
+      "content": {
+        "title": "常用 input type 取值速查表",
+        "subtitle": "Common Input Types",
+        "headers":[
+          "type 取值",
+          "控件形态",
+          "核心用途说明"
+        ],
+        "rows": [[
+            "text",
+            "单行文本框 (默认值)",
+            "输入普通的短文字，如姓名、账号"
+          ],[
+            "password",
+            "密码框",
+            "输入的字符全变成黑圆点或星号，防偷窥"
+          ],[
+            "radio",
+            "单选按钮",
+            "一组选项中只能挑选一个（如性别）"
+          ],[
+            "checkbox",
+            "复选框",
+            "一组选项中可以挑选多个（如爱好）"
+          ],[
+            "file",
+            "文件选择器",
+            "调出系统资源管理器，选择本地文件上传"
+          ],[
+            "submit",
+            "提交按钮",
+            "点击后立即触发表单向服务器发送数据"
+          ],[
+            "reset",
+            "重置按钮",
+            "点击后清空该表单内所有已输入的内容"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s41",
+      "type": "content",
+      "content": {
+        "title": "所有输入控件的灵魂属性：name 和 value",
+        "subtitle": "name and value Attributes",
+        "body":[
+          {
+            "type": "warning",
+            "text": "新手最容易犯的错：只写了输入框的外观，却忘记写 name 属性。导致服务器什么数据都收不到！"
+          },
+          {
+            "type": "definition",
+            "text": "• name 属性：控件的名字（数据传递时的变量名或“键”）。服务器靠它区分收到的这串字到底是用户的账号还是密码。\n• value 属性：控件里面真正存放的内容（数据传递时的“值”）。对于输入框，value就是用户打的字；对于按钮，value是按钮上显示的文字。"
+          },
+          {
+            "type": "paragraph",
+            "text": "服务器最终收到的数据格式其实就是一对对的组合：\n【name = value】\n例如：username=zhangsan & age=20"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s42",
+      "type": "code",
+      "content": {
+        "title": "单行文本框与密码框的使用",
+        "subtitle": "Text and Password Inputs",
+        "language": "html",
+        "code": "<form>\n  <!-- 普通文本框 -->\n  账号：<input type=\"text\" name=\"username\" maxlength=\"10\" placeholder=\"请输入少于10位的账号\">\n  <br><br>\n\n  <!-- 密码框 -->\n  密码：<input type=\"password\" name=\"pwd\" placeholder=\"请输入密码\">\n</form>",
+        "explanation":[
+          {
+            "line": "3",
+            "text": "maxlength=\"10\" 限制用户最多只能输入 10 个字符"
+          },
+          {
+            "line": "3",
+            "text": "placeholder 是一种提示文字，显示在空的输入框里，呈现浅灰色。一旦用户打字，它会自动消失"
+          },
+          {
+            "line": "7",
+            "text": "type=\"password\" 会让用户输入的内容自动变成实心圆点，保护隐私安全"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s43",
+      "type": "code",
+      "content": {
+        "title": "单选按钮：radio 的使用法则",
+        "subtitle": "Radio Buttons",
+        "language": "html",
+        "code": "<form>\n  选择性别：\n  <!-- 必须拥有相同的 name 属性，浏览器才知道它们是「互斥」的一组 -->\n  <input type=\"radio\" name=\"gender\" value=\"male\"> 男\n  <input type=\"radio\" name=\"gender\" value=\"female\" checked> 女\n  <input type=\"radio\" name=\"gender\" value=\"unknown\"> 保密\n</form>",
+        "explanation":[
+          {
+            "line": "4-6",
+            "text": "如果 name 不一样，它们就不算一组，用户就会出现既能选“男”又能选“女”的荒唐错误。"
+          },
+          {
+            "line": "4-6",
+            "text": "因为单选框没法让用户打字，所以必须提前在HTML里写死 value 的值。提交时，只有被选中的那一项的 value 会发送给服务器（如 gender=female）。"
+          },
+          {
+            "line": "5",
+            "text": "checked 属性表示页面一打开时，该选项就处于「默认被选中」的状态。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s44",
+      "type": "code",
+      "content": {
+        "title": "复选框：checkbox 的使用法则",
+        "subtitle": "Checkboxes",
+        "language": "html",
+        "code": "<form>\n  选择您的兴趣爱好（可多选）：<br>\n  <input type=\"checkbox\" name=\"hobbies\" value=\"reading\"> 阅读\n  <input type=\"checkbox\" name=\"hobbies\" value=\"music\" checked> 音乐\n  <input type=\"checkbox\" name=\"hobbies\" value=\"sports\" checked> 运动\n  <input type=\"checkbox\" name=\"hobbies\" value=\"travel\"> 旅游\n</form>",
+        "explanation":[
+          {
+            "line": "3-6",
+            "text": "复选框的 type 为 checkbox。同属一个问题下的复选框通常也使用相同的 name 属性。"
+          },
+          {
+            "line": "4-5",
+            "text": "支持存在多个 checked 属性，因为本身就是允许用户同时勾选多项的。"
+          },
+          {
+            "line": "3-6",
+            "text": "服务器端接收这类数据时，通常会收到一个数组（例如 hobbies = ['music', 'sports']）。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s45",
+      "type": "bullets",
+      "content": {
+        "title": "表单控件：四种不同职责的按钮",
+        "subtitle": "Four Types of Form Buttons",
+        "layout": "grid",
+        "items":[
+          {
+            "icon": "🚀",
+            "title": "提交按钮 (submit)",
+            "subtitle": "<input type=\"submit\">",
+            "detail": "表单的“发动机”。\n点击它，浏览器就会自动收集所属form内的所有数据，并按 action 设定的地址发送出去。"
+          },
+          {
+            "icon": "🧹",
+            "title": "重置按钮 (reset)",
+            "subtitle": "<input type=\"reset\">",
+            "detail": "表单的“后悔药”。\n点击它，会让整个表单内所有的输入框、选项恢复到页面最初打开时的默认状态。"
+          },
+          {
+            "icon": "🔘",
+            "title": "普通按钮 (button)",
+            "subtitle": "<input type=\"button\">",
+            "detail": "“沉默”的按钮。\n点击它什么都不会发生，除非你用 JavaScript 给它绑定了点击事件代码。"
+          },
+          {
+            "icon": "🖼️",
+            "title": "图片按钮 (image)",
+            "subtitle": "<input type=\"image\">",
+            "detail": "“带图片的提交按钮”。\n用一张图片代替丑陋的系统按钮，功能与 submit 完全一样。需配合 src 属性指明图片路径。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s46",
+      "type": "code",
+      "content": {
+        "title": "代码演示：各种按钮的应用",
+        "subtitle": "Button Inputs",
+        "language": "html",
+        "code": "<form action=\"register.php\">\n  <input type=\"text\" name=\"user\">\n  <br><br>\n  <!-- 提交按钮 -->\n  <input type=\"submit\" value=\"立刻注册账号\">\n  \n  <!-- 重置按钮 -->\n  <input type=\"reset\" value=\"清空重填\">\n  \n  <!-- 普通按钮（常配合JS使用） -->\n  <input type=\"button\" value=\"发送验证码\" onclick=\"alert('验证码已发送！')\">\n  \n  <!-- 图片提交按钮 -->\n  <input type=\"image\" src=\"submit_btn.png\" alt=\"提交\">\n</form>",
+        "explanation":[
+          {
+            "line": "5, 8, 11",
+            "text": "按钮上显示的文本文字，是通过 value 属性来控制的。如果不写，不同浏览器会有不同的默认词（如“提交”、“Submit”）。"
+          },
+          {
+            "line": "11",
+            "text": "type=\"button\" 的普通按钮配合了 onclick 属性编写 JavaScript 代码实现了交互功能。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s47",
+      "type": "content",
+      "content": {
+        "title": "多行文本域：<textarea> 标签",
+        "subtitle": "The <textarea> Tag",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "当你需要让用户输入大段文章（比如：个人简介、评论留言、问题描述）时，单行的 <input type=\"text\"> 就显得力不从心了。\n此时应该使用专属的 <textarea> 标签。"
+          },
+          {
+            "type": "highlight",
+            "text": "特点：\n1. 它是一个双标签 <textarea></textarea>，默认文字直接写在标签对中间，而不是写在 value 里。\n2. 它可以输入多行文本，敲击回车键能够实现真正的换行。\n3. 右下角通常带有一个拖拽手柄，用户可自行拉伸其大小。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s48",
+      "type": "code",
+      "content": {
+        "title": "代码演示：多行文本域",
+        "subtitle": "Using Textarea",
+        "language": "html",
+        "code": "<form>\n  <p>请输入您的宝贵意见：</p>\n  <!-- rows 控制高度行数，cols 控制宽度字符数 -->\n  <textarea name=\"feedback\" rows=\"5\" cols=\"40\">\n在这里输入内容...\n一切默认显示的文字都放在标签夹层中间。\n  </textarea>\n</form>",
+        "explanation":[
+          {
+            "line": "4",
+            "text": "rows=\"5\" 告诉浏览器这个输入框默认要有 5 行文字的高度。"
+          },
+          {
+            "line": "4",
+            "text": "cols=\"40\" 告诉浏览器这个输入框的宽度大约能容纳 40 个英文字符。不过现代开发通常更推荐用 CSS 去精确控制宽度和高度。"
+          },
+          {
+            "line": "5-6",
+            "text": "请注意标签内的回车和空格会被保留，作为文本内容的初始值。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s49",
+      "type": "content",
+      "content": {
+        "title": "下拉选项菜单：<select> 与 <option>",
+        "subtitle": "Drop-down Menus",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "当提供的选项非常多（比如有30个省份供选择）时，如果用单选框 radio 会把页面挤得密密麻麻。\n此时应该使用下拉列表菜单来节约网页空间。"
+          },
+          {
+            "type": "definition",
+            "text": "下拉菜单是一种嵌套结构，需要两个标签配合使用：\n• <select> 定义下拉菜单的整体容器（把 name 属性写在这里）。\n• <option> 定义菜单里面的每一个具体选项条目（把 value 属性写在这里）。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s50",
+      "type": "code",
+      "content": {
+        "title": "代码演示：下拉菜单",
+        "subtitle": "Select and Option Example",
+        "language": "html",
+        "code": "<form>\n  所在地：\n  <select name=\"province\">\n    <option value=\"bj\">北京市</option>\n    <option value=\"sh\">上海市</option>\n    <!-- selected 属性让该项在打开时默认被选中 -->\n    <option value=\"gd\" selected>广东省</option>\n    <option value=\"zj\">浙江省</option>\n  </select>\n</form>",
+        "explanation":[
+          {
+            "line": "3",
+            "text": "<select> 标签持有 name=\"province\"，当用户提交表单时，服务器收到的变量名就是 province。"
+          },
+          {
+            "line": "4-5",
+            "text": "<option> 标签之间的文字（如“北京市”）是给用户看的；而 value=\"bj\" 才是真正在底层悄悄传给服务器处理的简码数据。"
+          },
+          {
+            "line": "7",
+            "text": "在 option 标签里加上 selected 属性，相当于下拉菜单的默认选中项。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s51",
+      "type": "content",
+      "content": {
+        "title": "体验升级：神奇的 <label> 标签",
+        "subtitle": "Improving UX with <label>",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "在网页中勾选单选框或复选框时，那个圆圈和方块通常非常微小，导致鼠标很难精准点击，极度影响用户体验。"
+          },
+          {
+            "type": "highlight",
+            "text": "<label> 标签专为解决此痛点而生！\n它用于为表单控件绑定文字说明。绑定之后，用户只要用鼠标点击文字区域，浏览器就会自动帮用户去激活对应的那个输入框/单选框！"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s52",
+      "type": "code",
+      "content": {
+        "title": "代码演示：利用 label 扩大点击热区",
+        "subtitle": "Label Binding Methods",
+        "language": "html",
+        "code": "<!-- 方法一：用 for 属性指向目标控件的 id -->\n<input type=\"radio\" name=\"gender\" id=\"male\" value=\"m\">\n<label for=\"male\">我是男生（点击这行文字也能选中左侧圆圈）</label>\n<br>\n\n<!-- 方法二：更简单的嵌套法，把控件直接包在 label 里面 -->\n<label>\n  <input type=\"checkbox\" name=\"agree\" value=\"yes\">\n  我已阅读并完全同意《用户注册服务协议》长文\n</label>",
+        "explanation":[
+          {
+            "line": "2-3",
+            "text": "显示绑定的精髓：给输入框取一个唯一的 id 名（如 id=\"male\"），然后在 label 的 for 属性中填入这个名字（for=\"male\"），两者就神奇地绑定在一起了。"
+          },
+          {
+            "line": "7-10",
+            "text": "嵌套法非常简洁，直接把 input 放在 label 标签对内部，整块区域自动成为一个可点击的热区。现代开发极为推荐这种写法。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s53",
+      "type": "table",
+      "content": {
+        "title": "时代进步：HTML5 新增的高级 input type",
+        "subtitle": "HTML5 Input Types",
+        "headers":[
+          "HTML5 新属性值",
+          "适用场景",
+          "特性说明"
+        ],
+        "rows": [[
+            "type=\"email\"",
+            "邮箱地址",
+            "提交时自动验证是否包含“@”等邮箱格式规则；在手机端弹出带“@”按键的专用键盘"
+          ],[
+            "type=\"url\"",
+            "网址输入",
+            "自动验证是否是 http:// 或 https:// 开头的网址"
+          ],[
+            "type=\"number\"",
+            "数字输入",
+            "自带上下微调小箭头，阻止用户输入字母（配合 min/max/step 限制范围）"
+          ],[
+            "type=\"date\"",
+            "日期选择",
+            "无需借助外部JS库，浏览器原生弹出一个精美的日历控件供挑选日期"
+          ],[
+            "type=\"color\"",
+            "颜色拾取",
+            "弹出一个系统的调色板供用户点选颜色（返回如 #ff0000 的颜色值）"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s54",
+      "type": "bullets",
+      "content": {
+        "title": "HTML5 新增的表单控制属性",
+        "subtitle": "HTML5 Form Control Attributes",
+        "layout": "list",
+        "items":[
+          {
+            "icon": "❗",
+            "title": "required (必填验证)",
+            "detail": "加了此属性的输入框，如果为空，浏览器会阻断表单的提交，并弹气泡提示“请填写此字段”。完全无需手写JS验证代码。",
+            "badge": "常用"
+          },
+          {
+            "icon": "👁️‍🗨️",
+            "title": "placeholder (占位提示)",
+            "detail": "在输入框空白时显示的浅灰色提示语（如“请输入手机号”），一旦用户开始打字便自动消失。是现代UI设计的标配。",
+            "badge": "必会"
+          },
+          {
+            "icon": "🎯",
+            "title": "autofocus (自动聚焦)",
+            "detail": "页面刚一打开，带此属性的输入框就会自动获得光标焦点，方便用户立刻开始敲击键盘（常用于搜索引擎首页）。",
+            "badge": "细节体验"
+          },
+          {
+            "icon": "🧩",
+            "title": "pattern (正则规则验证)",
+            "detail": "允许你用正则表达式对输入内容进行严格的高级校验（例如：pattern=\"[0-9]{11}\" 强制必须是11位纯数字）。",
+            "badge": "高级进阶"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s55",
+      "type": "comparison",
+      "content": {
+        "title": "易混淆知识：只读 vs 禁用",
+        "subtitle": "readonly vs disabled",
+        "left": {
+          "label": "readonly (只读状态)",
+          "icon": "🔒",
+          "color": "blue",
+          "items":[
+            "限制：用户只能看和复制里面的文字，绝对不能修改",
+            "外观：通常和正常输入框长得一样（取决于浏览器默认UI）",
+            "关键特性：表单提交时，这部分数据 仍然会被发送 给服务器！",
+            "应用场景：系统自动生成的流水号、禁止修改的实名认证姓名"
+          ]
+        },
+        "right": {
+          "label": "disabled (禁用状态)",
+          "icon": "🚫",
+          "color": "orange",
+          "items":[
+            "限制：用户完全不能操作该控件（甚至鼠标点不进去）",
+            "外观：整体变成灰色、呈现半透明的黯淡状态",
+            "关键特性：表单提交时，这部分数据 会被彻底丢弃，不发给服务器！",
+            "应用场景：没勾选协议时变灰的提交按钮、没有权限操作的配置项"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s56",
+      "type": "section",
+      "content": {
+        "section": "05",
+        "icon": "💻",
+        "title": "综合实例：表格与表单",
+        "subtitle": "结合实战，用真实项目串联所有知识点"
+      }
+    },
+    {
+      "id": "s57",
+      "type": "content",
+      "content": {
+        "title": "实战项目 1：企业员工档案表格设计",
+        "subtitle": "Project 1: Employee Record Table",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "需求分析：\n我们要利用所学的 表格标签 和 CSS 知识，制作一份包含合并单元格的高颜值数据展示表。\n它需要具备：\n1. 清晰的标题说明（colspan横跨全表）\n2. 表头与数据主体的逻辑隔离（thead/tbody）\n3. 通过CSS消灭双线边框（border-collapse）\n4. 漂亮的斑马线隔行换色样式与悬停效果"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s58",
+      "type": "code",
+      "content": {
+        "title": "代码实现：员工表 HTML 结构",
+        "subtitle": "HTML Structure of Table",
+        "language": "html",
+        "code": "<table class=\"emp-table\">\n  <thead>\n    <!-- 大标题跨越4列 -->\n    <tr>\n      <th colspan=\"4\">2026年度新入职员工档案信息汇总</th>\n    </tr>\n    <tr>\n      <th>工号</th>\n      <th>姓名</th>\n      <th>部门</th>\n      <th>薪水级别</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>A001</td>\n      <td>张三丰</td>\n      <td>研发中心</td>\n      <td>T5</td>\n    </tr>\n    <!-- 更多 tr 数据行省略... -->\n  </tbody>\n</table>",
+        "explanation":[
+          {
+            "line": "5",
+            "text": "通过 colspan=\"4\" 让首行的大标题一统江湖，独占 4 列的宽度。"
+          },
+          {
+            "line": "2",
+            "text": "将所有标题类信息严格包裹在 thead 内部，保持语义清晰。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s59",
+      "type": "code",
+      "content": {
+        "title": "代码实现：员工表 CSS 样貌赋能",
+        "subtitle": "CSS Styling for Table",
+        "language": "css",
+        "code": "/* 核心重置，消灭丑陋的双线缝隙 */\n.emp-table {\n  width: 80%;\n  margin: 20px auto;\n  border-collapse: collapse;\n  font-family: sans-serif;\n}\n\n/* 统一定义边框和内边距 */\n.emp-table th, .emp-table td {\n  border: 1px solid #ddd;\n  padding: 12px 15px;\n  text-align: center;\n}\n\n/* 表头高级定制 */\n.emp-table thead tr:first-child th {\n  background-color: #0d1b4b;\n  color: #fff;\n  font-size: 1.2rem;\n}\n\n/* 数据行悬停高亮提示效果（提升体验的神来之笔） */\n.emp-table tbody tr:hover {\n  background-color: #f1f8ff;\n}",
+        "explanation":[
+          {
+            "line": "5",
+            "text": "border-collapse: collapse 是决定表格好不好看的命门属性。"
+          },
+          {
+            "line": "24",
+            "text": "tr:hover 是极好的交互反馈设计，用户的鼠标指到哪一行，哪一行底色就变蓝，防看串行。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s60",
+      "type": "content",
+      "content": {
+        "title": "实战项目 2：综合性用户注册页",
+        "subtitle": "Project 2: User Registration Form",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "需求分析：\n为了让注册页面具有代表性，我们的表单需要囊括几乎所有的主流输入控件类型。\n它需要收集的信息有：\n1. 账号与密码（文本与密码框）\n2. 性别选择（单选框 radio）\n3. 擅长的开发技能（多选框 checkbox）\n4. 所在的校区/城市（下拉菜单 select）\n5. 个人简介（多行文本 textarea）\n6. 必须勾选同意协议才能提交（验证约束）"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s61",
+      "type": "code",
+      "content": {
+        "title": "注册页面的核心 HTML 代码 (上段)",
+        "subtitle": "Form HTML - Part 1",
+        "language": "html",
+        "code": "<form action=\"/api/register\" method=\"POST\">\n  <h2>新用户注册</h2>\n  \n  <label>账号名称：</label>\n  <!-- 必填限制，且有占位提示 -->\n  <input type=\"text\" name=\"user_id\" required placeholder=\"字母开头，不少于6位\">\n  <br><br>\n\n  <label>登录密码：</label>\n  <input type=\"password\" name=\"password\" required>\n  <br><br>\n\n  <label>您的性别：</label>\n  <label><input type=\"radio\" name=\"gender\" value=\"1\" checked> 先生</label>\n  <label><input type=\"radio\" name=\"gender\" value=\"0\"> 女士</label>\n  <br><br>",
+        "explanation":[
+          {
+            "line": "1",
+            "text": "对于注册这种会写入服务器数据库的核心机密操作，必须绝对使用 method=\"POST\"。"
+          },
+          {
+            "line": "6",
+            "text": "利用了 HTML5 的 required 属性，省去了自己编写 JS 判断为空的代码逻辑。"
+          },
+          {
+            "line": "14-15",
+            "text": "男女选择是二选一互斥，所以 name 都叫 gender；同时巧妙利用了 label 嵌套，扩大了鼠标点击判定面积。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s62",
+      "type": "code",
+      "content": {
+        "title": "注册页面的核心 HTML 代码 (下段)",
+        "subtitle": "Form HTML - Part 2",
+        "language": "html",
+        "code": "  <label>擅长技术：</label>\n  <!-- 允许复选，它们属于同组信息，name都是skills -->\n  <input type=\"checkbox\" name=\"skills\" value=\"html\"> HTML5\n  <input type=\"checkbox\" name=\"skills\" value=\"css\"> CSS3\n  <input type=\"checkbox\" name=\"skills\" value=\"js\"> JavaScript\n  <br><br>\n\n  <label>所在校区：</label>\n  <select name=\"campus\">\n    <option value=\"north\">北校区</option>\n    <option value=\"south\">南校区</option>\n  </select>\n  <br><br>\n\n  <label>用一句话介绍自己：</label><br>\n  <textarea name=\"intro\" rows=\"3\" cols=\"40\" placeholder=\"展现你的个性...\"></textarea>\n  <br><br>\n\n  <!-- 提交动作区域 -->\n  <input type=\"submit\" value=\"立刻注册成为会员\">\n</form>",
+        "explanation":[
+          {
+            "line": "3-5",
+            "text": "复选框提供技能多选项，勾选的值会被合并成一个数组传递给后台。"
+          },
+          {
+            "line": "16",
+            "text": "多行文本域 textarea 标签即使里头不默认写字，也必须成对书写 </textarea> 闭合标签，绝不能写成单标签！"
+          },
+          {
+            "line": "20",
+            "text": "带有 type=\"submit\" 的按钮点击后，就会把整个表单内带有 name 属性的所有数据打包向 /api/register 地址发起 HTTP POST 请求。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s63",
+      "type": "section",
+      "content": {
+        "section": "06",
+        "icon": "🎓",
+        "title": "练习与总结",
+        "subtitle": "检验你的学习成果"
+      }
+    },
+    {
+      "id": "s64",
+      "type": "bullets",
+      "content": {
+        "title": "自测题：知识点快问快答",
+        "subtitle": "Quick Quiz",
+        "layout": "list",
+        "items":[
+          {
+            "title": "Q：制作表格必须具备的最基本三个标签是？",
+            "detail": "A：<table>（表格）、<tr>（行）、<td>（单元格）。",
+            "icon": "❓"
+          },
+          {
+            "title": "Q：我要做一个跨越 3 行合并的大单元格，应该写什么代码？",
+            "detail": "A：给那个 <td> 加上 rowspan=\"3\" 属性，同时记得去把下面两行中原本属于这个位置的 td 删掉。",
+            "icon": "❓"
+          },
+          {
+            "title": "Q：在 CSS 中，合并表格双线边框的终极魔法属性是？",
+            "detail": "A：border-collapse: collapse;",
+            "icon": "❓"
+          },
+          {
+            "title": "Q：在表单中包含文件上传（如头像）功能时，必须添加的 form 属性是什么？",
+            "detail": "A：enctype=\"multipart/form-data\"",
+            "icon": "❓"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s65",
+      "type": "content",
+      "content": {
+        "title": "课后实践任务",
+        "subtitle": "Homework Assignments",
+        "body":[
+          {
+            "type": "highlight",
+            "text": "任务一：复刻个人大学成绩单页面\n请找出一张你大学期间真实的教务系统成绩单。使用 table/thead/tbody/tfoot 结构将它用 HTML 还原出来。确保“学期”信息需要做跨行合并（rowspan）。"
+          },
+          {
+            "type": "highlight",
+            "text": "任务二：设计一个「商品收货地址」表单\n要求表单具有表单提交功能。内部必须包含：\n1. 收件人姓名 (文本框，必填)\n2. 手机号码 (HTML5 number类型)\n3. 所在省市 (使用两个 select 级联排版)\n4. 详细街道地址 (多行文本 textarea)\n5. 保存按钮"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s66",
+      "type": "summary",
+      "content": {
+        "title": "第五章 小结",
+        "points":[
+          "表格在HTML5中回归了其纯粹的使命：专用于展示二维结构化的数据，绝不应该用于页面布局。",
+          "表格的三大基石是 table、tr 和 td；高级结构有 thead、tbody、tfoot，能让代码更具有语义色彩。",
+          "合并单元格需牢记：左右跨列用 colspan，上下跨行用 rowspan。合并时永远别忘删掉被“挤破”的多余单元格。",
+          "表格的原始属性（border, cellpadding, cellspacing）虽能控制外观，但在现代开发中，强烈推荐使用 CSS 样式来替代它们，尤其是用 border-collapse 消灭双线缝隙。",
+          "表单是Web应用能实现“双向沟通”的核心组件，外层必须包裹在 <form> 标签内，关键属性是 action 和 method。",
+          "GET 请求数据挂在 URL 上（不安全、小量），POST 请求数据藏在身体里（安全、海量）。",
+          "万能的 <input> 控件通过更改 type 属性，能够千变万化（文本、密码、单选、复选、按钮）。要确保数据能被服务器认识，千万别忘了写上名字 name 属性！",
+          "了解 textarea（多行文本）、select（下拉菜单）的排版逻辑，并善用 HTML5 新增的 required 等高级验证属性提升开发效率。"
+        ],
+        "nextChapter": {
+          "chapter": "第六章",
+          "title": "CSS3进阶",
+          "preview": "在掌握了HTML结构骨架后，我们将深入CSS的高级魔法：复杂的定位、弹性盒子布局以及动感十足的过渡变换特效。"
+        }
+      }
+    },
+    {
+      "id": "s67",
+      "type": "thankyou",
+      "content": {
+        "title": "本章学习完成",
+        "subtitle": "Congratulations! You've mastered Tables and Forms.",
+        "message": "有了表格，你拥有了向世界清晰展示复杂数据的能力。\n有了表单，你为冰冷的网页注入了倾听用户心声的耳朵。\n\n现在的你，已经迈出了从「静态页面」走向真实「Web应用程序」最关键的一步！请多敲代码巩固练习！",
+        "contact": "有疑问请在课程答疑区发帖求助",
+        "nextClass": "下次课见：第六章 CSS3高级布局进阶"
+      }
+    }
+  ]
+}

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web应用开发技术 · 课件演示</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080f1e;--bg2:#0d1b35;--bg3:#112240;--bg4:#1a2f52;
+  --accent:#4fc3f7;--accent2:#7c4dff;--accent3:#00e5ff;
+  --text:#e8f0fe;--text2:#94a3b8;--text3:#64748b;
+  --green:#4ade80;--orange:#fb923c;--red:#f87171;--purple:#c084fc;
+  --border:rgba(79,195,247,0.15);--border2:rgba(79,195,247,0.08);
+  --r:16px;--r2:8px;
+  --font:'Inter','Noto Sans SC',sans-serif;
+  --mono:'JetBrains Mono','Fira Code',monospace;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:var(--font);color:var(--text)}
+
+/* ── Layout ── */
+#app{width:100vw;height:100vh;display:flex;flex-direction:column;position:relative}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .4s ease;z-index:100;box-shadow:0 0 12px var(--accent)}
+#slide-wrap{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:24px;position:relative;overflow-y:auto;overflow-x:hidden}
+#slide-area{width:100%;max-width:1200px;position:relative;min-height:0}
+.slide{position:relative;border-radius:var(--r);overflow:hidden;opacity:0;transform:translateX(60px) scale(0.97);transition:opacity .45s ease,transform .45s ease;pointer-events:none;background:linear-gradient(135deg,var(--bg2) 0%,var(--bg3) 50%,var(--bg2) 100%);border:1px solid var(--border);display:none;min-height:500px}
+.slide.active{opacity:1;transform:none;pointer-events:all;display:block}
+.slide.exit{opacity:0;transform:translateX(-60px) scale(0.97)}
+
+/* ── Controls bar ── */
+#ctrl{display:flex;align-items:center;gap:12px;padding:12px 28px;background:var(--bg2);border-top:1px solid var(--border2)}
+#ctrl button{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:7px 16px;border-radius:var(--r2);cursor:pointer;font-size:13px;font-family:var(--font);transition:all .2s;display:flex;align-items:center;gap:6px}
+#ctrl button:hover{background:var(--bg4);border-color:var(--accent);color:var(--accent)}
+#slide-info{color:var(--text2);font-size:13px;font-weight:500;min-width:90px;text-align:center}
+#slide-title-bar{flex:1;color:var(--text2);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
+#timer-disp{color:var(--text3);font-size:13px;font-weight:500;min-width:50px;text-align:right;font-family:var(--mono)}
+#load-btn-ctrl{padding:6px 14px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);color:var(--red);border-radius:var(--r2);cursor:pointer;font-size:12px;font-family:var(--font);transition:all .2s}
+#load-btn-ctrl:hover{background:rgba(248,113,113,0.2);border-color:var(--red)}
+
+/* ── Common slide parts ── */
+.slide-inner{width:100%;min-height:500px;display:flex;flex-direction:column;padding:52px 60px 40px;position:relative;z-index:1}
+.slide-header{margin-bottom:32px}
+.slide-tag{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.slide-tag::after{content:'';flex:1;height:1px;background:var(--border)}
+.slide-h1{font-size:clamp(22px,3vw,36px);font-weight:700;color:var(--text);line-height:1.25;margin-bottom:6px}
+.slide-sub{font-size:clamp(12px,1.4vw,16px);color:var(--text2);font-weight:300}
+
+/* deco */
+.deco{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
+.deco1{width:400px;height:400px;background:rgba(79,195,247,0.06);top:-100px;right:-100px}
+.deco2{width:300px;height:300px;background:rgba(124,77,255,0.06);bottom:-80px;left:-60px}
+
+/* bg grid */
+.slide::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(79,195,247,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,195,247,0.03) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+
+/* ── COVER ── */
+.cover-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.cover-course{font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);border:1px solid var(--border);display:inline-block;padding:5px 14px;border-radius:40px;background:rgba(79,195,247,0.08);width:max-content}
+.cover-chapter{font-size:13px;color:var(--text3);font-weight:500}
+.cover-title{font-size:clamp(28px,4.5vw,54px);font-weight:800;line-height:1.15;background:linear-gradient(135deg,#e8f0fe 0%,var(--accent) 50%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cover-subtitle{font-size:clamp(14px,1.8vw,20px);color:var(--text3);font-weight:300}
+.cover-line{width:80px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px}
+.cover-meta{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.cover-meta-item{display:flex;flex-direction:column;gap:2px}
+.cover-meta-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em}
+.cover-meta-value{font-size:14px;color:var(--text2);font-weight:500}
+.cover-tags{display:flex;gap:8px;flex-wrap:wrap}
+.cover-tag{padding:4px 12px;border-radius:40px;font-size:12px;font-weight:500;background:rgba(79,195,247,0.1);border:1px solid rgba(79,195,247,0.2);color:var(--accent)}
+
+/* ── AGENDA ── */
+.agenda-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1}
+.agenda-item{display:flex;align-items:flex-start;gap:14px;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r2);padding:14px 16px;transition:all .2s}
+.agenda-item:hover{border-color:var(--border);transform:translateX(3px)}
+.agenda-num{font-size:22px;font-weight:800;color:var(--accent);opacity:.6;font-family:var(--mono);min-width:36px;line-height:1}
+.agenda-text h3{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
+.agenda-text p{font-size:12px;color:var(--text3)}
+
+/* ── SECTION ── */
+.section-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;z-index:1}
+.section-num{font-size:clamp(80px,12vw,140px);font-weight:900;color:var(--accent);opacity:.08;font-family:var(--mono);line-height:1;position:absolute;top:50%;left:50%;transform:translate(-50%,-60%)}
+.section-icon{font-size:clamp(40px,6vw,64px);margin-bottom:20px;filter:drop-shadow(0 0 20px rgba(79,195,247,0.4))}
+.section-title{font-size:clamp(28px,4vw,48px);font-weight:800;background:linear-gradient(135deg,#e8f0fe,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px}
+.section-sub{font-size:clamp(14px,1.6vw,18px);color:var(--text3);font-weight:300}
+.section-line{width:80px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;margin:20px auto}
+
+/* ── BODY BLOCKS ── */
+.body-blocks{display:flex;flex-direction:column;gap:12px;flex:1;overflow:visible}
+.block-paragraph{font-size:clamp(13px,1.4vw,16px);color:var(--text2);line-height:1.8;white-space:pre-line}
+.block-highlight{background:linear-gradient(135deg,rgba(79,195,247,0.08),rgba(124,77,255,0.08));border-left:3px solid var(--accent);border-radius:0 var(--r2) var(--r2) 0;padding:14px 18px;font-size:clamp(12px,1.3vw,15px);color:var(--text);white-space:pre-line;line-height:1.7}
+.block-definition{border:1px solid rgba(79,195,247,0.25);border-radius:var(--r2);padding:14px 18px;font-size:clamp(12px,1.3vw,15px);color:var(--text2);background:rgba(79,195,247,0.04);white-space:pre-line;line-height:1.7}
+.block-tip{background:rgba(74,222,128,0.07);border-left:3px solid var(--green);border-radius:0 var(--r2) var(--r2) 0;padding:12px 16px;font-size:clamp(12px,1.3vw,14px);color:#86efac;white-space:pre-line;line-height:1.7}
+.block-warning{background:rgba(251,146,60,0.07);border-left:3px solid var(--orange);border-radius:0 var(--r2) var(--r2) 0;padding:12px 16px;font-size:clamp(12px,1.3vw,14px);color:#fdba74;white-space:pre-line;line-height:1.7}
+.aside-note{margin-top:12px;padding:10px 16px;background:var(--bg3);border-radius:var(--r2);font-size:12px;color:var(--text3);border:1px dashed var(--border2)}
+
+/* ── BULLETS ── */
+.bullets-list{display:flex;flex-direction:column;gap:10px;flex:1;overflow:auto}
+.bullets-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;flex:1;overflow:auto}
+.bullets-cards{display:flex;gap:16px;flex:1;overflow:auto}
+.bullet-item-list{display:flex;align-items:flex-start;gap:14px;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r2);padding:14px 16px;transition:all .2s}
+.bullet-item-list:hover{border-color:var(--border);background:var(--bg4)}
+.bullet-item-grid{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:18px;transition:all .2s;display:flex;flex-direction:column;gap:8px}
+.bullet-item-grid:hover{border-color:var(--border);transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
+.bullet-item-card{flex:1;background:linear-gradient(135deg,var(--bg3),var(--bg4));border:1px solid var(--border);border-radius:var(--r);padding:24px 20px;display:flex;flex-direction:column;gap:10px;transition:all .2s}
+.bullet-item-card:hover{border-color:var(--accent);box-shadow:0 0 20px rgba(79,195,247,0.1)}
+.b-icon{font-size:clamp(20px,2.5vw,28px)}
+.b-title{font-size:clamp(13px,1.4vw,16px);font-weight:700;color:var(--text)}
+.b-subtitle{font-size:12px;color:var(--accent);font-weight:500}
+.b-detail{font-size:clamp(11px,1.1vw,13px);color:var(--text2);line-height:1.6;flex:1;white-space:pre-line}
+.b-badge{display:inline-block;padding:3px 10px;border-radius:40px;font-size:11px;background:rgba(79,195,247,0.1);border:1px solid rgba(79,195,247,0.2);color:var(--accent);font-weight:500;align-self:flex-start;margin-top:auto}
+
+/* ── COMPARISON ── */
+.comparison-wrap{flex:1;display:flex;gap:20px}
+.comp-col{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:10px}
+.comp-col.blue{border-top:3px solid var(--accent)}.comp-col.green{border-top:3px solid var(--green)}
+.comp-col.orange{border-top:3px solid var(--orange)}.comp-col.purple{border-top:3px solid var(--purple)}
+.comp-label{font-size:clamp(13px,1.4vw,16px);font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.comp-items{display:flex;flex-direction:column;gap:8px;flex:1;overflow:auto}
+.comp-item{display:flex;align-items:flex-start;gap:8px;font-size:clamp(11px,1.2vw,14px);color:var(--text2);line-height:1.5}
+.comp-item::before{content:'▸';color:var(--accent);flex-shrink:0;margin-top:1px}
+
+/* ── CODE ── */
+.code-wrap{flex:1;display:flex;gap:20px;min-height:0}
+.code-block{flex:1;background:#0d1117;border:1px solid rgba(255,255,255,0.08);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.code-toolbar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:#161b2a;border-bottom:1px solid rgba(255,255,255,0.06)}
+.code-dot{width:12px;height:12px;border-radius:50%}
+.code-dot.r{background:#ff5f57}.code-dot.y{background:#febc2e}.code-dot.g{background:#28c840}
+.code-lang{margin-left:auto;font-size:11px;color:var(--text3);font-family:var(--mono);text-transform:uppercase}
+.code-content{flex:1;overflow:auto;padding:16px 20px}
+pre{font-family:var(--mono);font-size:clamp(11px,1.15vw,14px);line-height:1.7;color:#e6edf3;white-space:pre}
+.code-explain{width:260px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;flex-shrink:0}
+.explain-item{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r2);padding:12px;font-size:clamp(11px,1.1vw,13px)}
+.explain-line{display:inline-block;background:rgba(79,195,247,0.15);color:var(--accent);border-radius:4px;padding:1px 7px;font-family:var(--mono);font-size:12px;margin-bottom:5px}
+.explain-text{color:var(--text2);line-height:1.6}
+.code-output{margin-top:10px;padding:10px 16px;background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.15);border-radius:var(--r2);font-size:clamp(11px,1.1vw,13px);color:#86efac}
+
+/* 预览按钮样式 */
+.preview-btn {
+  background: rgba(74, 222, 128, 0.15);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  color: #4ade80;
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.preview-btn:hover {
+  background: rgba(74, 222, 128, 0.3);
+  color: #fff;
+}
+
+/* ── TABLE ── */
+.table-wrap{flex:1;overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:clamp(11px,1.2vw,14px)}
+thead th{background:linear-gradient(135deg,var(--bg4),var(--bg3));color:var(--accent);padding:12px 14px;text-align:left;font-weight:600;font-size:clamp(10px,1.1vw,12px);text-transform:uppercase;letter-spacing:.08em;border-bottom:2px solid var(--border)}
+tbody tr{border-bottom:1px solid var(--border2);transition:background .15s}
+tbody tr:hover{background:var(--bg3)}
+tbody td{padding:12px 14px;color:var(--text2);vertical-align:top;line-height:1.5}
+tbody tr:nth-child(even){background:rgba(255,255,255,0.02)}
+
+/* ── TIMELINE ── */
+.timeline-wrap{flex:1;overflow-y:auto;padding-right:8px;display:flex;flex-direction:column}
+.tl-item{display:flex;align-items:stretch}
+.tl-left{min-width:80px;text-align:right;padding:0 16px 0 0;display:flex;flex-direction:column;align-items:flex-end;padding-top:6px}
+.tl-year{font-size:clamp(11px,1.2vw,14px);font-weight:700;color:var(--accent);font-family:var(--mono);white-space:nowrap}
+.tl-line-col{display:flex;flex-direction:column;align-items:center;padding:0 8px;position:relative}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--bg3);border:2px solid var(--text3);flex-shrink:0;margin-top:6px;z-index:1}
+.tl-item.hl .tl-dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 12px rgba(79,195,247,0.5);width:18px;height:18px}
+.tl-connector{width:2px;background:var(--border2);flex:1;margin:4px 0}
+.tl-item:last-child .tl-connector{display:none}
+.tl-right{flex:1;padding:2px 0 20px 8px}
+.tl-event{font-size:clamp(12px,1.3vw,15px);font-weight:600;color:var(--text);margin-bottom:4px}
+.tl-item.hl .tl-event{color:var(--accent)}
+.tl-detail{font-size:clamp(11px,1.1vw,13px);color:var(--text3);line-height:1.6}
+
+/* ── QUOTE ── */
+.quote-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;position:relative;z-index:1}
+.quote-mark{font-size:120px;color:var(--accent);opacity:.12;font-family:Georgia,serif;line-height:.6;align-self:flex-start;margin-bottom:-20px;margin-left:-10px}
+.quote-text{font-size:clamp(16px,2.2vw,26px);font-weight:300;color:var(--text);line-height:1.7;font-style:italic;max-width:760px;margin-bottom:28px}
+.quote-author{font-size:clamp(14px,1.5vw,18px);font-weight:700;color:var(--accent)}
+.quote-role{font-size:clamp(12px,1.2vw,14px);color:var(--text3);margin-top:4px}
+.quote-context{margin-top:16px;font-size:12px;color:var(--text3);font-style:italic;border-top:1px solid var(--border2);padding-top:12px;max-width:600px}
+.quote-decoline{width:60px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;margin:0 auto 20px}
+
+/* ── SUMMARY ── */
+.summary-points{display:flex;flex-direction:column;gap:10px;flex:1;overflow:auto}
+.summary-point{display:flex;align-items:flex-start;gap:12px;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r2);padding:12px 16px;transition:all .2s}
+.summary-point:hover{border-color:var(--border);transform:translateX(4px)}
+.sp-num{min-width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#000;flex-shrink:0}
+.sp-text{font-size:clamp(12px,1.25vw,14px);color:var(--text2);line-height:1.6}
+.next-chapter{margin-top:16px;padding:14px 20px;background:linear-gradient(135deg,rgba(79,195,247,0.08),rgba(124,77,255,0.08));border:1px solid var(--border);border-radius:var(--r);display:flex;align-items:center;gap:16px}
+.nc-label{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px}
+.nc-title{font-size:14px;font-weight:600;color:var(--text)}
+.nc-preview{font-size:12px;color:var(--text3);margin-top:2px}
+.nc-arrow{font-size:24px;margin-left:auto;color:var(--accent)}
+
+/* ── THANK YOU ── */
+.thanks-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;z-index:1}
+.thanks-icon{font-size:64px;margin-bottom:16px;animation:pulse 3s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(79,195,247,0.4))}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.thanks-title{font-size:clamp(32px,5vw,58px);font-weight:800;background:linear-gradient(135deg,#e8f0fe,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.thanks-subtitle{font-size:clamp(16px,2vw,24px);color:var(--text3);font-weight:300;margin-bottom:28px}
+.thanks-msg{font-size:clamp(13px,1.4vw,16px);color:var(--text2);max-width:560px;line-height:1.8;margin-bottom:20px}
+.thanks-contact{padding:8px 20px;background:var(--bg3);border:1px solid var(--border);border-radius:40px;font-size:13px;color:var(--accent);margin-bottom:12px}
+.thanks-next{font-size:13px;color:var(--text3)}
+
+/* ── Loading / Error Screen (Now used as Main Menu) ── */
+#loader{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;z-index:999;padding:40px}
+#loader-title{color:var(--text);font-size:24px;font-weight:700}
+#loader-msg{color:var(--text2);font-size:15px;text-align:center;line-height:1.8}
+.loader-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.loader-btn{padding:12px 30px;background:var(--accent);border:none;color:#000;border-radius:30px;cursor:pointer;font-size:15px;font-weight:600;font-family:var(--font);transition:all .2s;box-shadow:0 4px 15px rgba(79,195,247,0.3)}
+.loader-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(79,195,247,0.5)}
+
+/* ── Syntax highlight ── */
+.tok-kw{color:#ff7b72}.tok-str{color:#a5d6ff}.tok-num{color:#79c0ff}
+.tok-fn{color:#d2a8ff}.tok-cmt{color:#8b949e;font-style:italic}
+.tok-sel{color:#7ee787}.tok-val{color:#ffa657}.tok-tag{color:#7ee787}
+.tok-attr{color:#79c0ff}.tok-punct{color:#e6edf3}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div id="loader-title">Web应用开发技术 · 课件演示</div>
+  <div id="loader-msg">请选择要加载的章节 JSON 文件</div>
+  <div class="loader-btns" id="loader-btns">
+    <button class="loader-btn" onclick="document.getElementById('file-input').click()">📂 选择 JSON 文件</button>
+  </div>
+  <input type="file" id="file-input" accept=".json" style="display:none">
+</div>
+
+<div id="app" style="display:none">
+  <div id="progress-bar"></div>
+  <div id="slide-wrap"><div id="slide-area"></div></div>
+  <div id="ctrl">
+    <button onclick="goSlide(cur-1)" id="btn-prev">◀ 上一页</button>
+    <button onclick="goSlide(cur+1)" id="btn-next">下一页 ▶</button>
+    <span id="slide-info">0 / 0</span>
+    <span id="slide-title-bar">—</span>
+    <button onclick="toggleFS()" title="F键">⛶ 全屏</button>
+    <button id="load-btn-ctrl" onclick="exitToMenu()" title="返回主菜单">🚪 退出并更换课件</button>
+    <span id="timer-disp">00:00</span>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   Utilities
+═══════════════════════════════════════════ */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '')
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+function highlight(code, lang) {
+  const h = esc(code);
+  const rules = {
+    html: [
+      [/((&lt;!--[\s\S]*?--&gt;))/g, 'tok-cmt'],
+      [/(&lt;\/?)([\w-]+)/g, (m,a,b) => `~#S:tok-punct#~${a}~#E#~~#S:tok-tag#~${b}~#E#~`],
+      [/([\w-]+)(=&quot;)/g, (m,a,b) => `~#S:tok-attr#~${a}~#E#~${b}`],
+      [/(&quot;[^&]*&quot;)/g, 'tok-str'],
+    ],
+    css: [
+      [/(\/\*[\s\S]*?\*\/)/g, 'tok-cmt'],
+      [/([.#]?[\w-]+)(\s*\{)/g, (m,a,b) => `~#S:tok-sel#~${a}~#E#~${b}`],
+      [/([\w-]+)(\s*:)/g, (m,a,b) => `~#S:tok-attr#~${a}~#E#~${b}`],
+      [/(#[0-9a-fA-F]{3,8})/g, 'tok-val'],
+      [/(\b\d+[\w.%]*)/g, 'tok-num'],
+    ],
+    javascript: [
+      [/(\/\/[^\n]*)/g, 'tok-cmt'],
+      [/(\/\*[\s\S]*?\*\/)/g, 'tok-cmt'],
+      [/\b(const|let|var|function|return|if|else|for|while|class|new|this|import|export|from|async|await|=&gt;)\b/g, 'tok-kw'],
+      [/(&quot;[^&quot;]*&quot;|&#x27;[^&#x27;]*&#x27;|`[^`]*`)/g, 'tok-str'],
+      [/\b(\d+)\b/g, 'tok-num'],
+      [/\b([A-Za-z_$][\w$]*)\s*(?=\()/g, 'tok-fn'],
+    ]
+  };
+  
+  let out = h;
+  (rules[lang] || rules.javascript).forEach(([re, cls]) => {
+    if (typeof cls === 'string') {
+      // 先用特殊占位符替换，防止正则表达式互相冲突
+      out = out.replace(re, m => `~#S:${cls}#~${m}~#E#~`);
+    } else {
+      out = out.replace(re, cls);
+    }
+  });
+  
+  // 所有正则替换完毕后，再将占位符统一转换为 <span> 标签
+  return out
+    .replace(/~#S:([\w-]+)#~/g, '<span class="$1">')
+    .replace(/~#E#~/g, '</span>');
+}
+
+/* ═══════════════════════════════════════════
+   Slide Renderers
+═══════════════════════════════════════════ */
+function renderSlide(s) {
+  const {type: t, content: c} = s;
+  if (t === 'cover')      return renderCover(c);
+  if (t === 'agenda')     return renderAgenda(c);
+  if (t === 'section')    return renderSection(c);
+  if (t === 'content')    return renderContent(c);
+  if (t === 'bullets')    return renderBullets(c);
+  if (t === 'comparison') return renderComparison(c);
+  if (t === 'code')       return renderCode(c);
+  if (t === 'table')      return renderTable(c);
+  if (t === 'timeline')   return renderTimeline(c);
+  if (t === 'quote')      return renderQuote(c);
+  if (t === 'summary')    return renderSummary(c);
+  if (t === 'thankyou')   return renderThanks(c);
+  return `<div class="slide-inner"><h2 style="color:var(--text2)">未知幻灯片类型：${esc(t)}</h2></div>`;
+}
+
+const renderCover = c => `
+<div class="deco deco1"></div><div class="deco deco2"></div>
+<div class="slide-inner">
+  <div class="cover-wrap">
+    <span class="cover-course">${esc(c.courseTitle)}</span>
+    <div class="cover-chapter">${esc(c.chapterTitle)}</div>
+    <div class="cover-title">${esc(c.title)}</div>
+    <div class="cover-subtitle">${esc(c.subtitle || '')}</div>
+    <div class="cover-line"></div>
+    <div class="cover-meta">
+      ${c.instructor ? `<div class="cover-meta-item"><span class="cover-meta-label">主讲教师</span><span class="cover-meta-value">${esc(c.instructor)}</span></div>` : ''}
+      ${c.school     ? `<div class="cover-meta-item"><span class="cover-meta-label">学校</span><span class="cover-meta-value">${esc(c.school)}</span></div>` : ''}
+      ${c.semester   ? `<div class="cover-meta-item"><span class="cover-meta-label">学期</span><span class="cover-meta-value">${esc(c.semester)}</span></div>` : ''}
+    </div>
+    ${(c.tags||[]).length ? `<div class="cover-tags">${c.tags.map(t=>`<span class="cover-tag">${esc(t)}</span>`).join('')}</div>` : ''}
+  </div>
+</div>`;
+
+const renderAgenda = c => `
+<div class="slide-inner">
+  <div class="slide-header"><div class="slide-tag">Course Outline</div><div class="slide-h1">${esc(c.title)}</div></div>
+  <div class="agenda-grid">${(c.items||[]).map(it=>`
+    <div class="agenda-item">
+      <div class="agenda-num">${esc(it.index)}</div>
+      <div class="agenda-text"><h3>${esc(it.title)}</h3><p>${esc(it.subtitle||'')}</p></div>
+    </div>`).join('')}
+  </div>
+</div>`;
+
+const renderSection = c => `
+<div class="deco deco1"></div><div class="deco deco2"></div>
+<div class="slide-inner">
+  <div class="section-wrap">
+    <div class="section-num">${esc(c.section||'')}</div>
+    <div class="section-icon">${c.icon||'📖'}</div>
+    <div class="section-title">${esc(c.title)}</div>
+    <div class="section-line"></div>
+    <div class="section-sub">${esc(c.subtitle||'')}</div>
+  </div>
+</div>`;
+
+function bodyBlock(b) {
+  if (b.type === 'paragraph')  return `<p class="block-paragraph">${esc(b.text)}</p>`;
+  if (b.type === 'highlight')  return `<div class="block-highlight">${esc(b.text)}</div>`;
+  if (b.type === 'definition') return `<div class="block-definition">${esc(b.text)}</div>`;
+  if (b.type === 'tip')        return `<div class="block-tip">${esc(b.text)}</div>`;
+  if (b.type === 'warning')    return `<div class="block-warning">${esc(b.text)}</div>`;
+  return '';
+}
+
+const renderContent = c => `
+<div class="slide-inner">
+  <div class="slide-header">
+    <div class="slide-tag">${esc(c.subtitle||'Content')}</div>
+    <div class="slide-h1">${esc(c.title)}</div>
+  </div>
+  <div class="body-blocks">${(c.body||[]).map(bodyBlock).join('')}</div>
+  ${c.aside ? `<div class="aside-note">💡 ${esc(c.aside)}</div>` : ''}
+</div>`;
+
+function bulletCard(it, layout) {
+  if (layout === 'list') return `
+    <div class="bullet-item-list">
+      <span class="b-icon">${it.icon||'•'}</span>
+      <div style="flex:1">
+        <div class="b-title">${esc(it.title)}</div>
+        <div class="b-subtitle">${esc(it.subtitle||'')}</div>
+        <div class="b-detail">${esc(it.detail||'')}</div>
+      </div>
+      ${it.badge ? `<span class="b-badge">${esc(it.badge)}</span>` : ''}
+    </div>`;
+  if (layout === 'cards') return `
+    <div class="bullet-item-card">
+      <div class="b-icon">${it.icon||'•'}</div>
+      <div class="b-title">${esc(it.title)}</div>
+      <div class="b-subtitle">${esc(it.subtitle||'')}</div>
+      <div class="b-detail">${esc(it.detail||'')}</div>
+      ${it.badge ? `<span class="b-badge">${esc(it.badge)}</span>` : ''}
+    </div>`;
+  return `
+    <div class="bullet-item-grid">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="b-icon">${it.icon||'•'}</span>
+        <div><div class="b-title">${esc(it.title)}</div><div class="b-subtitle">${esc(it.subtitle||'')}</div></div>
+      </div>
+      <div class="b-detail">${esc(it.detail||'')}</div>
+      ${it.badge ? `<span class="b-badge">${esc(it.badge)}</span>` : ''}
+    </div>`;
+}
+
+const renderBullets = c => {
+  const layout = c.layout || 'grid';
+  const wrapClass = layout === 'list' ? 'bullets-list' : layout === 'cards' ? 'bullets-cards' : 'bullets-grid';
+  return `
+<div class="slide-inner">
+  <div class="slide-header">
+    <div class="slide-tag">${esc(c.subtitle||'Key Points')}</div>
+    <div class="slide-h1">${esc(c.title)}</div>
+  </div>
+  <div class="${wrapClass}">${(c.items||[]).map(it=>bulletCard(it,layout)).join('')}</div>
+</div>`;
+};
+
+const renderComparison = c => `
+<div class="slide-inner">
+  <div class="slide-header">
+    <div class="slide-tag">${esc(c.subtitle||'Comparison')}</div>
+    <div class="slide-h1">${esc(c.title)}</div>
+  </div>
+  <div class="comparison-wrap">
+    ${[c.left, c.right].map(col => col ? `
+    <div class="comp-col ${col.color||'blue'}">
+      <div class="comp-label"><span style="font-size:22px">${col.icon||''}</span>${esc(col.label||'')}</div>
+      <div class="comp-items">${(col.items||[]).map(i=>`<div class="comp-item">${esc(i)}</div>`).join('')}</div>
+    </div>` : '').join('')}
+  </div>
+</div>`;
+
+const renderCode = c => `
+<div class="slide-inner" style="padding-bottom:32px">
+  <div class="slide-header">
+    <div class="slide-tag">${esc(c.subtitle||'Code Demo')}</div>
+    <div class="slide-h1">${esc(c.title)}</div>
+  </div>
+  <div class="code-wrap">
+    <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-width:0">
+      <div class="code-block">
+        <div class="code-toolbar">
+          <div class="code-dot r"></div><div class="code-dot y"></div><div class="code-dot g"></div>
+          <div style="margin-left:auto; display:flex; gap:12px; align-items:center;">
+            ${(c.language || '').toLowerCase() === 'html' ? `<button class="preview-btn" onclick="runPreview(this)" title="在新标签页中渲染此 HTML">▶ 运行预览</button>` : ''}
+            <span class="code-lang" style="margin-left:0">${esc(c.language||'code')}</span>
+          </div>
+        </div>
+        <div class="code-content"><pre>${highlight(c.code||'', c.language||'javascript')}</pre></div>
+        <textarea class="raw-code" style="display:none;">${esc(c.code||'')}</textarea>
+      </div>
+      ${c.output ? `<div class="code-output">▶ 输出：${esc(c.output)}</div>` : ''}
+    </div>
+    ${(c.explanation||[]).length ? `
+    <div class="code-explain">${c.explanation.map(e=>`
+      <div class="explain-item">
+        <div><span class="explain-line">L${esc(e.line)}</span></div>
+        <div class="explain-text">${esc(e.text)}</div>
+      </div>`).join('')}
+    </div>` : ''}
+  </div>
+</div>`;
+
+const renderTable = c => `
+<div class="slide-inner">
+  <div class="slide-header">
+    <div class="slide-tag">${esc(c.subtitle||'Table')}</div>
+    <div class="slide-h1">${esc(c.title)}</div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>${(c.headers||[]).map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead>
+      <tbody>${(c.rows||[]).map(row=>`<tr>${row.map(cell=>`<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</tbody>
+    </table>
+  </div>
+</div>`;
+
+const renderTimeline = c => `
+<div class="slide-inner">
+  <div class="slide-header">
+    <div class="slide-tag">${esc(c.subtitle||'Timeline')}</div>
+    <div class="slide-h1">${esc(c.title)}</div>
+  </div>
+  <div class="timeline-wrap">${(c.items||[]).map(it=>`
+    <div class="tl-item${it.highlight?' hl':''}">
+      <div class="tl-left"><span class="tl-year">${esc(it.year)}</span></div>
+      <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+      <div class="tl-right">
+        <div class="tl-event">${esc(it.event)}</div>
+        <div class="tl-detail">${esc(it.detail||'')}</div>
+      </div>
+    </div>`).join('')}
+  </div>
+</div>`;
+
+const renderQuote = c => `
+<div class="deco deco1"></div><div class="deco deco2"></div>
+<div class="slide-inner">
+  <div class="quote-wrap">
+    <div class="quote-mark">"</div>
+    <div class="quote-decoline"></div>
+    <p class="quote-text">"${esc(c.quote||'')}"</p>
+    <div class="quote-author">${esc(c.author||'')}</div>
+    <div class="quote-role">${esc(c.role||'')}</div>
+    ${c.context ? `<div class="quote-context">${esc(c.context)}</div>` : ''}
+  </div>
+</div>`;
+
+const renderSummary = c => `
+<div class="slide-inner">
+  <div class="slide-header">
+    <div class="slide-tag">Chapter Summary</div>
+    <div class="slide-h1">${esc(c.title||'本章小结')}</div>
+  </div>
+  <div class="summary-points">${(c.points||[]).map((p,i)=>`
+    <div class="summary-point">
+      <div class="sp-num">${i+1}</div>
+      <div class="sp-text">${esc(p)}</div>
+    </div>`).join('')}
+  </div>
+  ${c.nextChapter ? `
+  <div class="next-chapter">
+    <div>
+      <div class="nc-label">下一章</div>
+      <div class="nc-title">${esc(c.nextChapter.chapter)} · ${esc(c.nextChapter.title)}</div>
+      <div class="nc-preview">${esc(c.nextChapter.preview||'')}</div>
+    </div>
+    <div class="nc-arrow">→</div>
+  </div>` : ''}
+</div>`;
+
+const renderThanks = c => `
+<div class="deco deco1"></div><div class="deco deco2"></div>
+<div class="slide-inner">
+  <div class="thanks-wrap">
+    <div class="thanks-icon">🎓</div>
+    <div class="thanks-title">${esc(c.title||'感谢聆听')}</div>
+    <div class="thanks-subtitle">${esc(c.subtitle||'Thank You!')}</div>
+    <p class="thanks-msg">${esc(c.message||'')}</p>
+    ${c.contact  ? `<div class="thanks-contact">📧 ${esc(c.contact)}</div>` : ''}
+    ${c.nextClass? `<div class="thanks-next">⏭ ${esc(c.nextClass)}</div>` : ''}
+  </div>
+</div>`;
+
+/* ═══════════════════════════════════════════
+   Navigation & State
+═══════════════════════════════════════════ */
+let slides = [], cur = 0;
+let timerSec = 0, timerHandle = null;
+
+function buildSlides(data) {
+  slides = data.slides || [];
+  if (!slides.length) { 
+    alert('JSON 中没有找到 slides 数组'); 
+    return; 
+  }
+
+  // Update page title from meta
+  if (data.meta) {
+    document.title = `${data.meta.course || ''} · ${data.meta.chapter || ''}`;
+  }
+
+  const area = $('#slide-area');
+  area.innerHTML = '';
+  slides.forEach((s, i) => {
+    const el = document.createElement('div');
+    el.className = 'slide';
+    el.id = 'slide-' + i;
+    try { el.innerHTML = renderSlide(s); }
+    catch(e) { el.innerHTML = `<div class="slide-inner"><p style="color:var(--red)">渲染错误 slide-${i}: ${esc(e.message)}</p></div>`; }
+    area.appendChild(el);
+  });
+
+  $('#loader').style.display = 'none';
+  $('#app').style.display = 'flex';
+  goSlide(0, true);
+  startTimer();
+}
+
+function exitToMenu() {
+  if (timerHandle) clearInterval(timerHandle);
+  timerSec = 0;
+  $('#timer-disp').textContent = '00:00';
+  
+  $('#app').style.display = 'none';
+  $('#loader').style.display = 'flex';
+  
+  $('#slide-area').innerHTML = ''; // 清空内容，释放内存
+  slides = [];
+  cur = 0;
+  document.title = 'Web应用开发技术 · 课件演示';
+}
+
+function goSlide(n, init = false) {
+  if (n < 0 || n >= slides.length) return;
+  const prev = document.getElementById('slide-' + cur);
+  if (prev) { prev.classList.remove('active'); }
+  cur = n;
+  const el = document.getElementById('slide-' + cur);
+  if (el) {
+    requestAnimationFrame(() => {
+      el.classList.add('active');
+      const wrap = document.getElementById('slide-wrap');
+      if (wrap) wrap.scrollTop = 0;
+    });
+  }
+  const pct = slides.length > 1 ? (cur / (slides.length - 1) * 100) : 0;
+  $('#progress-bar').style.width = pct + '%';
+  $('#slide-info').textContent = `${cur + 1} / ${slides.length}`;
+  const title = slides[cur]?.content?.title || slides[cur]?.content?.courseTitle || '';
+  $('#slide-title-bar').textContent = title;
+}
+
+function toggleFS() {
+  if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+  else document.exitFullscreen?.();
+}
+
+function startTimer() {
+  if (timerHandle) clearInterval(timerHandle);
+  timerSec = 0;
+  timerHandle = setInterval(() => {
+    timerSec++;
+    const m = String(Math.floor(timerSec / 60)).padStart(2, '0');
+    const s = String(timerSec % 60).padStart(2, '0');
+    $('#timer-disp').textContent = m + ':' + s;
+  }, 1000);
+}
+
+// ── 新标签页运行 HTML 代码的逻辑 ──
+function runPreview(btn) {
+  // 1. 找到当前按钮所处代码块中隐藏的 raw-code
+  const rawCode = btn.closest('.code-block').querySelector('.raw-code').value;
+  
+  // 2. 打开一个空白的新标签页
+  const newWin = window.open('', '_blank');
+  
+  if (newWin) {
+    // 3. 将代码写入新文档并强制浏览器渲染
+    newWin.document.open();
+    newWin.document.write(rawCode);
+    newWin.document.close();
+    newWin.document.title = "代码预览 - Web应用开发技术";
+  } else {
+    // 如果用户的浏览器拦截了弹窗，给予提示
+    alert('❌ 无法打开新标签页，请检查浏览器是否拦截了弹出窗口。');
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if ($('#app').style.display === 'none') return; // 在主菜单时不响应翻页快捷键
+  const tag = document.activeElement.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goSlide(cur + 1); }
+  else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); goSlide(cur - 1); }
+  else if (e.key === 'f' || e.key === 'F') toggleFS();
+  else if (e.key === 'Home') goSlide(0);
+  else if (e.key === 'End') goSlide(slides.length - 1);
+});
+
+let txStart = 0;
+document.addEventListener('touchstart', e => { txStart = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  if ($('#app').style.display === 'none') return;
+  const dx = e.changedTouches[0].clientX - txStart;
+  if (Math.abs(dx) > 50) { dx < 0 ? goSlide(cur + 1) : goSlide(cur - 1); }
+});
+
+/* ═══════════════════════════════════════════
+   Data Loading
+═══════════════════════════════════════════ */
+function loadFromText(text, filename) {
+  try {
+    const data = JSON.parse(text);
+    buildSlides(data);
+  } catch(e) {
+    alert(`❌ JSON 解析失败（${filename}）：\n${e.message}`);
+  }
+}
+
+function handleFileInput(e) {
+  const f = e.target.files[0];
+  if (!f) return;
+  const reader = new FileReader();
+  reader.onload = ev => loadFromText(ev.target.result, f.name);
+  reader.readAsText(f, 'UTF-8');
+  e.target.value = ''; // reset so same file can be re-selected
+}
+
+$('#file-input').addEventListener('change', handleFileInput);
+
+// 初始化：直接进入主菜单
+exitToMenu();
+</script>
+</body>
+</html>

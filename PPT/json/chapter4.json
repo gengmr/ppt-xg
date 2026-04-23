@@ -1,0 +1,1242 @@
+{
+  "meta": {
+    "course": "网页设计与制作（HTML5+CSS3+JavaScript）",
+    "chapter": "第4章",
+    "title": "图像与多媒体",
+    "subtitle": "Images and Multimedia in Web Design",
+    "instructor": "主讲教师",
+    "school": "石家庄信息工程技术学院",
+    "semester": "2026年春季学期",
+    "duration": 90,
+    "version": "1.0.0",
+    "lastModified": "2026-03-12"
+  },
+  "theme": {
+    "primaryColor": "#0d1b4b",
+    "accentColor": "#4fc3f7",
+    "backgroundColor": "#080f1e"
+  },
+  "slides":[
+    {
+      "id": "s01",
+      "type": "cover",
+      "content": {
+        "courseTitle": "网页设计与制作",
+        "chapterTitle": "第4章 · Chapter 04",
+        "title": "图像与多媒体",
+        "subtitle": "Images and Multimedia",
+        "instructor": "主讲教师",
+        "school": "石家庄信息工程技术学院",
+        "semester": "2026年春季学期",
+        "tags":[
+          "HTML5",
+          "图像格式",
+          "Photoshop处理",
+          "img标签",
+          "音视频播放"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "type": "agenda",
+      "content": {
+        "title": "本章大纲",
+        "items":[
+          {
+            "index": "01",
+            "title": "网页图像基础",
+            "subtitle": "位图、矢量图与常见网页图片格式"
+          },
+          {
+            "index": "02",
+            "title": "图像处理基本操作",
+            "subtitle": "Photoshop界面、调色、抠图与Web导出"
+          },
+          {
+            "index": "03",
+            "title": "图像标记符img",
+            "subtitle": "如何在网页中优雅地插入图片"
+          },
+          {
+            "index": "04",
+            "title": "使用多媒体对象",
+            "subtitle": "HTML5原生的音频与视频播放"
+          },
+          {
+            "index": "05",
+            "title": "练习题",
+            "subtitle": "随堂检验学习成果"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "type": "section",
+      "content": {
+        "section": "01",
+        "icon": "🖼️",
+        "title": "网页图像基础",
+        "subtitle": "一图胜千言，图像是网页视觉的灵魂"
+      }
+    },
+    {
+      "id": "s04",
+      "type": "content",
+      "content": {
+        "title": "无图无真相：图像在网页中的作用",
+        "subtitle": "The Power of Images in Web Design",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "文本传递信息，而图像能够传递情感、营造氛围并迅速吸引用户的视觉焦点。在现代Web设计中，高质量的图像不仅能美化页面，更能显著提升用户体验和转化率。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 性能警示：虽然图像很重要，但它们通常占据了网页加载体积的 60% 以上！加载过多或过大的图像会导致网页变慢。因此，了解图像类型、选择合适的格式并进行压缩，是每位前端开发者的必修课。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "type": "comparison",
+      "content": {
+        "title": "数字图像的两大阵营：位图 vs 矢量图",
+        "subtitle": "Bitmap vs Vector Graphics",
+        "left": {
+          "label": "位图 (Bitmap / Raster)",
+          "icon": "📸",
+          "color": "blue",
+          "items":[
+            "由无数个带有颜色信息的“像素点”拼凑而成",
+            "放大后会失真，能看到明显的马赛克方块",
+            "色彩极其丰富，适合表现细腻的照片或复杂光影",
+            "文件体积通常较大，且直接与分辨率、尺寸挂钩",
+            "常用格式：JPEG, PNG, GIF, WebP"
+          ]
+        },
+        "right": {
+          "label": "矢量图 (Vector)",
+          "icon": "📐",
+          "color": "green",
+          "items":[
+            "由计算机通过数学公式、路径、几何图形实时计算绘制",
+            "无论放大多少倍，边缘依然绝对平滑清晰，永不失真",
+            "色彩相对单一，难以表现极其逼真的照片细节",
+            "文件通常极小，与显示的物理尺寸完全无关",
+            "常用格式：SVG, AI, EPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s06",
+      "type": "bullets",
+      "content": {
+        "title": "深入理解：位图的特征",
+        "subtitle": "Characteristics of Bitmap Images",
+        "layout": "grid",
+        "items":[
+          {
+            "icon": "🟩",
+            "title": "像素 (Pixel)",
+            "subtitle": "最小构成单位",
+            "detail": "像素是构成位图的最小正方形点，每个点只包含一种特定的颜色信息。成千上万个点像十字绣一样拼出了完整的画面。"
+          },
+          {
+            "icon": "📏",
+            "title": "分辨率 (Resolution)",
+            "subtitle": "清晰度的衡量",
+            "detail": "指单位长度内包含的像素数量，通常用 ppi（每英寸像素数）表示。分辨率越高，图像越清晰，但文件体积也越大。网页通常使用 72 ppi。"
+          },
+          {
+            "icon": "🌄",
+            "title": "最佳适用场景",
+            "subtitle": "摄影与复杂色彩",
+            "detail": "极度适合保存人物照片、风景照、色彩过渡复杂的插画或 3D 渲染图。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "type": "bullets",
+      "content": {
+        "title": "深入理解：矢量图的特征",
+        "subtitle": "Characteristics of Vector Images",
+        "layout": "grid",
+        "items":[
+          {
+            "icon": "🧮",
+            "title": "数学驱动",
+            "subtitle": "非像素记录",
+            "detail": "不记录具体的像素颜色，而是记录“从坐标A画一条弧线到坐标B，线宽2像素，填充红色”这样的数学指令。"
+          },
+          {
+            "icon": "🔍",
+            "title": "无限缩放无损",
+            "subtitle": "天生适应高清屏",
+            "detail": "不管在普通的电脑屏幕上，还是在极其清晰的手机 Retina 视网膜屏幕上，矢量图每次渲染前都会重新计算公式，因此边缘永远清晰。"
+          },
+          {
+            "icon": "✏️",
+            "title": "最佳适用场景",
+            "subtitle": "图标与Logo",
+            "detail": "企业 Logo、网页界面上的小图标、简单线条插画、甚至字体本身，都是矢量图的最佳舞台。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "type": "table",
+      "content": {
+        "title": "网页主流图像格式大比拼",
+        "subtitle": "Comparison of Web Image Formats",
+        "headers":[
+          "格式名称",
+          "压缩类型",
+          "支持透明背景？",
+          "支持动画？",
+          "最佳适用场景"
+        ],
+        "rows": [[
+            "JPEG / JPG",
+            "有损压缩",
+            "❌ 否",
+            "❌ 否",
+            "数码照片、色彩极度丰富的图片"
+          ],[
+            "PNG",
+            "无损压缩",
+            "✅ 是 (支持半透明)",
+            "❌ 否",
+            "需要透明底的Logo、网页插画、产品切图"
+          ],[
+            "GIF",
+            "无损压缩(最高256色)",
+            "✅ 是 (全透明/不透明)",
+            "✅ 是",
+            "简短的动图、表情包、色彩极少的简单图标"
+          ],[
+            "SVG",
+            "基于文本/代码",
+            "✅ 是",
+            "✅ 是 (通过CSS/JS)",
+            "矢量Logo、扁平化UI图标、可交互的复杂图形"
+          ],[
+            "WebP",
+            "有损 / 无损",
+            "✅ 是",
+            "✅ 是",
+            "全面替代 JPG/PNG，现代网页性能优化的首选格式"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "type": "content",
+      "content": {
+        "title": "JPEG格式详解：摄影图片的首选",
+        "subtitle": "JPEG - Joint Photographic Experts Group",
+        "body":[
+          {
+            "type": "definition",
+            "text": "JPEG (通常扩展名为 .jpg) 是目前互联网上应用最广泛的图像格式，全称为“联合图像专家小组”。"
+          },
+          {
+            "type": "highlight",
+            "text": "核心特性：采用【有损压缩】算法。\n它会智能地舍弃人眼不易察觉的细微色彩变化，从而换来极小的文件体积。"
+          },
+          {
+            "type": "paragraph",
+            "text": "优点：支持数百万种颜色，在展示摄影照片时，能在肉眼看不出明显画质损失的情况下，把体积压缩到非常小。\n\n缺点：不支持透明背景！且由于是有损压缩，如果多次重复保存或压缩率过高，在图像的清晰边缘处（如文字周围）会出现明显的模糊和方块伪影。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "type": "content",
+      "content": {
+        "title": "PNG格式详解：无损与透明的完美结合",
+        "subtitle": "PNG - Portable Network Graphics",
+        "body":[
+          {
+            "type": "definition",
+            "text": "PNG（便携式网络图形）起初是为了取代存在专利争议的 GIF 格式而设计的，现在是前端切图最爱的格式之一。"
+          },
+          {
+            "type": "highlight",
+            "text": "核心特性：采用【无损压缩】算法，且支持完美的【Alpha通道半透明】。\n无论经过多少次保存，图像的任何一个像素都不会丢失。"
+          },
+          {
+            "type": "paragraph",
+            "text": "常见分类：\n• PNG-8：只支持256种颜色，体积小，可替代静态的GIF。\n• PNG-24 / 32：支持数百万种颜色以及真正的半透明效果（如玻璃的透明感、阴影的渐变）。\n\n缺点：对于包含丰富色彩的照片来说，PNG 的文件体积远远大于 JPEG，因此绝对不要用 PNG 格式来保存普通风景照。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "type": "content",
+      "content": {
+        "title": "GIF格式详解：让网页动起来的老兵",
+        "subtitle": "GIF - Graphics Interchange Format",
+        "body":[
+          {
+            "type": "definition",
+            "text": "GIF（图形交换格式）诞生于 1987 年，是互联网上最古老、最长寿的图像格式之一。"
+          },
+          {
+            "type": "warning",
+            "text": "最大限制：GIF 最多只能包含 256 种颜色！\n如果你把一张几百万色的照片保存为 GIF，它会出现严重的颗粒感和颜色断层。因此绝对不要用 GIF 保存照片。"
+          },
+          {
+            "type": "paragraph",
+            "text": "独家绝活：支持【多帧动画】。\n它是传统网页中唯一能直接播放动画的图像格式。虽然今天很多长动图已经被 MP4 视频或 WebP 动图取代，但在表情包、轻量级操作步骤演示等场景中，GIF 依然有着不可替代的地位。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "type": "code",
+      "content": {
+        "title": "SVG格式详解：可以用代码编写的图像",
+        "subtitle": "SVG - Scalable Vector Graphics",
+        "language": "html",
+        "code": "<!-- 画一个带有黑色边框、填充红色的 SVG 圆形 -->\n<svg width=\"100\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"black\" stroke-width=\"3\" fill=\"red\" />\n</svg>",
+        "explanation":[
+          {
+            "line": "2",
+            "text": "<svg> 标签开启了一个矢量画布舞台，指明了宽高。"
+          },
+          {
+            "line": "3",
+            "text": "<circle> 画一个圆，cx/cy 是圆心坐标，r 是半径，stroke 设置描边，fill 设置填充色。"
+          }
+        ],
+        "output": "网页上会清晰地渲染出一个绝对平滑的红色圆圈。因为 SVG 本质上是一段 XML 标签代码，它被纳入到了网页的 DOM 树中，你可以轻松地用 CSS 改变它的颜色，或用 JavaScript 给它加上酷炫的动态效果！"
+      }
+    },
+    {
+      "id": "s13",
+      "type": "content",
+      "content": {
+        "title": "WebP格式：现代Web图像的终极答案？",
+        "subtitle": "WebP - The Modern Format by Google",
+        "body":[
+          {
+            "type": "highlight",
+            "text": "WebP 是由 Google 推出的一种现代图像格式，专为 Web 优化而生。\n它可以说是集大成者：兼具 JPG 的高压缩率、PNG 的透明度、以及 GIF 的动画功能！"
+          },
+          {
+            "type": "paragraph",
+            "text": "显著优势：\n• 体积更小：在肉眼无法分辨差异的同等画质下，WebP 比 JPG 小 25%~34%，比 PNG 小 26%。\n• 加快加载：体积变小意味着网页加载速度飙升，不仅节省服务器带宽，还能提高搜索引擎(SEO)排名。\n• 兼容性成熟：如今绝大多数主流浏览器（Chrome, Edge, Safari, Firefox）都已完全支持 WebP。"
+          },
+          {
+            "type": "tip",
+            "text": "👉 观察实战：当你访问淘宝、B站等大型网站时，右键保存他们的商品图或视频封面，你会发现几乎 99% 都是 .webp 格式！"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "type": "bullets",
+      "content": {
+        "title": "使用网页图像的三个黄金要点",
+        "subtitle": "Best Practices for Web Images",
+        "layout": "grid",
+        "items":[
+          {
+            "icon": "🗜️",
+            "title": "图像优化",
+            "subtitle": "Optimization",
+            "detail": "在放入网页之前，必须对图像进行压缩优化。在保证画质可接受的前提下，尽可能剥离多余数据。可以使用类似 TinyPNG 这样的在线工具，或者 Photoshop 的“导出为Web格式”功能。"
+          },
+          {
+            "icon": "📐",
+            "title": "合适的分辨率",
+            "subtitle": "Resolution",
+            "detail": "如果是用于普通屏幕显示，只需考虑绝对像素尺寸。不要把用于印刷的 300ppi 巨幅原图直接扔上网页，对于普通显示器来说，72ppi 的密度就已经足够了。"
+          },
+          {
+            "icon": "📉",
+            "title": "严格控制文件大小",
+            "subtitle": "File Size",
+            "detail": "单张大尺寸全屏背景图尽量控制在 300KB - 500KB 以内；普通的商品图、配图应控制在几十KB。超过 1MB 的单张图片会严重拖累网页性能。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "type": "content",
+      "content": {
+        "title": "澄清误区：72 ppi 还是真实的绝对像素？",
+        "subtitle": "Demystifying Image Resolution on the Web",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "传统观念认为，保存网页图片时，必须设置分辨率为 72 ppi (每英寸像素数)。\n但实际上，在现代Web开发中，ppi/dpi 这个参数在屏幕显示时完全被浏览器忽略了！"
+          },
+          {
+            "type": "highlight",
+            "text": "浏览器真正关心的，只有图片的【绝对像素宽高】。\n一张 1000 × 1000 像素的图片，无论你存为 72 ppi 还是 300 ppi，它在浏览器中占据的区域大小是完全一致的，文件体积也是完全一致的。"
+          },
+          {
+            "type": "tip",
+            "text": "🚨 高分屏挑战（Retina）：对于苹果电脑或现代智能手机的视网膜屏幕，屏幕的一个 CSS 像素需要用 4 个物理硬件像素来渲染。如果不做特殊处理，普通图片在手机上看起来会变模糊。因此，设计师通常会提供 @2x 或 @3x 的两倍/三倍尺寸的大图供前端进行适配适配。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "type": "section",
+      "content": {
+        "section": "02",
+        "icon": "🎨",
+        "title": "图像处理基本操作",
+        "subtitle": "让 Photoshop 成为前端开发的好帮手"
+      }
+    },
+    {
+      "id": "s17",
+      "type": "content",
+      "content": {
+        "title": "前端工程师为什么要学点 Photoshop？",
+        "subtitle": "Why Front-End Developers Need Photoshop",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "虽然现在有 Figma、Sketch 等专门针对 UI/UX 的现代设计工具，且正规项目中通常有专职设计师为你提供切图（切片）。但作为前端开发者，偶尔使用 Photoshop (PS) 处理图片是极为常见的工作场景。"
+          },
+          {
+            "type": "paragraph",
+            "text": "你可能经常需要处理以下任务：\n1. 客户发来了一张 50MB 的超大原图，需要你将其**压缩裁剪**以适应网页的固定比例轮播图。\n2. 找来的配图背景太杂乱，需要你将主体**抠出来**，保存为透明底的 PNG 格式。\n3. 配图太暗或色彩不协调，需要进行简单的**亮度与色相调整**。\n4. 从旧的 PSD 设计稿中提取特定元素的颜色代码或测量元素间距。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "type": "bullets",
+      "content": {
+        "title": "认识 Photoshop 的三大核心界面区域",
+        "subtitle": "Photoshop Interface Basics",
+        "layout": "list",
+        "items":[
+          {
+            "icon": "🛠️",
+            "title": "左侧：工具箱 (Toolbar)",
+            "detail": "包含了所有直接用于操作图像的工具。例如：移动工具、选框工具、裁剪、魔棒、画笔、橡皮擦、钢笔、文字等。悬停在图标上通常会有简单的动画演示。"
+          },
+          {
+            "icon": "🎛️",
+            "title": "上方：菜单栏与选项栏 (Menu & Options)",
+            "detail": "菜单栏包含全局命令，如文件存储、图像调整、滤镜效果等。选项栏紧贴在菜单栏下方，它会随着你左侧选中的工具而变化，为你提供当前工具的详细设置参数。"
+          },
+          {
+            "icon": "📚",
+            "title": "右侧：面板区 (Panels)",
+            "detail": "包含颜色、属性、历史记录等窗口。其中最重要的是【图层面板 (Layers)】，PS的灵魂就是把不同的元素放在一层层的透明玻璃纸上进行叠加组合。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "type": "content",
+      "content": {
+        "title": "修改图像大小 (Image Size)",
+        "subtitle": "Resizing Images",
+        "body":[
+          {
+            "type": "definition",
+            "text": "菜单路径：【图像】 -> 【图像大小】 (快捷键 Alt+Ctrl+I 或 Opt+Cmd+I)"
+          },
+          {
+            "type": "paragraph",
+            "text": "用于改变图像的 绝对像素尺寸。比如将单反拍出的 6000x4000 的巨型图片，缩小为适合网页背景的 1920x1080。"
+          },
+          {
+            "type": "highlight",
+            "text": "• 约束比例（🔗锁链图标）：这是必须留意的选项！勾选后，当你修改宽度时，PS会自动算出对应的高度，确保图像不会被拉伸变扁。\n• 重新采样：缩小图片时会丢弃像素；放大图片时，PS会用AI插值算法“猜”出不存在的像素来填补，因此强制放大往往会导致画面变模糊。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "type": "comparison",
+      "content": {
+        "title": "易混淆操作：图像大小 vs 画布大小",
+        "subtitle": "Image Size vs Canvas Size",
+        "left": {
+          "label": "图像大小 (Image Size)",
+          "icon": "🔍",
+          "color": "blue",
+          "items":[
+            "改变的是 图片的内容本身",
+            "就像把一张印在气球上的画吹大或放气缩小",
+            "画面里的所有人物、风景都会跟着被等比缩放",
+            "导致整体像素数量发生改变",
+            "目的：把图片做大或做小"
+          ]
+        },
+        "right": {
+          "label": "画布大小 (Canvas Size)",
+          "icon": "✂️",
+          "color": "orange",
+          "items":[
+            "改变的是 图片底部的“作画纸张”大小",
+            "就像拿剪刀把照片边缘剪掉，或者把小照片贴在更大的白纸上",
+            "画面里的人物、风景 原本多大依然是多大，不发生缩放",
+            "目的：裁剪图像（缩小画布），或为拼接其他图片腾出空白区域（扩大画布）"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s21",
+      "type": "content",
+      "content": {
+        "title": "调整图像颜色：亮度与对比度",
+        "subtitle": "Brightness / Contrast Adjustment",
+        "body":[
+          {
+            "type": "definition",
+            "text": "菜单路径：【图像】 -> 【调整】 -> 【亮度/对比度】"
+          },
+          {
+            "type": "paragraph",
+            "text": "• 亮度 (Brightness)：控制画面整体的发光强度。向右拖动滑块，图像整体变白变亮；向左拖动，图像变暗。\n• 对比度 (Contrast)：控制图像中明暗区域的差异悬殊程度。\n　- 提高对比度：画面亮的地方更亮，暗的地方更暗，画面显得更锐利、清晰且通透。\n　- 降低对比度：明暗差距缩小，画面会变得像蒙了一层灰雾，颜色趋于平淡。"
+          },
+          {
+            "type": "warning",
+            "text": "破坏性调整警告：通过“图像-调整”菜单直接修改会永久改变像素数据。现代PS操作强烈推荐通过右下角面板新建【调整图层】，这样可以随时二次修改而不损害原图！"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "type": "content",
+      "content": {
+        "title": "调整图像颜色：色相与饱和度",
+        "subtitle": "Hue / Saturation Adjustment",
+        "body":[
+          {
+            "type": "definition",
+            "text": "菜单路径：【图像】 -> 【调整】 -> 【色相/饱和度】 (快捷键 Ctrl+U 或 Cmd+U)"
+          },
+          {
+            "type": "paragraph",
+            "text": "此面板提供三个维度的滑块，是改变图像色彩氛围的神器：\n\n1. 色相 (Hue)：改变颜色的本质。向左或向右滑动，会使图像整体在色轮上发生偏移（比如能把秋天的黄叶瞬间调成春天的绿叶）。\n2. 饱和度 (Saturation)：控制颜色的鲜艳程度。拉到最左边（-100），图像就完全变成了黑白照片；拉到最右边，颜色会变得极度刺眼甚至溢出。\n3. 明度 (Lightness)：控制颜色的黑白掺杂量。向左加黑，向右加白。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "type": "bullets",
+      "content": {
+        "title": "修补图像：去掉不要的东西",
+        "subtitle": "Retouching and Repairing Tools",
+        "layout": "list",
+        "items":[
+          {
+            "icon": "🩹",
+            "title": "污点修复画笔工具",
+            "detail": "傻瓜式智能修补。只需要调整画笔大小，直接在画面上的青春痘、多余路人、电线杆上涂抹，松开鼠标后，PS会自动分析周围环境并完美填补空缺。"
+          },
+          {
+            "icon": "🪗",
+            "title": "仿制图章工具",
+            "detail": "精准的“复印机”。按住 Alt (Windows) 或 Opt (Mac) 键在画面的某个好地方点击一下作为“取样源”，然后在需要修补的瑕疵处涂抹，即可把取样点的内容原样复制粘贴过来。"
+          },
+          {
+            "icon": "✨",
+            "title": "内容识别填充 (Content-Aware Fill)",
+            "detail": "高级 AI 修补。用套索工具粗略圈出不要的巨大物体，按下 Shift+F5 调出填充对话框并选择“内容识别”，PS会调用强大的算法自动推算出被遮挡的背景并补齐。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "type": "bullets",
+      "content": {
+        "title": "抠像技术三大法宝",
+        "subtitle": "Extracting Subjects (Making Selections)",
+        "layout": "grid",
+        "items":[
+          {
+            "icon": "🪄",
+            "title": "魔棒工具",
+            "subtitle": "按颜色自动选取",
+            "detail": "点击画面中的某一点，PS会自动选中所有与该点颜色相近的连片区域（可以通过“容差”调整敏感度）。\n适用场景：主体与背景颜色对比极其强烈，或者背景是纯色的情况（如证件照换底）。",
+            "badge": "最简单"
+          },
+          {
+            "icon": "🖌️",
+            "title": "快速选择工具",
+            "subtitle": "智能边缘吸附",
+            "detail": "像使用画笔一样在想要抠出的主体上涂抹，PS会智能识别物体的边缘边界并自动吸附过去。按住 Alt 涂抹则可以减去多选的部分。\n适用场景：大多数主体较清晰的日常图片，是目前使用频率最高的抠图工具。",
+            "badge": "最常用"
+          },
+          {
+            "icon": "✒️",
+            "title": "钢笔工具",
+            "subtitle": "极致精度的手工雕刻",
+            "detail": "通过手工打点、拖拽手柄来绘制绝对平滑的贝塞尔曲线路径。\n适用场景：抠取边缘光滑坚硬的物体（如汽车、手机、马克杯），能做到像素级的完美抠图，没有丝毫毛边。",
+            "badge": "最精确"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "type": "content",
+      "content": {
+        "title": "钢笔工具 (Pen Tool) 抠像简要步骤",
+        "subtitle": "Steps to use the Pen Tool for precision selections",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "虽然魔棒和快速选择很方便，但对于高品质的电商产品图，资深设计师几乎只用钢笔工具。因为机器的边缘识别总会有毛边或误判。"
+          },
+          {
+            "type": "definition",
+            "text": "操作四部曲：\n1. 准备：选择钢笔工具（快捷键 P），在顶部选项栏将绘图模式设为“路径 (Path)”。\n2. 描边：沿着物体边缘不断点击定点；遇到弧线时，点击并按住鼠标拖拽拉出“方向线手柄”，画出贴合边缘的光滑曲线。\n3. 转选区：绕物体一周闭合路径后，按下 Ctrl + Enter (Mac为 Cmd + Return)，将路径转换为闪烁的“蚂蚁线”选区。\n4. 提取：按下 Ctrl + J 将选区内的图像直接复制并提取到一个全新的图层上。隐藏原背景后，抠图即告完成！"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "type": "content",
+      "content": {
+        "title": "存储为 Web 所用格式 (重点！)",
+        "subtitle": "Save for Web (Legacy)",
+        "body":[
+          {
+            "type": "highlight",
+            "text": "处理完图片后，千万不要直接点“另存为”！\n必须使用：【文件】 -> 【导出】 -> 【存储为 Web 所用格式 (旧版)】 \n(快捷键：Alt + Shift + Ctrl + S)"
+          },
+          {
+            "type": "paragraph",
+            "text": "为什么它是前端专属利器？\n\n1. 清除冗余数据：自动去除相机型号、拍摄参数(EXIF)、颜色配置文件等肉眼不可见的冗余元数据，进一步缩小体积。\n2. 极致的预览对比：提供强大的“双联/四联”视图，左边放原图，右边放压缩后的效果图。你可以实时对比画质损失情况和预估的加载体积，从而找到画质与体积的最佳平衡点。\n3. 精确控制参数：可以连续调节 JPEG 的 0-100 品质级别，或者限制 PNG-8 / GIF 的发色数量。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "type": "table",
+      "content": {
+        "title": "图片导出格式的选择策略总结",
+        "subtitle": "Guide: Which format to export?",
+        "headers":[
+          "图像特征 / 视觉内容",
+          "推荐导出的格式",
+          "选择原因分析"
+        ],
+        "rows": [[
+            "色彩斑斓的风景、人物、摄影照片",
+            "JPEG (JPG)",
+            "有损压缩在复杂照片上很难被察觉，能大幅降低文件体积。"
+          ],[
+            "带透明背景、边缘包含阴影或半透明玻璃效果的Logo/产品图",
+            "PNG-24",
+            "唯一完美支持全渐变半透明(Alpha通道)且画质无损的传统格式。"
+          ],[
+            "大面积纯色、颜色极少（如图标、UI按键）且需要透明底",
+            "PNG-8",
+            "限制颜色数量能让文件体积降到极低，且边缘清晰不发虚。"
+          ],[
+            "包含多帧画面的简单短动画",
+            "GIF",
+            "传统图片格式中唯一支持动画的元老。"
+          ],[
+            "现代化的综合项目开发",
+            "WebP",
+            "不管照片还是透明图，全场景通杀，压缩率更高，已成现代行业标配。"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "type": "section",
+      "content": {
+        "section": "03",
+        "icon": "🖼️",
+        "title": "图像标记符 <img>",
+        "subtitle": "把图片搬进网页的专属搬运工"
+      }
+    },
+    {
+      "id": "s29",
+      "type": "content",
+      "content": {
+        "title": "认识 <img> 标签",
+        "subtitle": "Introduction to the <img> Tag",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "在 HTML 中，我们无法直接把真实的图片文件“塞进”代码里。我们只能通过 `<img>` 标签，告诉浏览器图片的【存放地址】，浏览器解析到标签时，会再去服务器下载并显示图片。"
+          },
+          {
+            "type": "definition",
+            "text": "<img> 标签的三个关键特性：\n\n1. 单标签（空元素）：它没有结束标签，不需要写成 `<img></img>`。\n2. 替换元素（Replaced element）：它在页面上占据的空间和展示的内容，不由HTML文字决定，而是完全由外部引用的图像文件决定。\n3. 行内元素（Inline）：默认情况下，图片会和旁边的文字在同一行并列显示，直到这一行塞不下才会换行。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "type": "code",
+      "content": {
+        "title": "<img> 的基本语法与核心双子星属性",
+        "subtitle": "Basic Syntax and Core Attributes",
+        "language": "html",
+        "code": "<!-- 最标准的 img 标签写法，src 和 alt 是形影不离的黄金组合 -->\n<img src=\"images/company-logo.png\" alt=\"某某公司官方Logo\">\n\n<!-- 带有尺寸提前占位的规范写法 -->\n<img src=\"https://example.com/photo.jpg\" alt=\"美丽的日落风景\" width=\"600\" height=\"400\">",
+        "explanation":[
+          {
+            "line": "2",
+            "text": "src (Source)：源文件路径。极其重要，没有它图片就无法加载。告诉浏览器去哪找这张图。"
+          },
+          {
+            "line": "2",
+            "text": "alt (Alternative)：替代文本。极其重要，当图片加载失败时显示的文字，也是给视障人士和搜索引擎看的。"
+          },
+          {
+            "line": "5",
+            "text": "width / height：在图片完全下载完毕前，提前在页面上把坑位（尺寸）占好，防止页面排版发生剧烈抖动。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "type": "content",
+      "content": {
+        "title": "核心属性详解：src (图像路径)",
+        "subtitle": "The src Attribute: Finding the Image",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "`src` 属性的值是一个 URL（统一资源定位符），指明图像的存放位置。编写路径时分为两大流派："
+          },
+          {
+            "type": "highlight",
+            "text": "【绝对路径】\n包含完整的网络协议和域名。通常用于引用别人网站上现成的图片，或者存放在云端 CDN 上的图片。\n👉 示例：src=\"https://img.alicdn.com/tfs/logo.jpg\""
+          },
+          {
+            "type": "highlight",
+            "text": "【相对路径】\n相对于你正在写的这个 HTML 文件所在的目录位置。通常用于引用你本地项目文件夹里的图片。\n👉 示例：src=\"images/pic.png\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "type": "comparison",
+      "content": {
+        "title": "相对路径的几种常见写法",
+        "subtitle": "Relative Paths Explained",
+        "left": {
+          "label": "目录结构场景",
+          "icon": "📂",
+          "color": "blue",
+          "items":[
+            "同级目录：图片和HTML网页文件存放在同一个文件夹里。",
+            "子目录：网页同级有一个名叫 img 的文件夹，图片存在里面（最常见的规范做法）。",
+            "上级目录：图片在当前网页所在的文件夹的外面（上一层）。"
+          ]
+        },
+        "right": {
+          "label": "对应的 src 写法",
+          "icon": "💻",
+          "color": "green",
+          "items":[
+            "直接写文件名：\nsrc=\"photo.jpg\" 或 src=\"./photo.jpg\"",
+            "先写文件夹名，加反斜杠：\nsrc=\"img/photo.jpg\"",
+            "使用两个点代表向外退一级：\nsrc=\"../photo.jpg\""
+          ]
+        }
+      }
+    },
+    {
+      "id": "s33",
+      "type": "content",
+      "content": {
+        "title": "核心属性详解：alt 的三大不可替代作用",
+        "subtitle": "Why You MUST Include the alt Attribute",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "很多初学者觉得 `alt` 写不写都行，反正图片能出来。这是大错特错的。`alt`（替代文本）的价值体现在这三个核心方面："
+          },
+          {
+            "type": "definition",
+            "text": "1. 网页无障碍 (Accessibility)：\n盲人用户使用屏幕阅读器浏览网页时，软件会大声朗读出 alt 里的文字，让他们“听”懂图片的内容。"
+          },
+          {
+            "type": "definition",
+            "text": "2. 容错占位提示：\n当图片文件被误删、路径写错、或用户网络极差导致图片加载失败时，浏览器会在破裂的图标旁边显示 alt 的文字，告知用户这里原本应该是什么内容。"
+          },
+          {
+            "type": "definition",
+            "text": "3. 搜索引擎优化 (SEO)：\n百度的爬虫机器人是没有“眼睛”看不懂图片画面的，它完全依靠 alt 属性的值来判断图片讲了什么。好的 alt 能让你的图片出现在各大搜索引擎的图片搜索结果中。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 提示：如果这张图片纯粹是为了页面装饰好看（如一条花纹分割线），没有任何实际意义，你也应该写上空的 alt 属性，即 `alt=\"\"`。这样屏幕阅读器会自动跳过它，不会把冗长无聊的文件名读出来折磨用户。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "type": "code",
+      "content": {
+        "title": "尺寸控制：width 与 height 属性",
+        "subtitle": "Controlling Image Dimensions",
+        "language": "html",
+        "code": "<!-- 方式一：使用 HTML 标签属性控制尺寸 -->\n<img src=\"avatar.jpg\" alt=\"用户头像\" width=\"100\" height=\"100\">\n\n<!-- 方式二：使用 CSS 控制 (现代开发推荐) -->\n<style>\n  .avatar {\n    width: 100px;\n    height: 100px;\n  }\n</style>\n<img class=\"avatar\" src=\"avatar.jpg\" alt=\"用户头像\">",
+        "explanation":[
+          {
+            "line": "2",
+            "text": "注意细节：在 HTML 属性中使用 width 和 height 时，纯写数字即可，千万不要加上 px 单位！"
+          },
+          {
+            "line": "6-7",
+            "text": "相比之下，在 CSS 中编写样式时，必须带上 px 等长度单位（零除外）。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "type": "warning",
+      "content": {
+        "title": "图像尺寸设置的最佳实践与避坑",
+        "subtitle": "Common Pitfalls in Image Resizing",
+        "body":[
+          {
+            "type": "warning",
+            "text": "💣 终极禁忌：绝对不要强行同时设置不符合原图比例的宽高！\n如果你有一张 400x200 像素的宽屏风景图，你为了排版强行在代码里写 `width=\"200\" height=\"200\"`，图片会被严重向内挤压，画面中人物的脸会变成细长的外星人！"
+          },
+          {
+            "type": "tip",
+            "text": "✅ 正确做法 1：只设置单边。\n如果你只设置 `width=\"200\"`，不写 height，浏览器非常聪明，它会自动根据图片原比例计算出高度应该为 100，确保图像完美缩放不变形。"
+          },
+          {
+            "type": "tip",
+            "text": "✅ 正确做法 2：占位与自适应结合（现代做法）。\n在 HTML 标签中写明图片的原生宽高（为了让浏览器提前留出空间防抖动），而在 CSS 中使用 `img { max-width: 100%; height: auto; }` 让图片能够随着手机屏幕大小灵活缩放。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "type": "comparison",
+      "content": {
+        "title": "历史遗留属性：border 与 align",
+        "subtitle": "Deprecated Attributes: Do NOT Use Them",
+        "left": {
+          "label": "被淘汰的 HTML 写法",
+          "icon": "🗑️",
+          "color": "orange",
+          "items":[
+            "border=\"1\"：给图片加粗糙的黑实线边框。",
+            "align=\"left\"：让图片靠左浮动，文字环绕在其右侧。",
+            "align=\"right\"：让图片靠右浮动。",
+            "align=\"top / middle / bottom\"：设置图片本身与同一行文字的垂直对齐方式。"
+          ]
+        },
+        "right": {
+          "label": "现代 Web 推荐的 CSS 替代方案",
+          "icon": "✨",
+          "color": "blue",
+          "items":[
+            "边框：border: 1px solid #ccc; (甚至能加圆角 border-radius)",
+            "图文环绕：float: left; 或 float: right;",
+            "垂直对齐：vertical-align: middle;",
+            "结论摘要：HTML只负责结构，外观表现的事请统统交给 CSS！任何通过标签直接修改外观的旧版属性都不应再出现。"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s37",
+      "type": "code",
+      "content": {
+        "title": "综合应用：现代排版的图文混排",
+        "subtitle": "Wrapping Text Around Images with CSS",
+        "language": "html",
+        "code": "<style>\n  .news-img {\n    float: left;            /* 核心：图片左浮动，文字自动环绕到右侧 */\n    margin-right: 20px;     /* 图片右侧留出空隙，不让文字紧贴图片 */\n    margin-bottom: 10px;    /* 图片下方留出空隙 */\n    border-radius: 8px;     /* 加个好看的圆角边缘 */\n    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 加个柔和的立体阴影 */\n  }\n</style>\n\n<div class=\"article\">\n  <img src=\"images/tech-news.jpg\" alt=\"科技新闻配图\" class=\"news-img\" width=\"280\">\n  <p>这是一段很长的新闻正文。因为上面的图片类设置了【左浮动(float: left)】，所以这段段落文字并不会老老实实地从图片正下方开始排版，而是会自动跑到图片的右侧空白区域，像流水一样包围着图片。</p>\n  <p>这种经典的“图文环绕”排版方式，广泛见于报纸、杂志以及各大新闻门户网站的内页中。如果右侧的文字非常多，超过了图片的高度，文字会继续在图片的正下方流淌，填满整个容器的宽度。</p>\n</div>",
+        "explanation":[
+          {
+            "line": "3",
+            "text": "float 是实现图文环绕的唯一原生CSS属性机制。"
+          },
+          {
+            "line": "4-5",
+            "text": "margin 的存在极其重要，它创造了“呼吸空间”，避免文字死死贴住图片的边缘造成极差的阅读体验。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "type": "section",
+      "content": {
+        "section": "04",
+        "icon": "🎬",
+        "title": "使用多媒体对象",
+        "subtitle": "在网页中直接播放声音与视频，告别繁琐插件"
+      }
+    },
+    {
+      "id": "s39",
+      "type": "content",
+      "content": {
+        "title": "网页多媒体的演进史：从痛苦到优雅",
+        "subtitle": "The Evolution of Web Multimedia",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "• 黑暗时代（Web早年）：HTML 只支持文字和图片。你想在网页听首歌？必须强制要求用户下载安装笨重的第三方浏览器插件（如 RealPlayer、Windows Media Player），体验极度破碎。"
+          },
+          {
+            "type": "paragraph",
+            "text": "• Flash 统治时代：Adobe Flash 横空出世，以一己之力扛起了网页互动多媒体的大旗长达十年。早期的网页游戏、酷炫引导页、在线视频播放器（如当年的优酷土豆）全部依赖 Flash 插件。"
+          },
+          {
+            "type": "highlight",
+            "text": "• HTML5 原生时代（现在）：\n随着乔布斯宣布 iPhone 永不兼容 Flash，以及 Web 标准的进步，HTML5 原生引入了 `<audio>` 和 `<video>` 标签。现代浏览器自带了强大的播放器引擎，无需任何外部插件，一行代码即可流畅播放音视频！"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "type": "content",
+      "content": {
+        "title": "音频标记符：<audio>",
+        "subtitle": "The <audio> Element",
+        "body":[
+          {
+            "type": "definition",
+            "text": "`<audio>` 标签用于在网页中嵌入声音内容，比如背景音乐、播客录音或特效音。"
+          },
+          {
+            "type": "paragraph",
+            "text": "语法特性：\n与 `<img>` 的单标签不同，`<audio>` 是一个标准的【双标签】，必须有闭合标签 `</audio>`。\n夹在两个标签中间的文字内容，在现代浏览器中是不可见的；它只有在用户使用的是极端老旧、根本不认识 `<audio>` 标签的浏览器（如IE8）时，才会作为备用提示文字显示出来。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s41",
+      "type": "code",
+      "content": {
+        "title": "<audio> 标签基本用法与核心属性",
+        "subtitle": "Playing Audio in HTML",
+        "language": "html",
+        "code": "<!-- 最基础用法，必须加上 controls 才能让用户看到播放器面板 -->\n<audio src=\"music/bgm.mp3\" controls></audio>\n\n<!-- 综合运用各属性，并包含降级提示文字 -->\n<audio src=\"podcast.mp3\" controls autoplay loop muted>\n  对不起，您的浏览器版本太旧，不支持 HTML5 原生音频标签，请升级。\n</audio>",
+        "explanation":[
+          {
+            "line": "2",
+            "text": "controls: 最关键的属性！如果不加它，音频虽然存在但会在页面上隐形。加上它会呼出浏览器自带的（包含播放、暂停、进度条、音量的）控制面板。"
+          },
+          {
+            "line": "5",
+            "text": "autoplay: 让音频在页面加载后立刻自动播放。注意：出于防扰民考虑，现代浏览器严苛限制带声音的自动播放，通常会被浏览器直接拦截拦截。"
+          },
+          {
+            "line": "5",
+            "text": "loop: 开启洗脑模式，音频播放结束后会自动重头无限循环播放。"
+          },
+          {
+            "line": "5",
+            "text": "muted: 初始状态强制静音。如果你静音了，浏览器通常就会“宽宏大量”地允许你的 autoplay 生效了。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s42",
+      "type": "bullets",
+      "content": {
+        "title": "常见网页音频格式",
+        "subtitle": "Supported Web Audio Formats",
+        "layout": "grid",
+        "items":[
+          {
+            "icon": "🎵",
+            "title": "MP3",
+            "subtitle": "绝对的行业标准",
+            "detail": "压缩率和音质平衡极佳，世界上最普及的音频格式。所有平台、所有现代浏览器都能完美播放。网页使用的【首选格式】。"
+          },
+          {
+            "icon": "💿",
+            "title": "WAV",
+            "subtitle": "无损未压缩音质",
+            "detail": "音质原汁原味，没有任何细节损失，但是文件体积极其巨大。通常只用于网页游戏中只有 1~2 秒的极短交互音效（如按键点击声）。不适合长音乐。"
+          },
+          {
+            "icon": "📻",
+            "title": "OGG",
+            "subtitle": "开源高效率选择",
+            "detail": "完全免费开源的格式，相同码率下音质甚至优于 MP3。但是在苹果体系（Safari浏览器）中兼容性欠佳，通常作为备用格式出现。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s43",
+      "type": "content",
+      "content": {
+        "title": "视频标记符：<video>",
+        "subtitle": "The <video> Element",
+        "body":[
+          {
+            "type": "definition",
+            "text": "`<video>` 是 HTML5 中最具颠覆性的特性之一，彻底终结了 Flash 的统治时代，它允许直接在网页中原生渲染和播放高清视频流。"
+          },
+          {
+            "type": "paragraph",
+            "text": "用法结构与 `<audio>` 几乎完全一致。由于视频带有直观的视觉画面，它在属性上多出了针对画面的特殊控制项（比如尺寸控制、视频未播放时展示的占位海报图）。"
+          },
+          {
+            "type": "tip",
+            "text": "架构常识：视频的体积动辄上百兆，对于真实的上线项目，视频通常不会和网页代码放在同一个服务器上，而是托管在专门的视频云服务商、CDN、或阿里云OSS等对象存储上以保证播放不卡顿。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s44",
+      "type": "code",
+      "content": {
+        "title": "<video> 标签专属属性剖析",
+        "subtitle": "Video Attributes in Detail",
+        "language": "html",
+        "code": "<!-- 展示一个宽 800px、带有自定义封面、静音并循环自动播放的背景级视频 -->\n<video src=\"https://example.com/promo-video.mp4\" \n       width=\"800\" \n       controls \n       poster=\"images/video-cover.jpg\" \n       autoplay \n       loop \n       muted>\n  您的浏览器太老啦，没法看视频哦。\n</video>",
+        "explanation":[
+          {
+            "line": "3",
+            "text": "width / height: 定义视频播放器窗口在网页上占据的大小尺寸。和图片一样，最好配合CSS使用。"
+          },
+          {
+            "line": "5",
+            "text": "poster (海报): 极其有用的属性！当视频还在缓冲或者用户还没点击播放时，播放器窗口显示的“封面图”。如果不设置，浏览器会去抓取视频真实的第一帧画面（往往可能是一片黑或者很模糊）。"
+          },
+          {
+            "line": "6-8",
+            "text": "【autoplay + muted + loop】黄金三角：如果你想在网页大背景放一段酷炫的无声动态视频，同时写上这三个属性，绝大多数浏览器都会乖乖放行自动播放！"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s45",
+      "type": "table",
+      "content": {
+        "title": "主流网页视频格式大起底",
+        "subtitle": "Web Video Formats Compatibility",
+        "headers":[
+          "格式名称",
+          "主流视频编码格式",
+          "特点",
+          "浏览器兼容性现状"
+        ],
+        "rows": [[
+            "MP4",
+            "H.264",
+            "画质和体积平衡绝佳，专利技术体系极其成熟的绝对霸主格式。",
+            "🌟🌟🌟🌟🌟 \n（覆盖率接近100%，无论是PC还是微信、iOS全线通杀）"
+          ],[
+            "WebM",
+            "VP8 / VP9",
+            "由 Google 赞助的开源免专利费格式，专为 Web 定制，体积能比 MP4 更小。",
+            "🌟🌟🌟🌟 \n（Chrome/安卓完美支持，苹果Safari在较新系统中才加入支持）"
+          ],[
+            "Ogg",
+            "Theora",
+            "非常纯粹的开源格式，没有版权纠纷，但画质压缩算法老旧。",
+            "🌟🌟 \n（使用率极低，移动端支持很差，基本被淘汰）"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s46",
+      "type": "code",
+      "content": {
+        "title": "终极兼容方案：<source> 多媒体源标签",
+        "subtitle": "Using Multiple Sources for Fallback",
+        "language": "html",
+        "code": "<!-- 不要再把 src 写在 video 标签本身上了！ -->\n<video controls width=\"600\" poster=\"cover.jpg\">\n  <!-- 浏览器自上而下逐个扫描，找到第一个自己支持的格式后，直接播放并无视后面所有的 -->\n  \n  <!-- 优先投喂：尝试体积更小、压缩更牛的 WebM 格式 -->\n  <source src=\"movie.webm\" type=\"video/webm\">\n  \n  <!-- 万能兜底：如果上面的不支持，退回使用全宇宙都支持的 MP4 格式 -->\n  <source src=\"movie.mp4\" type=\"video/mp4\">\n  \n  <!-- 最后手段：如果都不支持，显示警告信息 -->\n  <p>抱歉，您的浏览器不支持 HTML5 视频，请下载视频：<a href=\"movie.mp4\">下载</a></p>\n</video>",
+        "explanation":[
+          {
+            "line": "6-9",
+            "text": "type 属性告诉浏览器这个文件的具体格式（MIME类型）。浏览器无需先把巨大的视频文件下载下来，只需看一下 type 就能瞬间决定自己能不能播，极大地节约了带宽和时间。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s47",
+      "type": "content",
+      "content": {
+        "title": "历史遗留标记符：<embed>",
+        "subtitle": "The <embed> Element: Relic of the Past",
+        "body":[
+          {
+            "type": "definition",
+            "text": "`<embed>`（嵌入）标签专门用于在 HTML 页面中嵌入需要借助第三方软件插件（Plugin）才能运行的多媒体内容或应用程序。"
+          },
+          {
+            "type": "paragraph",
+            "text": "过去的辉煌：\n在 HTML5 诞生前，`<embed>` 是最核心的多媒体标签。它最典型、最庞大的应用场景就是：嵌入 **Flash (.swf)** 动画和小游戏。例如当年的开心农场、各种小游戏网站全是通过 embed 加载的。\n\n时代的眼泪：\n随着技术演进，Flash 已经于 2020 年底被各大浏览器彻底封杀。如今 `<embed>` 的使用场景极度萎缩，几乎所有音视频需求都已经被 `<video>`/`<audio>` 替代，而嵌入其他网页的需求则交给 `<iframe>` 标签来完成。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s48",
+      "type": "section",
+      "content": {
+        "section": "05",
+        "icon": "📝",
+        "title": "练习题",
+        "subtitle": "小试牛刀，检验你的学习成果"
+      }
+    },
+    {
+      "id": "s49",
+      "type": "content",
+      "content": {
+        "title": "随堂测验：选择题 1",
+        "subtitle": "Quiz 1",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "关于位图和矢量图，下列说法**错误**的一项是？\n\nA. 位图由一个个带有颜色信息的像素组成，强行放大后会产生锯齿模糊。\nB. 矢量图由数学公式定义路径与颜色，可以无损放大任意倍数。\nC. 为了保证最高画质，数码相机拍摄的照片通常会保存为矢量图。\nD. SVG 格式属于经典的矢量图格式，广泛应用于网页中的小图标和Logo。"
+          },
+          {
+            "type": "highlight",
+            "text": "▶ 正确答案：C\n解析：照片中的光影细节、渐变层次极其丰富复杂，目前的计算机无法用数学公式（矢量）精准推演和描述真实的现实照片。因此照片一定、且只能保存为由像素阵列构成的“位图”格式（如JPEG）。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s50",
+      "type": "content",
+      "content": {
+        "title": "随堂测验：选择题 2",
+        "subtitle": "Quiz 2",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "在编写HTML插入图片时，如果想要保证当图片因网络问题加载失败时，依然能在原位置显示文字提示信息，我们必须使用 <img> 标签的哪个属性？\n\nA. title\nB. text\nC. alt\nD. src"
+          },
+          {
+            "type": "highlight",
+            "text": "▶ 正确答案：C\n解析：alt (Alternative text，替代文本) 就是为了在图片无法显示时“替代”图片行使信息传达职能的。此外，视障人士的读屏软件也是依靠 alt 属性来朗读图片内容的。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s51",
+      "type": "content",
+      "content": {
+        "title": "随堂测验：选择题 3",
+        "subtitle": "Quiz 3",
+        "body":[
+          {
+            "type": "paragraph",
+            "text": "下列哪个标签 **不属于** HTML5 标准中为了摆脱第三方插件而新增的原生多媒体标签？\n\nA. <audio>\nB. <video>\nC. <embed>\nD. <source>"
+          },
+          {
+            "type": "highlight",
+            "text": "▶ 正确答案：C\n解析：<embed> 并不是HTML5的新增成员。早在HTML4时代，它就被广泛用于嵌入Flash动画、RealPlayer等外部插件内容。HTML5正是为了干掉这些插件，才推出了原生的 <audio> 和 <video>。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s52",
+      "type": "code",
+      "content": {
+        "title": "实战演练：代码纠错题",
+        "subtitle": "Find the Bugs",
+        "language": "html",
+        "code": "<!-- 需求：插入一个视频，宽度为500，带默认播放控制面板，并且在点击播放前，先展示一张名为 cover.png 的海报封面图。 -->\n\n<!-- 下面是某位同学写的代码，包含了 4 处严重的致命错误，你能全部找出来并修正吗？ -->\n\n<video href=\"movie.mp4\" width=\"500px\" control cover=\"cover.png\"></video>",
+        "explanation":[
+          {
+            "line": "5",
+            "text": "错误1：【href】。引入多媒体资源必须用 src (Source) 属性，href 主要用于 <a> 超链接跳转。"
+          },
+          {
+            "line": "5",
+            "text": "错误2：【width=\"500px\"】。作为 HTML 属性时，宽高不需要写 px 单位，直接写数字即可。"
+          },
+          {
+            "line": "5",
+            "text": "错误3：【control】。唤出控制条的正确属性名为复数形式：controls。"
+          },
+          {
+            "line": "5",
+            "text": "错误4：【cover】。设置视频海报封面的专属属性名是 poster，不是 cover。"
+          }
+        ],
+        "output": "【正确写法】: <video src=\"movie.mp4\" width=\"500\" controls poster=\"cover.png\"></video>"
+      }
+    },
+    {
+      "id": "s53",
+      "type": "summary",
+      "content": {
+        "title": "本章小结",
+        "points":[
+          "图像双阵营：位图由像素组成，放大失真，适合写实照片；矢量图由数学路径组成，无损缩放，适合图标Logo。",
+          "常见Web图像格式：JPEG用于风景人物照片，PNG用于要求透明底的图，GIF用于表情包和轻度动图，SVG通过代码呈现完美矢量，WebP则是全能的高压缩现代标准。",
+          "PS基本功：了解工具箱和图层面板。能熟练调整图像尺寸与画布，运用污点修复和仿制图章去杂物，运用魔棒、快速选择或钢笔工具进行高效精准抠图。",
+          "Web导出策略：必须使用「导出为Web所用格式」，去除元数据并压缩体积至最佳平衡点。",
+          "单标签<img>：src决定找谁，alt决定瞎了显示什么。切忌使用不匹配的原比例长宽强行挤压变形图片。",
+          "原生多媒体：拥抱 HTML5，抛弃Flash。通过 <audio> 和 <video> 以零插件的方式极速呈现影音。务必熟记 controls、autoplay、loop、poster等辅助体验的属性。"
+        ],
+        "nextChapter": {
+          "chapter": "第5章",
+          "title": "表格与表单",
+          "preview": "掌握网页中最重要的数据展示（table）与数据收集（form、input）结构机制。"
+        }
+      }
+    },
+    {
+      "id": "s54",
+      "type": "thankyou",
+      "content": {
+        "title": "感谢聆听",
+        "subtitle": "Thank You! 🎊",
+        "message": "在网页中加入多媒体，就像给黑白的世界通了电。\n\n优秀的图像不仅能让你的网页赏心悦目，恰当的压缩优化还能让页面加载如闪电般迅捷。课后请大家亲自打开 VS Code，找一张精美的图片和一段炫酷的短视频，尝试用代码把它们放进你自己的网页里，亲自体验多媒体标签带来的魅力！",
+        "contact": "如有疑问，请通过教学平台及时提问",
+        "nextClass": "下次课：第5章 表格与表单"
+      }
+    }
+  ]
+}

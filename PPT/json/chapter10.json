@@ -1,0 +1,1668 @@
+{
+  "meta": {
+    "course": "Web应用开发技术",
+    "chapter": "第10章",
+    "title": "综合项目实践：从零构建“游戏天地”网站",
+    "subtitle": "Comprehensive Project Practice: Building 'Game World' from Scratch",
+    "instructor": "主讲教师",
+    "department": "信息工程学院",
+    "school": "石家庄信息工程技术学院",
+    "semester": "2026年春季学期",
+    "duration": 90,
+    "version": "1.0.0",
+    "lastModified": "2026-03-12"
+  },
+  "theme": {
+    "primaryColor": "#1a237e",
+    "accentColor": "#00e5ff",
+    "backgroundColor": "#080f1e"
+  },
+  "slides": [
+    {
+      "id": "s01",
+      "type": "cover",
+      "content": {
+        "courseTitle": "Web应用开发技术",
+        "chapterTitle": "第10章 · Chapter 10",
+        "title": "综合项目实践",
+        "subtitle": "从零构建“游戏天地”大型综合网站",
+        "instructor": "主讲教师",
+        "school": "石家庄信息工程技术学院",
+        "semester": "2026年春季学期",
+        "tags": [
+          "项目管理",
+          "规划设计",
+          "代码实现",
+          "全流程实战"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "type": "agenda",
+      "content": {
+        "title": "本章实战大纲",
+        "items": [
+          {
+            "index": "01",
+            "title": "网站开发的项目管理",
+            "subtitle": "如何专业地控制开发流程"
+          },
+          {
+            "index": "02",
+            "title": "“游戏天地”网站规划",
+            "subtitle": "在写代码之前，我们要想清楚什么"
+          },
+          {
+            "index": "03",
+            "title": "“游戏天地”网站设计",
+            "subtitle": "视觉与交互的艺术"
+          },
+          {
+            "index": "04",
+            "title": "“游戏天地”网站实现",
+            "subtitle": "从HTML/CSS到成品网页"
+          },
+          {
+            "index": "05",
+            "title": "测试与部署发布",
+            "subtitle": "让全世界看到你的作品"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "type": "section",
+      "content": {
+        "section": "01",
+        "icon": "📅",
+        "title": "网站开发的项目管理",
+        "subtitle": "像专业人士一样思考开发流程"
+      }
+    },
+    {
+      "id": "s04",
+      "type": "content",
+      "content": {
+        "title": "为什么需要项目管理？",
+        "subtitle": "Avoid Chaos in Development",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "很多初学者拿到任务直接就开始写代码，这会导致以下后果：\n\n❌ 边写边改，最后代码一团糟（面条代码）\n❌ 漏掉核心功能，临近交工才发现\n❌ 样式不统一，首页和内页像两个网站\n❌ 无法多人协作，互相覆盖进度"
+          },
+          {
+            "type": "highlight",
+            "text": "✅ 项目管理的作用：\n将庞大的工程拆解为可控的任务，确保在规定时间内、高质量地交付网站。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 记住：一个好的Web开发者，50%的时间在思考和规划，30%的时间在调试，只有20%的时间在敲键盘。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "type": "timeline",
+      "content": {
+        "title": "网站开发的标准化流程",
+        "subtitle": "Standard Web Development Life Cycle",
+        "items": [
+          {
+            "year": "阶段1",
+            "event": "需求分析",
+            "detail": "明确网站要做给谁看，解决什么问题，包含哪些功能。"
+          },
+          {
+            "year": "阶段2",
+            "event": "规划设计",
+            "detail": "制定站点地图，画草图（原型），确定视觉风格（UI）。",
+            "highlight": true
+          },
+          {
+            "year": "阶段3",
+            "event": "开发制作",
+            "detail": "编写代码。先打HTML骨架，再写CSS外衣，最后加JS灵魂。"
+          },
+          {
+            "year": "阶段4",
+            "event": "测试优化",
+            "detail": "找Bug。检查不同浏览器显示是否正常，手机打开快不快。"
+          },
+          {
+            "year": "阶段5",
+            "event": "发布维护",
+            "detail": "购买域名空间，上传代码，上线后根据反馈持续更新。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：开发流程排序",
+        "subtitle": "Knowledge Check: Development Process",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "打乱的网站开发步骤如下：\n\nA. 购买域名空间并上传代码\nB. 编写HTML/CSS代码实现网页\nC. 明确受众群体与核心功能\nD. 在手机和电脑上检查页面显示是否正常\nE. 画出网页原型与设计视觉图"
+          },
+          {
+            "type": "definition",
+            "text": "正确顺序：C -> E -> B -> D -> A"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n1. 需求分析 (C) 是起点，不知道做什么就无法开始。\n2. 规划设计 (E) 是图纸，有了蓝图才能动工。\n3. 开发制作 (B) 是具体的施工敲代码过程。\n4. 测试优化 (D) 是竣工验收找 Bug。\n5. 发布维护 (A) 是最终交付给全世界访问。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "type": "content",
+      "content": {
+        "title": "🛠️ 细化示例：需求分析与功能列表的转化",
+        "subtitle": "Translating Requirements to Features",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "我们常说“需求分析”，但在实际操作中，用户的语言往往是模糊的，这就需要我们将其转化为开发能看懂的“功能点”。"
+          },
+          {
+            "type": "definition",
+            "text": "示例转化过程：\n🗣️ 客户原话：“我希望玩家进来能快速找到好玩的游戏，并且能留下他们的看法。”\n\n💻 转化为前端功能：\n1. 首页推荐位大图轮播（快速吸引眼球）\n2. 顶部提供全局搜索框（快速查找）\n3. 游戏详情页加入评论表单区域（留下看法）"
+          },
+          {
+            "type": "tip",
+            "text": "💡 提示：项目管理的起点就是把抽象的“愿望”拆解成具体的“网页元素和交互行为”。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：识别规划阶段的核心产出物",
+        "subtitle": "Knowledge Check: Planning Deliverables",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在网站开发的“规划设计”阶段（阶段2），团队不应该在这个时候把精力放在哪件事上？"
+          },
+          {
+            "type": "definition",
+            "text": "A. 绘制页面的线框图（草图）\nB. 决定网站的主色调是电竞蓝\nC. 编写数据库连接与查询的具体代码\nD. 整理并画出包含所有页面的站点地图"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n正确答案：C。\n解析：“规划设计”阶段主要是“画图纸”与“定基调”。选项A是原型设计，选项B是视觉UI设计，选项D是信息架构规划，均属于阶段2的核心工作。而选项C属于具体的“开发制作（阶段3）”，在图纸还没画好的时候直接写底层代码是大忌。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "type": "bullets",
+      "content": {
+        "title": "核心团队成员与分工",
+        "subtitle": "Roles in a Development Team",
+        "layout": "grid",
+        "items": [
+          {
+            "icon": "👔",
+            "title": "项目经理 (PM)",
+            "detail": "负责控制进度。确保大家不走弯路，协调客户需求与技术实现。"
+          },
+          {
+            "icon": "🎨",
+            "title": "UI/UX设计师",
+            "detail": "负责“美”。用PS或Figma画出网页长什么样，设计用户交互路径。"
+          },
+          {
+            "icon": "💻",
+            "title": "前端工程师",
+            "detail": "负责“动”。把设计稿转化为浏览器能运行的HTML/CSS/JS。"
+          },
+          {
+            "icon": "⚙️",
+            "title": "后端工程师",
+            "detail": "负责“数”。管理数据库，编写逻辑处理用户登录、评论、搜索等请求。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：团队职责连线",
+        "subtitle": "Knowledge Check: Team Roles",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "场景：客户反馈“首页的游戏轮播图在手机上不会自动播放，而且按钮颜色太暗看不清，另外点击登录后一直提示密码错误”。\n\n请问这三个问题分别该找团队里的谁来解决？"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n1. “轮播图不会自动播放” -> 属于交互层行为，找 前端工程师 处理（JS代码修复）。\n2. “按钮颜色太暗” -> 属于视觉表现层，找 UI/UX设计师 重新调色定稿，再由前端落实。\n3. “提示密码错误” -> 属于数据验证逻辑处理，找 后端工程师 排查数据库与验证接口。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "type": "content",
+      "content": {
+        "title": "什么是“网站策划书”？",
+        "subtitle": "The Project Proposal",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "策划书是网站的“施工图纸”。它不仅是写给老板/客户看的，更是开发者的指南。"
+          },
+          {
+            "type": "definition",
+            "text": "一份合格的策划书应包含：\n1. 网站目标：为什么要做这个站？（如：展示游戏动态）\n2. 受众分析：谁会来看？（如：18-35岁男性玩家）\n3. 功能列表：能干什么？（如：注册、点赞、搜索）\n4. 技术选型：用什么做？（如：HTML5+Vue+MySQL）"
+          },
+          {
+            "type": "tip",
+            "text": "💡 对于个人练习项目，也要养成写简易文档的习惯，这会极大提高你的工程能力。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "type": "table",
+      "content": {
+        "title": "📄 示例：个人练习项目的极简策划书",
+        "subtitle": "Example: Mini Project Proposal",
+        "headers": [
+          "模块",
+          "内容说明"
+        ],
+        "rows": [
+          [
+            "项目名称",
+            "游戏天地 (Game World)"
+          ],
+          [
+            "项目定位",
+            "面向18-35岁PC/主机玩家的新闻与评测聚合门户"
+          ],
+          [
+            "视觉基调",
+            "暗黑风主题 (深灰背景 + 荧光蓝强调色)"
+          ],
+          [
+            "核心页面",
+            "1. 首页 (大图幻灯片、热门资讯流)\n2. 游戏库 (全图鉴网格列表、多维筛选)\n3. 联系页 (玩家反馈表单)"
+          ],
+          [
+            "技术方案",
+            "纯静态实现：HTML5 + CSS3 (Flex/Grid) + 原生JS"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：为策划书补充缺失模块",
+        "subtitle": "Knowledge Check: Project Proposal",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "回顾前面提到的“游戏天地”极简策划书，里面包含了“项目名称”、“项目定位”、“视觉基调”、“核心页面”与“技术方案”。\n如果是为了应付真实的商业客户，这份简易策划书中还遗漏了哪个对于“项目管理”至关重要的模块？"
+          },
+          {
+            "type": "definition",
+            "text": "A. 核心成员的兴趣爱好\nB. 开发周期进度与里程碑时间表\nC. 每一行代码的具体含义注释\nD. 竞争对手公司员工的薪资水平"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n正确答案：B。\n解析：商业策划书中除了明确“做什么”（功能需求）和“怎么做”（技术方案），最关键的就是“什么时候做完”（进度管理）。里程碑（如：第一周完成原型，第二周出设计图，第三周写代码交付）能让客户对进度有清晰的预期。A、C、D项显然是不合理的信息。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "type": "section",
+      "content": {
+        "section": "02",
+        "icon": "🎮",
+        "title": "“游戏天地”网站规划",
+        "subtitle": "明确我们要建造什么样的游戏帝国"
+      }
+    },
+    {
+      "id": "s15",
+      "type": "content",
+      "content": {
+        "title": "案例背景：为什么选游戏类网站？",
+        "subtitle": "Case Study: Game World Site",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "游戏类网站通常包含Web开发中最具代表性的元素：\n\n• 酷炫的视觉效果（CSS动画、大图轮播）\n• 复杂的信息分类（攻略、评测、资讯）\n• 频繁的用户交互（评论区、评分系统）\n• 响应式需求（玩家可能在手机或PC上查看攻略）"
+          },
+          {
+            "type": "highlight",
+            "text": "本案例目标：\n打造一个名为“游戏天地”的综合性门户，包含首页、资讯列表页、游戏详情页。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "type": "bullets",
+      "content": {
+        "title": "第一步：明确网站目标定位",
+        "subtitle": "Define the Purpose",
+        "layout": "list",
+        "items": [
+          {
+            "title": "核心价值",
+            "detail": "为玩家提供最新、最全的游戏资讯和深度攻略。"
+          },
+          {
+            "title": "品牌风格",
+            "detail": "科技感、动感、暗黑模式（Gamers' Preference）。"
+          },
+          {
+            "title": "核心功能",
+            "detail": "游戏搜索、资讯分类展示、视频预告片播放、社区互动。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "type": "content",
+      "content": {
+        "title": "技术栈选择（初学者友好组合）",
+        "subtitle": "Technology Stack Selection",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "根据本章实战目标，我们选择最经典的现代开发技术："
+          },
+          {
+            "type": "highlight",
+            "text": "• 结构层：HTML5（使用语义化标签）\n• 表现层：CSS3（采用Flexbox布局 + 媒体查询）\n• 交互层：JavaScript（使用原生JS或轻量级jQuery）\n• 辅助框架：Bootstrap 5（加速响应式开发）"
+          },
+          {
+            "type": "warning",
+            "text": "⚠️ 注意：初学者不要盲目追求流行框架（如React/Vue），先打好原生代码基础，才能走得更远。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "type": "content",
+      "content": {
+        "title": "🛠️ 细化说明：为何初学者要避开“盲目追求框架”？",
+        "subtitle": "Deep Dive: Fundamentals Before Frameworks",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "经常有同学问：“现在大厂都在用 Vue 或者 React，为什么我们这个项目还要用原生 HTML/CSS/JS？”"
+          },
+          {
+            "type": "highlight",
+            "text": "原生的重要性：\n1. 框架是魔法，原生是原理。框架的本质依然是操作原生的 DOM（文档对象模型）。如果不懂原生 JavaScript，遇到框架底层报错将束手无策。\n2. 样式掌控力：所有 UI 库（如 Element UI、Ant Design）最终都编译为原生 CSS。只有精通 Flex/Grid，你才能随心所欲地修改组件库的默认长相。\n3. 项目规模匹配：像“游戏天地”这样的静态门户站，直接用原生开发速度极快且包体积最小，上重型框架反而是“高射炮打蚊子”。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：技术栈的职责划分",
+        "subtitle": "Knowledge Check: Tech Stack",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在实现“游戏天地”网站时，下列代码片段分别属于哪个技术层？\n\n片段1. `<div class=\"game-card\">...</div>`\n片段2. `color: #00e5ff; display: flex;`\n片段3. `document.querySelector('.btn').click()`"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n• 片段1 是 HTML：属于 结构层。如同建筑的钢筋水泥，负责搭建网页的骨架和内容。\n• 片段2 是 CSS：属于 表现层。如同建筑的内外装潢，负责给骨架穿上漂亮的衣服（控制布局与颜色）。\n• 片段3 是 JavaScript：属于 交互层。如同建筑的智能家居系统，负责赋予网页动效和逻辑行为（注入灵魂）。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "type": "content",
+      "content": {
+        "title": "信息架构（IA）：规划内容的逻辑",
+        "subtitle": "Information Architecture",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "信息架构就像是给图书馆分类。好的分类能让用户一眼找到目标。"
+          },
+          {
+            "type": "definition",
+            "text": "“游戏天地”的分类规划：\n- 网站首页：聚合最新、最热内容\n- 游戏库：按平台（PC/PS5/Switch）或类型（RPG/FPS）分类\n- 资讯中心：行业新闻、新作预告\n- 玩家社区：论坛、评分系统"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "type": "table",
+      "content": {
+        "title": "站点地图（Sitemap）规划表",
+        "subtitle": "Visualizing Site Structure",
+        "headers": [
+          "一级导航",
+          "二级页面",
+          "页面内容描述",
+          "优先级"
+        ],
+        "rows": [
+          [
+            "首页",
+            "index.html",
+            "幻灯片、热门推荐、最新资讯、友情链接",
+            "极高"
+          ],
+          [
+            "游戏库",
+            "games.html",
+            "全游戏列表、多条件筛选、搜索框",
+            "高"
+          ],
+          [
+            "资讯中心",
+            "news.html",
+            "文章列表、时间线布局、阅读排行",
+            "中"
+          ],
+          [
+            "关于我们",
+            "about.html",
+            "团队介绍、联系方式、版权声明",
+            "低"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：信息架构层级划分实战",
+        "subtitle": "Knowledge Check: Sitemap Organization",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "如果要在“游戏天地”的站点地图中增加以下三个新页面，请判断它们分别属于哪一个一级导航的二级子页面？\n\n1. 《黑神话：悟空》独家深度评测文章页\n2. 用户密码找回与重置页面\n3. 游戏分类：即时战略类(RTS) 游戏合集页"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n1. 《黑神话：悟空》评测文章页：属于文字类新闻动态，应归入 资讯中心 (news.html) 的子页面层级。\n2. 密码找回页面：属于用户个人账户相关的基础系统页面，一般直接挂在 首页 或全局导航的“登录注册”模块下。\n3. RTS游戏合集页：属于按照类别筛选游戏的展示列表，应归入 游戏库 (games.html) 的二级子页面。\n合理归类能防止网站结构变成毫无逻辑的“大杂烩”。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "type": "section",
+      "content": {
+        "section": "03",
+        "icon": "🖋️",
+        "title": "“游戏天地”网站设计",
+        "subtitle": "从黑白原型到炫酷视觉"
+      }
+    },
+    {
+      "id": "s24",
+      "type": "bullets",
+      "content": {
+        "title": "导航系统设计要点",
+        "subtitle": "Designing Navigation",
+        "layout": "cards",
+        "items": [
+          {
+            "icon": "🔝",
+            "title": "全局导航 (Global)",
+            "detail": "固定在顶部，包含Logo、主分类、搜索、登录。无论用户在哪个页面都能看到。"
+          },
+          {
+            "icon": "👣",
+            "title": "面包屑导航 (Breadcrumb)",
+            "detail": "显示路径：首页 > 游戏库 > 动作类 > 战神5。防止用户迷路。"
+          },
+          {
+            "icon": "🔚",
+            "title": "页脚导航 (Footer)",
+            "detail": "包含备案信息、社交媒体链接、快速跳转。是“垃圾桶”也是“藏宝箱”。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "type": "content",
+      "content": {
+        "title": "视觉风格确立：配色方案",
+        "subtitle": "Color Palette",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "游戏网站通常不适合大白底，我们要营造沉浸感。"
+          },
+          {
+            "type": "highlight",
+            "text": "🎨 推荐配色：\n• 背景：深灰色或深蓝色 (#121212 / #0d1b2a)\n• 主色：电竞蓝或荧光绿 (#00e5ff / #76ff03) —— 用于强调按钮、标题\n• 辅助：浅灰或白色 (#e0e0e0) —— 用于正文阅读"
+          },
+          {
+            "type": "tip",
+            "text": "💡 技巧：使用 60-30-10 原则。60%背景色，30%辅助色，10%强调色。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "type": "content",
+      "content": {
+        "title": "🎨 示例与练习：60-30-10 配色原则",
+        "subtitle": "Example: The 60-30-10 Rule in Practice",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "假设我们要为《赛博朋克》主题游戏评测页应用该原则，请为以下三个界面元素分配合适的颜色比例："
+          },
+          {
+            "type": "definition",
+            "text": "A. 网页主体大背景色\nB. 文章正文文字与普通卡片区块底色\nC. “立即下载”按钮与高亮重点标题"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n• A 对应 60% 主色调：通常使用深灰色 (#121212) ，面积最大，奠定暗黑沉浸感基调。\n• B 对应 30% 辅助色：使用浅灰白 (#e0e0e0) 或稍亮的深色区块，用于辅助阅读和内容划分，不能喧宾夺主。\n• C 对应 10% 强调色：使用电竞蓝 (#00e5ff) 或荧光黄，面积最小但反差极大，极具视觉冲击力，用于引导用户视线和点击操作。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：反面案例排查",
+        "subtitle": "Knowledge Check: Spot the UI Mistakes",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "某同学设计了一款“游戏天地”的首页，但大受吐槽，页面显得“脏乱差”。排版特征如下：\n① 背景使用刺眼的纯红色，文字用纯绿色\n② 页面右上方是Logo，最底部是主导航\n③ 每一段文字用了5种不同颜色的下划线高亮\n请结合刚学的视觉设计原则，指出上述做法违反了哪些规范？"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n① 违背配色原则：红配绿属于高饱和度对比色，大面积混用会导致强烈的视觉疲劳甚至“晕眩感”。未遵循“暗黑沉浸”的主流游戏审美，也没运用60-30-10原则拉开层次。\n② 违背导航习惯：全局导航通常固定在顶部，Logo通常在最左上角或正中央。放在最底部违背了用户从上到下的阅读直觉，找不到如何切换页面。\n③ 滥用强调色：强调色（10%占比）用于按钮或极其关键的标题。五颜六色的高亮会破坏视觉焦点的唯一性，等于“全都是重点，也就是没有重点”。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "type": "content",
+      "content": {
+        "title": "版式设计：F型扫描模式的应用",
+        "subtitle": "F-Pattern for Content Scanning",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "研究表明，用户浏览网页时视线呈“F”型。我们要利用这一点布局。"
+          },
+          {
+            "type": "definition",
+            "text": "1. 顶端横线：放置Logo和导航（最重要）。\n2. 左侧纵线：放置醒目的标题或图片（次重要）。\n3. 快速扫描：右侧和下方放置详细内容。"
+          },
+          {
+            "type": "highlight",
+            "text": "在“游戏天地”中：\n左侧放置大尺寸的游戏封面图，右侧放置游戏评分和简介，符合认知习惯。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：F型扫描路径中放置内容的优先级",
+        "subtitle": "Knowledge Check: F-Pattern Priorities",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "根据 F 型扫描模式的眼动规律（用户的视线最容易停留在左上角和左侧），在设计一款热门游戏详情页时，以下哪个内容模块放置在“左侧最上方（第一行或最左列）”是最合理的？"
+          },
+          {
+            "type": "definition",
+            "text": "A. 游戏发行公司的版权声明年份\nB. 这款游戏的高清封面海报与极其醒目的游戏名称标题\nC. 几百字的背景故事枯燥文本简介\nD. 页脚的友情链接展示"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n正确答案：B。\n解析：F型扫描最核心的“横线”和“纵线”顶部，是视线的绝对黄金点。此处必须放置最能吸引用户、最能明确当前页面核心信息的内容（如高清封面大图和主标题）。\nA 和 D 属于低优先级信息，应放在页面最底部（页脚）。C 虽然有价值，但在第一眼缺乏视觉冲击力，通常放在封面海报的右侧或正下方供用户深入阅读。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "type": "bullets",
+      "content": {
+        "title": "关键页面设计：首页 index.html",
+        "subtitle": "Homepage Layout",
+        "layout": "grid",
+        "items": [
+          {
+            "icon": "🖼️",
+            "title": "英雄区 (Hero Section)",
+            "detail": "巨大的幻灯片轮播，展示当季最火爆的游戏预告大图。"
+          },
+          {
+            "icon": "📰",
+            "title": "最新资讯流",
+            "detail": "采用卡片式布局，左图右文，带上发布时间和分类标签。"
+          },
+          {
+            "icon": "🏆",
+            "title": "侧边排行榜",
+            "detail": "展示本周热门下载或评分最高的Top 10游戏。"
+          },
+          {
+            "icon": "📩",
+            "title": "订阅区域",
+            "detail": "底部引导用户输入邮箱，订阅最新的游戏优惠信息。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "type": "comparison",
+      "content": {
+        "title": "设计 vs 实现：两种思维的碰撞",
+        "subtitle": "Design Thinking vs. Coding Thinking",
+        "left": {
+          "label": "设计师关注什么",
+          "icon": "🎨",
+          "color": "purple",
+          "items": [
+            "像素级的完美对齐",
+            "色彩的心理暗示",
+            "微动效带来的愉悦感",
+            "用户的视觉流向"
+          ]
+        },
+        "right": {
+          "label": "前端开发关注什么",
+          "icon": "💻",
+          "color": "blue",
+          "items": [
+            "HTML结构的语义化",
+            "CSS的可复用性与性能",
+            "浏览器兼容性测试",
+            "加载速度与SEO优化"
+          ]
+        }
+      }
+    },
+    {
+      "id": "s32",
+      "type": "section",
+      "content": {
+        "section": "04",
+        "icon": "🛠️",
+        "title": "“游戏天地”网站实现",
+        "subtitle": "代码时间：从零构建实战"
+      }
+    },
+    {
+      "id": "s33",
+      "type": "content",
+      "content": {
+        "title": "建立项目文件夹结构",
+        "subtitle": "Step 1: Project Organization",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "规范的文件夹结构是项目成功的一半。严禁把所有文件堆在根目录！"
+          },
+          {
+            "type": "highlight",
+            "text": "Game_World_Project/\n├── css/          # 存放 .css 样式文件\n├── js/           # 存放 .js 脚本文件\n├── img/          # 存放 图片、图标资源\n├── media/        # 存放 视频、音频文件\n├── index.html    # 网站首页\n└── games.html    # 游戏库页"
+          },
+          {
+            "type": "tip",
+            "text": "💡 职业习惯：图片文件名应具有描述性，如 `hero-banner-gow.jpg`，而不是 `123.jpg`。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：找茬——糟糕的文件管理",
+        "subtitle": "Knowledge Check: File Organization",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "某位新手的项目目录如下，请找出至少三个不规范之处：\n\nMyProject/\n├── 123.jpg\n├── index.html\n├── About_Us.html\n├── 样式.css\n└── script.js"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n1. 缺乏分类文件夹：所有图片、CSS、JS都堆在一块，应建立单独的 img/, css/, js/ 子目录分类存放。\n2. 命名无意义：'123.jpg' 无法得知图片内容，极难维护，应改为 'hero-bg.jpg' 等描述性名称。\n3. 使用中文命名：'样式.css' 在上传到部分Linux服务器时极易产生路径无法识别的乱码，必须使用英文如 'style.css'。\n4. 大小写与下划线混用：'About_Us.html' 不利于统一规范，建议统一使用小写并用中划线连接，如 'about-us.html'。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "type": "content",
+      "content": {
+        "title": "🛠️ 细化示例：合理区分图片与媒体流",
+        "subtitle": "Detail: Separating Images and Media",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在刚才建立项目文件夹结构时，我们特别分出了 `img/` 和 `media/` 两个文件夹。很多初学者喜欢把视频和图片都扔进一个叫 `assets/` 的文件夹里，为什么我们要分开？"
+          },
+          {
+            "type": "highlight",
+            "text": "原因细化：\n1. 体积差异巨大：通常一张优化后的网页图片在几十到几百KB，而一段游戏宣传片(mp4)动辄几十MB。\n2. 加载策略不同：图片常常随页面一起首屏并发加载；而庞大的视频文件通常依赖“懒加载”或流媒体切片技术。\n3. 在后期进行代码压缩打包时，构建工具通常会将极小的图片转化为 Base64 代码直接塞进 CSS，而视频绝对不能这么处理。明确分块有利于未来对接自动化打包工具（如 Webpack/Vite）。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "type": "code",
+      "content": {
+        "title": "编写 HTML5 基础骨架",
+        "subtitle": "HTML Skeleton Structure",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>游戏天地 - 专业游戏资讯平台</title>\n    <!-- 引入外部CSS -->\n    <link rel=\"stylesheet\" href=\"css/style.css\">\n</head>\n<body>\n    <!-- 网站顶部导航 -->\n    <header>\n        <nav class=\"container\">\n            <div class=\"logo\">GAME WORLD</div>\n            <ul>\n                <li><a href=\"index.html\" class=\"active\">首页</a></li>\n                <li><a href=\"games.html\">游戏库</a></li>\n                <li><a href=\"news.html\">资讯</a></li>\n            </ul>\n        </nav>\n    </header>\n\n    <!-- 主体内容 -->\n    <main>\n        <!-- 幻灯片区 -->\n        <section class=\"hero\"></section>\n        <!-- 游戏卡片区 -->\n        <section class=\"news-grid\"></section>\n    </main>\n\n    <!-- 页脚 -->\n    <footer></footer>\n</body>\n</html>",
+        "explanation": [
+          {
+            "line": "10-20",
+            "text": "使用 header, nav 等语义化标签，不仅结构清晰，还有利于SEO优化。"
+          },
+          {
+            "line": "7",
+            "text": "link 标签一定要放在 head 里，确保页面加载时样式能先应用。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：为何要使用语义化标签？",
+        "subtitle": "Knowledge Check: Semantic HTML",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在上面的 HTML5 基础骨架代码中，我们使用了 `<header>`, `<nav>`, `<main>`, `<footer>` 等标签。有人问：“我全用 `<div class=\"...\">` 也可以实现一模一样的排版和效果，那为什么非得用语义化标签呢？”\n请选出不属于使用语义化标签优势的一项："
+          },
+          {
+            "type": "definition",
+            "text": "A. 能让页面的执行运行速度提升十倍以上\nB. 搜索引擎爬虫（如百度、谷歌）更容易读懂页面重点，有利于 SEO 排名\nC. 视障人群使用的屏幕阅读器可以更准确地播报网页结构\nD. 团队中其他开发者阅读代码时，一眼就能看出哪块是导航，哪块是页脚"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n正确答案：A。\n解析：语义化标签在底层渲染的机制与 div 并无本质性能差别，完全不能指望它带来所谓的“十倍性能提升”。\n语义化的三大好处正是 B、C、D：机器更易读（SEO与无障碍访问）和人类更易读（代码可维护性）。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "type": "code",
+      "content": {
+        "title": "CSS3 全局样式设置",
+        "subtitle": "Global CSS Variables & Reset",
+        "language": "css",
+        "code": "/* 定义全局颜色变量，方便一键修改风格 */\n:root {\n    --bg-dark: #121212;\n    --accent-blue: #00e5ff;\n    --text-white: #ffffff;\n    --gap: 20px;\n}\n\n* {\n    margin: 0; padding: 0;\n    box-sizing: border-box;\n}\n\nbody {\n    background-color: var(--bg-dark);\n    color: var(--text-white);\n    font-family: 'Segoe UI', Tahoma, sans-serif;\n}\n\n.container {\n    max-width: 1200px;\n    margin: 0 auto;\n    padding: 0 var(--gap);\n}",
+        "explanation": [
+          {
+            "line": "2-7",
+            "text": "使用 CSS Variables (:root) 是现代开发的标准做法，维护成本极低。"
+          },
+          {
+            "line": "20-24",
+            "text": ".container 类用于控制页面内容宽度并居中，是布局中最常用的工具类。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "type": "code",
+      "content": {
+        "title": "🛠️ 延伸示例：利用变量一键切换网站主题",
+        "subtitle": "Extended Example: The Power of CSS Variables",
+        "language": "css",
+        "code": "/* 原本的暗黑风格变量配置 */\n:root {\n    --bg-color: #121212;\n    --text-color: #ffffff;\n    --accent-color: #00e5ff;\n}\n\n/* 只要覆盖变量值，瞬间变成明亮风格！ */\n.light-theme {\n    --bg-color: #ffffff;\n    --text-color: #333333;\n    --accent-color: #ff3d00; /* 强调色变为橙色 */\n}\n\n/* 使用变量的业务样式完全不用改动 */\nbody {\n    background-color: var(--bg-color);\n    color: var(--text-color);\n}",
+        "explanation": [
+          {
+            "line": "7-11",
+            "text": "这就是 CSS 变量的威力：不需要去修改下面成百上千行的具体样式代码，只需在最外层（如给body加上类名）切换变量值，整个网站的配色瞬间改变。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "type": "code",
+      "content": {
+        "title": "实现导航条样式 (Flexbox)",
+        "subtitle": "Header & Navigation Styling",
+        "language": "css",
+        "code": "header {\n    height: 80px;\n    background: rgba(0,0,0,0.8);\n    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */\n    position: sticky; top: 0; z-index: 1000;\n}\n\nnav {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    height: 100%;\n}\n\n.logo {\n    font-size: 24px; font-weight: bold; \n    color: var(--accent-blue);\n}\n\nnav ul {\n    display: flex;\n    list-style: none;\n}\n\nnav ul li a {\n    color: white; text-decoration: none;\n    padding: 10px 20px;\n    transition: color 0.3s;\n}\n\nnav ul li a:hover {\n    color: var(--accent-blue);\n}",
+        "explanation": [
+          {
+            "line": "4",
+            "text": "backdrop-filter 让导航栏背景透明模糊，极具现代科技感。"
+          },
+          {
+            "line": "9",
+            "text": "display: flex 是目前最推荐的布局方案，处理水平排列非常简单。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s41",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：导航条居中与透明度特效",
+        "subtitle": "Knowledge Check: Header Styling Tricks",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在实现上方导航条的 CSS 代码中，存在两行极其关键的视觉特效代码：\n代码1：`justify-content: space-between;`\n代码2：`background: rgba(0,0,0,0.8);`"
+          },
+          {
+            "type": "definition",
+            "text": "请分别描述这两行代码在导航条上的具体作用表现是什么？"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n• 代码1作用：属于 Flex 布局的对齐属性。它让左侧的 Logo 元素贴着父容器最左边，右侧的导航列表 <ul> 贴着父容器的最右边，中间空余的空间被完全均分，是制作现代两端对齐导航的标配写法。\n• 代码2作用：使用 rgba 颜色模式设置了纯黑色(0,0,0)背景，但透明度(Alpha通道)设定为 0.8（即80%不透明度）。这使得当用户滚动页面时，底部的图片或文字隐隐约约透出导航条，配合磨砂效果极具高级感。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s42",
+      "type": "content",
+      "content": {
+        "title": "卡片式布局 (Card Layout) 的原理",
+        "subtitle": "The Foundation of Modern UI",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "卡片就像是一个独立的内容单元，每个卡片包含：图片、标题、简述。"
+          },
+          {
+            "type": "highlight",
+            "text": "HTML 结构：\n<div class='card'>\n  <img src='...'>\n  <div class='info'>\n    <h3>游戏名称</h3>\n    <p>简介内容...</p>\n  </div>\n</div>"
+          },
+          {
+            "type": "definition",
+            "text": "实现技巧：\n1. 设置 card 的 overflow: hidden 保证图片圆角正常。\n2. 使用 transition 过渡效果，增加 hover 时的阴影或缩放。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s43",
+      "type": "code",
+      "content": {
+        "title": "CSS Grid 实现响应式卡片网格",
+        "subtitle": "Responsive Grid Implementation",
+        "language": "css",
+        "code": ".news-grid {\n    display: grid;\n    /* 自动填充，最小280px，最大占满一份 */\n    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n    gap: 30px;\n    margin-top: 50px;\n}\n\n.card {\n    background: #1e1e1e;\n    border-radius: 10px;\n    transition: transform 0.3s;\n}\n\n.card:hover {\n    transform: translateY(-10px); /* 悬浮特效 */\n}\n\n.card img {\n    width: 100%; height: 200px;\n    object-fit: cover; /* 保证图片不拉伸 */\n}",
+        "explanation": [
+          {
+            "line": "4",
+            "text": "这是最强大的响应式写法，无需媒体查询即可自动在手机上排成一列，在电脑上排成多列。"
+          },
+          {
+            "line": "21",
+            "text": "object-fit: cover 解决了素材图片比例不一的问题，自动居中裁剪。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s44",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：Flex 与 Grid 的选择",
+        "subtitle": "Knowledge Check: Flexbox vs. Grid",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在编写“游戏天地”的CSS布局时，遇到了两个具体需求：\n\n需求1：让导航栏里的Logo固定在最左边，菜单项列表固定在最右边，水平对齐。\n需求2：让包含20款游戏的列表框在不同宽度的屏幕上，自动排列成 1列、2列或4列卡片。"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n• 需求1 最适合用 Flexbox：因为这是一维布局（单行横向分布），只需设置 `display: flex; justify-content: space-between;` 即可完美解决对齐与分配空间的问题。\n• 需求2 最适合用 CSS Grid：因为这是二维布局（包含多行和多列的网格体系），使用 `grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));` 能够仅用一行核心代码就解决极为复杂的响应式换行与自适应宽度需求。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s45",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：Grid 属性细节填充",
+        "subtitle": "Knowledge Check: Grid minmax()",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在实现响应式卡片网格时，有一句核心代码：\n`grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));`\n如果此时用户正在用一台屏幕极窄的旧款手机访问，屏幕内容显示宽度仅有 `320px`。此时这行代码会如何排列游戏卡片？"
+          },
+          {
+            "type": "definition",
+            "text": "A. 排成2列，每列宽度被强行压缩到 160px 左右\nB. 彻底隐藏卡片，因为尺寸不满足\nC. 排成1列，并且卡片宽度会自动填满，也就是占满整个屏幕的宽度\nD. 卡片维持 280px 宽度不变，向右超出屏幕并出现滚动条"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n正确答案：C。\n解析：`minmax(280px, 1fr)` 的魔法在于，它要求每一个网格列的“最小保底宽度”是 280px。当屏幕总宽度仅有 320px 时，放下1个 280px 绰绰有余，但绝对放不下2个（280*2=560px）。因此 `auto-fit` 会自动将其判断为只展示 1 列。同时因为最大值设定为了 `1fr`（占据剩余所有可用空间），这 1 列的卡片会被拉伸以填满整个 320px 的宽度，完美适配手机单栏显示。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s46",
+      "type": "code",
+      "content": {
+        "title": "JavaScript 交互：搜索框实时显示",
+        "subtitle": "Simple JS Interaction",
+        "language": "javascript",
+        "code": "// 找到搜索输入框和按钮\nconst searchBtn = document.querySelector('#search-btn');\nconst searchInput = document.querySelector('#search-input');\n\n// 监听点击事件\nsearchBtn.addEventListener('click', () => {\n    const query = searchInput.value.trim();\n    if (query) {\n        alert('正在为你搜索：' + query);\n        // 这里可以执行实际的过滤逻辑或页面跳转\n    } else {\n        alert('请输入搜索关键词');\n    }\n});\n\n// 监听回车键\nsearchInput.addEventListener('keypress', (e) => {\n    if (e.key === 'Enter') searchBtn.click();\n});",
+        "explanation": [
+          {
+            "line": "6",
+            "text": "addEventListener 是现代推荐的绑定事件方式，代码更干净。"
+          },
+          {
+            "line": "18",
+            "text": "监听回车键能极大地提升用户输入体验。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s47",
+      "type": "content",
+      "content": {
+        "title": "🔍 延伸解析：搜索功能的代码逻辑梳理",
+        "subtitle": "Deep Dive: Search Logic Formulation",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在上一步的 JS 示例中，我们捕获了用户输入的搜索关键词并弹窗。但在真实前端开发中，获取到关键词后实际要做的逻辑是什么？"
+          },
+          {
+            "type": "definition",
+            "text": "逻辑细化步骤：\n1. 获取输入值（已通过 `searchInput.value` 获得）。\n2. 清理脏数据：使用 `.trim()` 去除前后多余空格，防止用户仅仅输入了空格导致查出全量数据。\n3. 判断合法性：通过 `if (query)` 确保这是一个非空的有意义的查询。\n4. 执行结果呈现：\n   • 静态过滤：遍历当前页面所有的游戏卡片标题，包含该关键词的卡片保留显示（`display: block`），不包含的直接隐藏（`display: none`）。\n   • 动态跳转：将关键词拼接在URL参数后（如跳转至 `search.html?q=战神`），由新页面根据参数拉取并展示结果。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s48",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：搜索框常见交互漏洞排查",
+        "subtitle": "Knowledge Check: Form Interaction Traps",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在刚才解析搜索框交互逻辑时，代码中特意加了一步：`const query = searchInput.value.trim();`\n如果把 `.trim()` 去掉，只写成 `const query = searchInput.value;`，在实际使用时可能会引发什么典型的漏洞？"
+          },
+          {
+            "type": "definition",
+            "text": "A. 会导致输入的中文字符变成乱码\nB. 用户如果按了几下空格键后点击搜索，系统会认为这不是空查询，从而将所有带着空格的乱七八糟结果查出来\nC. 导致无法监听到键盘的回车键按下事件\nD. 搜索框的背景颜色会变灰"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n正确答案：B。\n解析：`.trim()` 的作用是去除字符串头尾的空白字符。如果缺少了它，用户只要敲了哪怕一个空格，`searchInput.value` 获取到的字符串就是 `\" \"`。在随后的 `if(query)` 判断中，空格字符串是真值，这就绕过了防空判断机制，可能导致后端数据库收到非法查询甚至报错。前端对于任何用户输入的“清洗过滤”是必不可少的步骤。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s49",
+      "type": "bullets",
+      "content": {
+        "title": "视频对象处理 (HTML5 Video)",
+        "subtitle": "Embedding Media Content",
+        "layout": "list",
+        "items": [
+          {
+            "title": "插入标签",
+            "detail": "<video controls poster='thumb.jpg' src='trailer.mp4'></video>"
+          },
+          {
+            "title": "属性配置",
+            "detail": "autoplay (静音自动播放)、loop (循环)、muted (静音)。"
+          },
+          {
+            "title": "CSS 美化",
+            "detail": "给视频增加 border-radius 和 box-shadow，让它融入暗黑风格页面。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s50",
+      "type": "content",
+      "content": {
+        "title": "响应式设计的终极利器：媒体查询",
+        "subtitle": "CSS Media Queries",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "我们的“游戏天地”必须在手机上也能看攻略。"
+          },
+          {
+            "type": "highlight",
+            "text": "@media (max-width: 768px) {\n    /* 手机端样式 */\n    .container { width: 95%; }\n    nav ul { display: none; } /* 隐藏菜单，改为汉堡菜单 */\n    .hero-title { font-size: 24px; }\n}"
+          },
+          {
+            "type": "definition",
+            "text": "断点选择建议：\n- 1200px (电脑大屏)\n- 768px (平板/手机横屏)\n- 480px (手机竖屏)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s51",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：书写媒体查询条件",
+        "subtitle": "Knowledge Check: Media Queries",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "目前“游戏天地”的侧边排行榜在电脑端显示在右侧，固定宽度占总内容的30%。\n当用户在手机屏幕（屏幕宽度小于等于 768px）上浏览时，我们希望排行榜能够掉到下方，并占满整个屏幕宽度。"
+          },
+          {
+            "type": "definition",
+            "text": "请补全该功能的 CSS 逻辑思路："
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n```css\n@media (max-width: 768px) {\n    .sidebar-ranking {\n        width: 100%;\n        display: block; /* 取消原有的左右并排特性，强制独占一行 */\n        margin-top: 20px;\n    }\n}\n```\n核心点：`max-width: 768px` 划定了一个“断点”，意思是“当设备的屏幕最大宽度不超过768px时，以下样式才生效”，刚好完美覆盖了绝大多数手机竖屏与平板设备。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s52",
+      "type": "code",
+      "content": {
+        "title": "表单实战：玩家反馈页面",
+        "subtitle": "Building a Feedback Form",
+        "language": "html",
+        "code": "<section class=\"contact container\">\n    <h2>联系我们</h2>\n    <form action=\"/submit-feedback\" method=\"POST\">\n        <div class=\"form-group\">\n            <label>昵称</label>\n            <input type=\"text\" name=\"username\" required>\n        </div>\n        <div class=\"form-group\">\n            <label>游戏平台</label>\n            <select name=\"platform\">\n                <option>PC</option>\n                <option>PS5</option>\n                <option>Switch</option>\n            </select>\n        </div>\n        <div class=\"form-group\">\n            <label>留言信息</label>\n            <textarea name=\"message\"></textarea>\n        </div>\n        <button type=\"submit\">发送反馈</button>\n    </form>\n</section>",
+        "explanation": [
+          {
+            "line": "6",
+            "text": "required 属性开启浏览器原生验证，防止提交空表单。"
+          },
+          {
+            "line": "10-14",
+            "text": "select 标签提供下拉选择，保证数据输入规范。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s53",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：表单组件的正确选用",
+        "subtitle": "Knowledge Check: Form Elements",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在“玩家反馈”页面中，为了获取以下信息，应分别使用哪种基础 HTML 表单标签？\n\n1. 收集用户填写的简短电子邮箱地址\n2. 收集用户选择的唯一游戏平台（如从PC、PS5、Switch这三项中任选其一）\n3. 收集用户撰写的长篇游戏改进建议（内容可能超过两三百字）"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n1. 邮箱地址：应使用 `<input type=\"email\">`。不仅是单行文本框，它还能在手机端自动调出带有“@”符号的专用英文键盘，并具备浏览器原生的格式校验功能。\n2. 单项选择：应使用 `<select>` 和 `<option>` 生成下拉菜单，或者使用三个 `<input type=\"radio\">` 单选框，避免用户自己乱填拼写错误的平台名称。\n3. 长篇建议：必须使用 `<textarea>`。普通的 input 只能单行无尽向后输入，而 textarea 允许多行换行显示，并能让用户通过拖拽右下角来调整输入框可视大小。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s54",
+      "type": "section",
+      "content": {
+        "section": "05",
+        "icon": "🚀",
+        "title": "测试、部署与总结",
+        "subtitle": "从开发环境到生产环境的最后一公里"
+      }
+    },
+    {
+      "id": "s55",
+      "type": "bullets",
+      "content": {
+        "title": "上线前的“自查清单”",
+        "subtitle": "Pre-deployment Checklist",
+        "layout": "grid",
+        "items": [
+          {
+            "icon": "🔗",
+            "title": "检查死链接",
+            "detail": "确保所有 a 标签都能跳转到正确的页面，不要有404。"
+          },
+          {
+            "icon": "🖼️",
+            "title": "优化图片大小",
+            "detail": "使用 TinyPNG 压缩图片。大图不应超过 500KB，否则手机端加载极慢。"
+          },
+          {
+            "icon": "🔍",
+            "title": "完善 Meta 标签",
+            "detail": "检查 title 和 meta description，确保搜索引擎能正确抓取。"
+          },
+          {
+            "icon": "✅",
+            "title": "HTML 验证",
+            "detail": "通过 W3C 验证器检查标签是否闭合，语法是否规范。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s56",
+      "type": "content",
+      "content": {
+        "title": "常见的浏览器兼容性坑",
+        "subtitle": "Browser Compatibility Issues",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "虽然现代浏览器差异变小，但依然要注意以下几点："
+          },
+          {
+            "type": "highlight",
+            "text": "1. CSS前缀：某些属性需要加 -webkit-, -moz-（如弹性盒早期的实现）。\n2. 字体显示：不同系统的默认字体不一致，需指定备用字体族。\n3. 图片格式：WebP 格式加载快，但旧版浏览器可能不显示（需提供 JPG 降级方案）。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 工具推荐：使用 Can I Use (caniuse.com) 查询特定 CSS 属性的兼容性情况。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s57",
+      "type": "content",
+      "content": {
+        "title": "🛠️ 细化示例：什么是 CSS 厂商前缀？",
+        "subtitle": "Detail: CSS Vendor Prefixes",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在浏览器兼容性检查中，我们提到了“CSS前缀”。这究竟是什么？"
+          },
+          {
+            "type": "highlight",
+            "text": "前缀的由来：\n当 W3C 推出一种崭新的 CSS3 属性（比如圆角、动画）但标准还未最终锁定时，各大浏览器厂商为了让开发者提前尝鲜，会在属性前加上自家的特定缩写。\n\n常见前缀对应表：\n• `-webkit-` ：针对 Chrome、Safari、新版 Edge 等（Webkit/Blink内核）\n• `-moz-` ：针对 Firefox（Gecko内核）\n• `-ms-` ：针对早期 Internet Explorer"
+          },
+          {
+            "type": "tip",
+            "text": "💡 现代开发中，手写前缀太痛苦了。实际工作中我们会使用 PostCSS 等自动化工具，在打包时帮你自动补全所有兼容前缀。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s58",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：上线前的故障排查",
+        "subtitle": "Knowledge Check: Pre-deployment Issues",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "网站代码编写完成即将上线部署，但在做跨设备自查时发现：在有些较早版本的旧版浏览器中，网页排版完全崩溃了（原本并列成排的漂亮卡片网格，变成了一行行极其难看的竖排列表）。\n最可能的原因是什么？"
+          },
+          {
+            "type": "definition",
+            "text": "A. 页面顶部忘记写 `<meta charset=\"UTF-8\">` 声明\nB. 使用的高清素材图片文件太大了\nC. 老旧浏览器根本不支持 CSS Grid 或现代 Flexbox 新特性\nD. 没有购买昂贵的高级云服务器"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n正确答案：C。\n解析：排版彻底崩坏大多是因为浏览器引擎过旧，无法解析现代 CSS 高级布局语法（如 Grid）。遇到此情况，要么放任不管（毕竟过时浏览器市场份额极低），要么为这部分用户提供传统的 float 浮动降级样式。\n干扰项排除：A 选项会导致中文变成乱码，但骨架不会塌；B 选项会导致首屏白屏加载极慢，但不影响最终排版；D 选项更是与前端排版毫无关联。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s59",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：如何解决本地图片上云后不显示的问题",
+        "subtitle": "Knowledge Check: Absolute vs Relative Paths",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "小明在本地电脑上开发“游戏天地”网页时，首页背景大图能完美显示。代码写的是：\n`<img src=\"C:/Users/Ming/Desktop/GameProject/img/hero.jpg\">`\n但是当他把代码和 img 文件夹一起上传到免费的云端部署平台（如 GitHub Pages）后，发现全世界都看不到这张图了。为什么？"
+          },
+          {
+            "type": "definition",
+            "text": "A. 云端服务器认为这张图涉及侵权，自动屏蔽了\nB. 他写的是本地的绝对路径（盘符路径）。其他用户的电脑和云端服务器里根本没有这个 C盘目录\nC. 图片在上传过程中由于网络卡顿损坏了\nD. HTML 骨架忘写 title 标签"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n正确答案：B。\n解析：这是初学者最容易犯的致命错误！在写代码引入任何外部资源（CSS、JS、图片）时，绝对不能使用带有本地盘符（如C:/, D:/）的绝对路径。一旦离开这台电脑，路径就彻底失效了。\n必须使用相对路径，例如改为 `src=\"./img/hero.jpg\"`。相对路径是指“相对于当前 HTML 文件所在的同级相对位置”，它放到任何服务器环境都是可以正常寻找的。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s60",
+      "type": "bullets",
+      "content": {
+        "title": "免费部署你的网站",
+        "subtitle": "Free Hosting Options",
+        "layout": "cards",
+        "items": [
+          {
+            "icon": "🐙",
+            "title": "GitHub Pages",
+            "detail": "最适合开发者。只需将代码推送到仓库，即可获得 username.github.io 的免费域名。"
+          },
+          {
+            "icon": "▲",
+            "title": "Vercel / Netlify",
+            "detail": "现代前端首选。支持自动化部署，速度极快，且有非常酷的后台管理界面。"
+          },
+          {
+            "icon": "☁️",
+            "title": "腾讯云 / 阿里云 (Gitee Pages)",
+            "detail": "国内速度最稳的选择，适合国内用户访问的项目展示。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s61",
+      "type": "quote",
+      "content": {
+        "quote": "Web development is not just about writing code; it's about solving problems and creating experiences that people love.",
+        "author": "Anonymous Web Developer",
+        "role": "Industry Insight",
+        "context": "网页开发不仅仅是写代码，而是解决问题并创造人们喜爱的体验。"
+      }
+    },
+    {
+      "id": "s62",
+      "type": "content",
+      "content": {
+        "title": "深入：什么是“暗黑模式”适配？",
+        "subtitle": "Dark Mode Adaptation",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "由于游戏网站常驻暗黑模式，我们要掌握如何检测系统偏好："
+          },
+          {
+            "type": "highlight",
+            "text": "@media (prefers-color-scheme: dark) {\n  body {\n    background-color: #121212;\n    color: white;\n  }\n}"
+          },
+          {
+            "type": "definition",
+            "text": "这让网站能随手机系统的切换而自动变色，极具专业感。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s63",
+      "type": "content",
+      "content": {
+        "title": "进阶预告：从静态到动态",
+        "subtitle": "The Next Step: Dynamization",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "本案例是基于静态文件实现的。在真实的职业场景中："
+          },
+          {
+            "type": "highlight",
+            "text": "• 资讯内容不会写死在HTML里，而是存在数据库。\n• 我们会用 JavaScript 发送 Ajax 请求到 API 获取数据。\n• 我们会使用模板引擎或现代框架（Vue/React）自动生成卡片列表。"
+          },
+          {
+            "type": "tip",
+            "text": "💡 静态网页是基础，动态交互是核心。继续坚持，你正在通往全栈开发的道路上！"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s64",
+      "type": "bullets",
+      "content": {
+        "title": "项目复盘：你学会了什么？",
+        "subtitle": "Project Retrospective",
+        "layout": "grid",
+        "items": [
+          {
+            "icon": "📐",
+            "title": "规划能力",
+            "detail": "学会了从受众角度分析需求，并制定合理的站点地图。"
+          },
+          {
+            "icon": "🎨",
+            "title": "设计审美",
+            "detail": "理解了配色、排版和导航对用户体验的巨大影响。"
+          },
+          {
+            "icon": "🔨",
+            "title": "工程实践",
+            "detail": "亲手搭建了多页面网站，掌握了Flex和Grid复合布局。"
+          },
+          {
+            "icon": "🛠️",
+            "title": "调试技巧",
+            "detail": "学会了使用F12排查样式问题，并优化资源加载。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s65",
+      "type": "content",
+      "content": {
+        "title": "常见问题 (FAQ) - 1",
+        "subtitle": "Common Hurdles for Beginners",
+        "body": [
+          {
+            "type": "definition",
+            "text": "Q: 为什么我的背景图不显示？\nA: 检查路径是否正确。如果你在 css/style.css 里写，路径应该是 ../img/bg.jpg。"
+          },
+          {
+            "type": "definition",
+            "text": "Q: 导航条在手机上乱码/错位了？\nA: 检查是否漏掉了 <meta name='viewport'>，这是移动端布局的核心。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s66",
+      "type": "content",
+      "content": {
+        "title": "常见问题 (FAQ) - 2",
+        "subtitle": "Common Hurdles for Beginners",
+        "body": [
+          {
+            "type": "definition",
+            "text": "Q: 感觉自己写的代码太乱，怎么优化？\nA: 尝试提取公共样式（如 .btn, .section-title）。学会给代码加注释，这不仅是给别人看，更是给自己看。"
+          },
+          {
+            "type": "definition",
+            "text": "Q: 学完这一章，我能去找工作了吗？\nA: 你已经具备了制作静态门户的能力！下一步建议学习交互逻辑（JS进阶）和数据交互，那是通往初级开发者的必经之路。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s67",
+      "type": "content",
+      "content": {
+        "title": "实战作业：你的任务",
+        "subtitle": "Home Assignment",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "请在接下来的一周内，独立完成“游戏天地”的首页制作。"
+          },
+          {
+            "type": "highlight",
+            "text": "评分标准：\n1. 结构清晰（有Header, Main, Footer）\n2. 至少包含 6 张游戏卡片布局\n3. 导航栏具备 Hover 特效\n4. 网页在手机上能够正常扫描浏览"
+          },
+          {
+            "type": "tip",
+            "text": "💡 勇于尝试！即使最初不好看，代码运行起来就是胜利。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s68",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：评估实战作业得分点",
+        "subtitle": "Knowledge Check: Grading Criteria",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "根据刚才布置的实战作业要求，假设你做出的作业包含以下特征：\n1. 有完整的 `<header>`、`<main>`、`<footer>` 结构。\n2. 包含 5 张游戏卡片，并且当鼠标移上去时卡片完全没有变化。\n3. 在手机上打开时，导航条直接叠在卡片上方挡住了文字。\n对照评分标准，你最少遗漏了几个重要的考察点？"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n总共遗漏了三个得分点：\n1. 数量不足：作业要求至少包含 6 张游戏卡片，而不仅是 5 张。\n2. 缺失交互特效：鼠标移上去没有变化，说明缺失了导航条或卡片的 Hover 特效与 CSS Transition 运用。\n3. 移动端未适配：手机端布局错乱、遮挡，说明没有使用媒体查询（Media Queries）进行断点响应式调整，或视口 meta 标签未正确配置。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s69",
+      "type": "section",
+      "content": {
+        "section": "06",
+        "icon": "✨",
+        "title": "未来已来",
+        "subtitle": "Web 3.0 与 AI 时代的网页设计"
+      }
+    },
+    {
+      "id": "s70",
+      "type": "bullets",
+      "content": {
+        "title": "AI 辅助开发的技巧",
+        "subtitle": "Developing with AI Tools",
+        "layout": "list",
+        "items": [
+          {
+            "title": "生成原型图",
+            "detail": "利用 Midjourney 生成网站 UI 灵感图，快速确定配色。"
+          },
+          {
+            "title": "代码纠错",
+            "detail": "把报错信息直接发给 ChatGPT/Claude，它们能极快地定位语法错误。"
+          },
+          {
+            "title": "填充素材",
+            "detail": "使用 AI 生成测试用的占位文字和无版权图片，加速项目演示。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s71",
+      "type": "content",
+      "content": {
+        "title": "什么是“微前端”？（视野拓展）",
+        "subtitle": "Micro-Frontends Overview",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "当“游戏天地”变得像“腾讯游戏”那么大时，单体结构就撑不住了。"
+          },
+          {
+            "type": "definition",
+            "text": "微前端就像把一个巨大的拼图拆成几个独立的小拼图：\n- 充值系统由 A 团队负责\n- 游戏库由 B 团队负责\n- 社区由 C 团队负责\n各团队技术栈可以不同，最后无缝拼在一起。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s72",
+      "type": "content",
+      "content": {
+        "title": "性能优化的“三个1”目标",
+        "subtitle": "Performance Goals",
+        "body": [
+          {
+            "type": "highlight",
+            "text": "1. 1秒内显示：首屏关键内容必须在1秒内渲染完毕。\n2. 1次请求：尽量合并小图标到雪碧图（或用SVG），减少HTTP连接数。\n3. 1MB以内：初始加载的资源总量控制在1MB以内，适应移动网络。"
+          },
+          {
+            "type": "paragraph",
+            "text": "加载速度直接影响留存率。玩家是没耐心的，多等一秒就会关掉网页。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s73",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：性能优化手段匹配",
+        "subtitle": "Knowledge Check: Performance Optimization",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "为了达成性能优化的“三个1”目标（1秒显示、1次请求合并、1MB以内），前端开发者采用了以下三种手段。请判断它们分别对应解决了哪个目标核心痛点：\n\n手段A. 使用 TinyPNG 把一张 3MB 的背景大图硬生生压缩到了 200KB\n手段B. 把页面上的10个社交媒体小图标（微信、微博等），拼成了一张雪碧图 (Sprite)，只引入一张图即可\n手段C. 将重要的 CSS 文件用 `<link>` 放在 `<head>` 尽早加载，而不是放在页面最底部"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n• 手段A 对应解决【1MB以内】：从源头上减少网络传输的数据总体积，是缩减包体积最立竿见影的方法。\n• 手段B 对应解决【1次请求】：以前加载10个小图标需要向服务器发起10次HTTP请求连接，耗时极高；拼在一张图上，配合 `background-position` 定位，变成1次请求，极大地降低了网络握手开销。\n• 手段C 对应解决【1秒内显示（首屏渲染）】：浏览器遇到 CSS 才会开始构建渲染树。如果 CSS 放太后，用户会先看到没穿衣服的白板错乱文字，严重影响首屏视觉体验。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s74",
+      "type": "content",
+      "content": {
+        "title": "Web 安全基础：本章提醒",
+        "subtitle": "Security Basics",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在制作反馈表单时，一定要记住："
+          },
+          {
+            "type": "warning",
+            "text": "⚠️ 永远不要信任用户输入的内容！\n\n- 前端要校验：防止垃圾信息攻击。\n-后端要过滤：防止 SQL 注入和 XSS 跨站脚本攻击。\n虽然我们目前在学前端，但安全意识要从第一行代码抓起。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s75",
+      "type": "content",
+      "content": {
+        "title": "📝 随堂练习：防范 Web 安全基础漏洞",
+        "subtitle": "Knowledge Check: Identifying Security Risks",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "在“游戏天地”的玩家反馈表单里，哪一种情况证明了“开发者轻信了用户输入的内容”，从而构成了安全隐患？"
+          },
+          {
+            "type": "definition",
+            "text": "A. 用户在留言信息框里填了一段奇怪的 JavaScript 代码：`<script>alert('系统崩溃!')</script>`。开发者不加任何过滤，直接将这段内容原封不动地展示在所有人的评论列表中，导致每个打开页面的人都被弹窗。\nB. 用户在选择游戏平台时选了“PC”\nC. 用户在昵称框里故意填入了一个长达20字的名字\nD. 用户多按了两次提交按钮"
+          },
+          {
+            "type": "highlight",
+            "text": "【详细讲解】\n正确答案：A。\n解析：这正是经典的跨站脚本攻击（XSS）。黑客通过向输入框注入恶意代码，如果前后端不对输入框内容进行 HTML 转义（例如把 `<` 转成 `&lt;`），浏览器就会将其当做真实代码执行。轻则恶作剧弹窗，重则窃取管理员登录凭证。B、C、D项虽然可能属于不合规数据，但不构成直接代码层面的系统级安全攻击。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s76",
+      "type": "bullets",
+      "content": {
+        "title": "开发者资源推荐",
+        "subtitle": "Resources to Bookmark",
+        "layout": "grid",
+        "items": [
+          {
+            "icon": "📖",
+            "title": "MDN Web Docs",
+            "detail": "Web开发的“新华字典”，最权威、最详尽。"
+          },
+          {
+            "icon": "🎨",
+            "title": "Dribbble",
+            "detail": "找设计灵感的圣地。看看顶尖设计师如何处理布局和色彩。"
+          },
+          {
+            "icon": "📦",
+            "title": "Can I Use",
+            "detail": "查询CSS/JS新特性在各版本浏览器中的支持程度。"
+          },
+          {
+            "icon": "🏗️",
+            "title": "W3Schools",
+            "detail": "非常适合初学者的互动练习平台。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s77",
+      "type": "summary",
+      "content": {
+        "title": "全章核心回顾",
+        "points": [
+          "网站开发不仅仅是敲代码，更是一套从需求、规划、设计到实现的系统工程。",
+          "项目管理五步走：需求、规划、开发、测试、发布。每一步都不可或缺。",
+          "“游戏天地”实战中，我们复习了 Flex 布局、Grid 网格以及响应式媒体查询的核心用法。",
+          "良好的文件组织结构和代码风格（如变量命名、注释）是区分专业与业余的标志。",
+          "互联网是不断进化的，保持对 AI、PWA 等新技术的敏感度是开发者的核心竞争力。"
+        ]
+      }
+    },
+    {
+      "id": "s78",
+      "type": "quote",
+      "content": {
+        "quote": "Stay hungry, stay foolish. The best way to learn Web Development is to build something.",
+        "author": "Steve Jobs (Modified for Web)",
+        "role": "Encouragement",
+        "context": "学习Web开发的最好方法，就是亲手去做一个东西。"
+      }
+    },
+    {
+      "id": "s79",
+      "type": "thankyou",
+      "content": {
+        "title": "圆满完成！",
+        "subtitle": "Course Completed!",
+        "message": "恭喜你！你已经掌握了从创意到成品的 Web 应用开发全流程。\n\n这不仅是本章的结束，更是你职业生涯的开始。\n请记住，每一个复杂的网站都是由最基础的 HTML/CSS 堆砌而成的。\n只要你保持好奇心，不断实战，未来必属于你！",
+        "contact": "teacher@example.edu.cn",
+        "nextClass": "进阶课程：深入 JavaScript 异步编程与后端接口对接"
+      }
+    }
+  ]
+}
